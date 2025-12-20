@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { 
   Star, Shield, Clock, GraduationCap, BookOpen, 
   Truck, MessageCircle, CheckCircle, Lock, Zap, Award,
-  Users, Trophy, Globe, Heart, Briefcase, Monitor, Wrench, Scale, Wallet
+  Users, Wallet, Trophy, Globe
 } from "lucide-react";
 
 const benefitIcons = [
@@ -19,13 +19,17 @@ const benefitIcons = [
   <Shield key="5" className="w-8 h-8" />,
 ];
 
-const categoryIcons: Record<string, React.ReactNode> = {
-  "Educação": <GraduationCap className="w-8 h-8" />,
-  "Saúde": <Heart className="w-8 h-8" />,
-  "Negócios": <Briefcase className="w-8 h-8" />,
-  "Tecnologia": <Monitor className="w-8 h-8" />,
-  "Engenharias": <Wrench className="w-8 h-8" />,
-  "Direito e Humanas": <Scale className="w-8 h-8" />,
+const COURSE_IMAGES: Record<string, string> = {
+  "Pedagogia": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop",
+  "Letras": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=300&fit=crop",
+  "Educação Física": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=300&fit=crop",
+  "História": "https://images.unsplash.com/photo-1461360370896-922624d12a74?w=400&h=300&fit=crop",
+  "Geografia": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&h=300&fit=crop",
+  "Matemática": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop",
+  "Física": "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=400&h=300&fit=crop",
+  "Química": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=300&fit=crop",
+  "Enfermagem": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=300&fit=crop",
+  "Administração": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop",
 };
 
 const Index = () => {
@@ -191,12 +195,19 @@ const Index = () => {
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-card hover:bg-primary hover:text-primary-foreground border border-border rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                  className="group bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                 >
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 text-primary group-hover:bg-primary-foreground/20 group-hover:text-primary-foreground transition-colors">
-                    {categoryIcons[course.category]}
+                  <div className="relative h-32 overflow-hidden">
+                    <img 
+                      src={COURSE_IMAGES[course.name] || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop"} 
+                      alt={course.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
-                  <h3 className="font-semibold">{course.name}</h3>
+                  <div className="p-4 text-center">
+                    <h3 className="font-semibold text-foreground">{course.name}</h3>
+                  </div>
                 </a>
               ))}
             </div>
