@@ -143,36 +143,63 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Benefits Section */}
-        <section className="py-20 md:py-28 bg-background relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-20 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 left-20 w-80 h-80 bg-gold/5 rounded-full blur-3xl" />
-          </div>
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 font-heading">
-                Por que escolher a <span className="text-primary">Central do Diploma</span>?
-              </h2>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Oferecemos a melhor experiência em documentação acadêmica do Brasil
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {BENEFITS.map((benefit, index) => (
-                <div
-                  key={index}
-                  className="group bg-card border border-border rounded-2xl p-8 hover-3d cursor-pointer gradient-border"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                    {benefitIcons[index]}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 font-heading">{benefit.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+        {/* Benefits Section - New Design */}
+        <section className="py-16 bg-primary/10 relative overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+              {/* Card 1 */}
+              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <GraduationCap className="w-8 h-8 text-primary" />
                 </div>
-              ))}
+                <h3 className="text-xl font-bold mb-3 font-heading">Certificado Reconhecido no MEC</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Todos os diplomas são Reconhecidos pelo MEC e publicados no Diário Oficial, voltados para serem usados em qualquer situação legal, seja profissional!
+                </p>
+              </div>
+              
+              {/* Card 2 */}
+              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <BookOpen className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 font-heading">Conheça os Cursos Disponíveis</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Então saiba qual é a melhor opção para o seu currículo, escolha o melhor curso para você comprar seu diploma ou certificado de ensino técnico e pós-graduação!
+                </p>
+              </div>
+              
+              {/* Card 3 */}
+              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Shield className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 font-heading">Aqui, você não paga nada adiantado!</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Garantimos a emissão e entrega segura do seu diploma ou certificado — 100% autêntico, reconhecido pelo MEC e publicado no Diário Oficial.
+                </p>
+              </div>
+            </div>
+
+            {/* Security Section with Image */}
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-gold/20 rounded-3xl blur-2xl" />
+                <img 
+                  src="https://centraldodiploma.com/wp-content/uploads/2025/01/1694606550honoriscausa5-1024x755.jpeg"
+                  alt="Formandos recebendo diploma"
+                  className="relative rounded-3xl shadow-2xl w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="text-center md:text-left">
+                <h2 className="text-3xl md:text-5xl font-bold mb-6 font-heading">
+                  Mas... é <span className="text-primary">Seguro mesmo?</span>
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Com toda certeza é super seguro, pois aqui emitimos e registramos a documentação completa referente ao curso que for escolhido por você, bem como, o certificado de conclusão de curso, o diploma e o histórico completo com toda a grade curricular e carga horária necessária do curso, assim como os estágios e o trabalho de conclusão de curso também.
+                </p>
+              </div>
             </div>
           </div>
         </section>
