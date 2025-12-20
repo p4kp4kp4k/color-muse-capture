@@ -91,28 +91,24 @@ export const BRAZILIAN_STATES = [
 
 export const FAQ_ITEMS = [
   {
-    question: "Como funciona o processo?",
-    answer: "Após o contato inicial via WhatsApp, nossa equipe irá orientá-lo sobre toda a documentação necessária e o processo de emissão do seu diploma."
+    question: "Os documentos vendidos pela CENTRAL DO DIPLOMAS são reconhecidos pelo MEC?",
+    answer: "Sim. Nossa equipe MEC Diplomas trabalha apenas com documentação reconhecida pelo MEC assim de tal forma os diplomas são emitidos dentro das próprias instituições de ensino."
   },
   {
-    question: "Quanto tempo demora?",
-    answer: "O prazo médio para conclusão de todo o processo é de 15 a 30 dias úteis, dependendo da documentação e do curso escolhido."
+    question: "A CENTRAL DO Diplomas consegue a documentação superior por qualquer instituição de ensino?",
+    answer: "Sim. Ao mesmo tempo continuamente estamos aumentando nossos esforços para que possamos oferecer mais opções de instituições que sejam reconhecidas pelo MEC de forma que consigamos realizar todas as etapas do processo para garantir sempre a documentação completa e reconhecida."
   },
   {
-    question: "É seguro?",
+    question: "Posso apresentar o documento no RH, concurso público ou matrícula em universidades?",
+    answer: "Sim. O documento pode ser utilizado em qualquer finalidade legal necessária com toda a certeza."
+  },
+  {
+    question: "Mas como é feito o envio, posso retirar pessoalmente com a CENTRAL DO Diplomas?",
+    answer: "Entre em contato conosco via WhatsApp para mais informações sobre opções de envio e retirada."
+  },
+  {
+    question: "O site CENTRAL DO Diplomas é seguro?",
     answer: "Sim! Trabalhamos com total sigilo e segurança. Todos os documentos são emitidos seguindo os padrões exigidos pelo MEC."
-  },
-  {
-    question: "Quais formas de pagamento?",
-    answer: "Aceitamos PIX, cartão de crédito (em até 12x), boleto bancário e transferência bancária."
-  },
-  {
-    question: "Posso parcelar?",
-    answer: "Sim! Oferecemos parcelamento em até 12x no cartão de crédito ou condições especiais via PIX."
-  },
-  {
-    question: "O diploma é reconhecido?",
-    answer: "Sim, todos os diplomas são emitidos por instituições devidamente credenciadas e reconhecidas pelo MEC."
   },
 ];
 
