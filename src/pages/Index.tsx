@@ -201,6 +201,7 @@ const Index = () => {
                     <img 
                       src={COURSE_IMAGES[course.name] || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop"} 
                       alt={course.name}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
