@@ -155,8 +155,8 @@ export const BENEFITS = [
     description: "Ampla variedade de graduações e pós-graduações disponíveis",
   },
   {
-    title: "Pagamento Facilitado",
-    description: "Parcele em até 12x ou tenha desconto no PIX",
+    title: "Pagamento via PIX",
+    description: "Pague com PIX e tenha desconto especial",
   },
   {
     title: "Entrega Rápida",
@@ -184,7 +184,7 @@ export const CATEGORY_ICONS: Record<string, string> = {
 export const BENEFIT_ICONS = [
   "GraduationCap",
   "BookOpen",
-  "CreditCard",
+  "Wallet",
   "Truck",
   "MessageCircle",
   "Shield",

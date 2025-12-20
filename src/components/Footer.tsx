@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { WHATSAPP_LINK } from "@/lib/constants";
-import { Phone, Mail, Clock, CreditCard, MessageCircle } from "lucide-react";
+import { Phone, Mail, Clock, MessageCircle, Wallet } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -41,7 +41,7 @@ const Footer = () => {
               brasileiros.
             </p>
             <div className="flex items-center gap-4">
-              <CreditCard className="w-8 h-8 text-primary-foreground/60" />
+              <Wallet className="w-8 h-8 text-primary-foreground/60" />
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg/80px-Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg.png" 
                 alt="PIX" 
