@@ -68,8 +68,7 @@ const Index = () => {
                   <Button
                     asChild
                     size="lg"
-                    variant="outline"
-                    className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-lg backdrop-blur-sm"
+                    className="bg-white text-primary hover:bg-white/90 text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                   >
                     <Link to="/cursos">Ver Cursos</Link>
                   </Button>
@@ -94,8 +93,8 @@ const Index = () => {
                   <div className="absolute -inset-8 bg-gradient-to-r from-gold/30 to-primary/30 rounded-full blur-3xl animate-pulse-glow"></div>
                   <div className="relative">
                     <img 
-                      src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&h=600&fit=crop&crop=faces" 
-                      alt="Formandos celebrando conquista acadêmica"
+                      src="https://images.unsplash.com/photo-1627556704302-624286467c65?w=500&h=600&fit=crop" 
+                      alt="Estudante com diploma de formatura"
                       className="relative rounded-3xl shadow-2xl object-cover w-full max-w-md glow-primary"
                     />
                     {/* Floating cards */}
