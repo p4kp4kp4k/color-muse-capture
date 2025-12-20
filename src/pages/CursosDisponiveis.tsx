@@ -71,7 +71,6 @@ const CursosDisponiveis = () => {
                 <CourseCard
                   key={index}
                   name={course.name}
-                  icon={course.icon}
                   category={course.category}
                 />
               ))}
@@ -95,7 +94,7 @@ const CursosDisponiveis = () => {
               className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-bold"
             >
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                📱 Falar com a Equipe
+                Falar com a Equipe
               </a>
             </Button>
           </div>
