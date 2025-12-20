@@ -42,9 +42,6 @@ const Index = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6 animate-fade-in">
-                <div className="inline-block bg-gold text-accent-foreground px-4 py-2 rounded-full text-sm font-bold">
-                  PROMOÇÃO LIMITADA
-                </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-heading">
                   Sua <span className="text-gold">Documentação</span> Acadêmica em Poucos Dias
                 </h1>
@@ -81,8 +78,8 @@ const Index = () => {
                     <span className="text-sm">Entrega Rápida</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CreditCard className="text-gold" size={20} />
-                    <span className="text-sm">12x sem juros</span>
+                    <MessageCircle className="text-gold" size={20} />
+                    <span className="text-sm">Suporte 24h</span>
                   </div>
                 </div>
               </div>
@@ -90,8 +87,8 @@ const Index = () => {
                 <div className="relative">
                   <div className="absolute -inset-4 bg-gold/20 rounded-full blur-3xl"></div>
                   <img 
-                    src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&h=600&fit=crop" 
-                    alt="Formandos celebrando conquista acadêmica"
+                    src="https://images.unsplash.com/photo-1627556704302-624286467c65?w=500&h=600&fit=crop" 
+                    alt="Diploma universitário de formatura"
                     className="relative rounded-3xl shadow-2xl object-cover w-full max-w-md"
                   />
                 </div>
