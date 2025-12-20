@@ -50,7 +50,7 @@ const EscolhaEstado = () => {
         {/* Hero */}
         <section className="bg-gradient-hero text-primary-foreground py-16">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 font-heading">
               Escolha seu <span className="text-gold">Estado</span>
             </h1>
             <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
@@ -80,8 +80,8 @@ const EscolhaEstado = () => {
         <section className="py-16 bg-secondary/50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Perguntas <span className="text-primary">Frequentes</span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
+                Dúvidas e <span className="text-primary">Perguntas Frequentes</span>
               </h2>
               <p className="text-muted-foreground text-lg">
                 Tire suas dúvidas sobre nossos serviços
@@ -115,7 +115,7 @@ const EscolhaEstado = () => {
                 className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-bold"
               >
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  📱 Chamar no WhatsApp
+                  Chamar no WhatsApp
                 </a>
               </Button>
             </div>

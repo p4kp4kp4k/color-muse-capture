@@ -17,7 +17,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full">
       {/* Top Banner */}
       <div className="bg-primary text-primary-foreground py-2 text-center text-sm font-medium">
-        🎓 PROMOÇÃO ESPECIAL: Documentação completa com até 40% OFF!
+        PROMOÇÃO ESPECIAL: Documentação completa com até 40% OFF!
       </div>
 
       {/* Main Header */}
@@ -26,8 +26,8 @@ const Header = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-primary">Central</span>
-              <span className="text-2xl font-bold text-foreground">do Diploma</span>
+              <span className="text-2xl font-bold text-primary font-heading">Central</span>
+              <span className="text-2xl font-bold text-foreground font-heading">do Diploma</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -59,6 +59,7 @@ const Header = () => {
             <button
               className="md:hidden p-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Menu de navegação"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

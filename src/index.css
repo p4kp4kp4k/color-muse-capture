@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 220 20% 10%;
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 142 76% 36%;
+    --primary: 217 91% 40%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 40%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
     --accent: 45 93% 47%;
-    --accent-foreground: 220 20% 10%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 142 76% 36%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 40%;
 
     --radius: 0.75rem;
 
@@ -40,38 +40,38 @@
     --whatsapp: 142 70% 45%;
     --whatsapp-foreground: 0 0% 100%;
     --gold: 45 93% 47%;
-    --navy: 220 60% 20%;
-    --navy-light: 220 40% 30%;
+    --navy: 217 71% 18%;
+    --navy-light: 217 50% 28%;
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 220 20% 97%;
+    --background: 222 47% 8%;
+    --foreground: 210 40% 98%;
 
-    --card: 220 20% 14%;
-    --card-foreground: 220 20% 97%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 220 20% 14%;
-    --popover-foreground: 220 20% 97%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 142 76% 40%;
+    --primary: 217 91% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 220 20% 97%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 20% 18%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
     --accent: 45 93% 47%;
-    --accent-foreground: 220 20% 10%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 142 76% 40%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 50%;
   }
 }
 
@@ -81,12 +81,12 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    font-family: 'Poppins', sans-serif;
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
@@ -100,6 +100,6 @@
   }
 
   .bg-gradient-hero {
-    @apply bg-gradient-to-br from-[hsl(var(--navy))] via-[hsl(var(--navy-light))] to-[hsl(var(--navy))];
+    @apply bg-gradient-to-br from-[hsl(var(--navy))] via-[hsl(var(--navy-light))] to-[hsl(var(--primary))];
   }
 }
