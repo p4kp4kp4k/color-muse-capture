@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import UniversitiesCarousel from "@/components/UniversitiesCarousel";
 import { Button } from "@/components/ui/button";
 import { WHATSAPP_LINK, COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
 import { Link } from "react-router-dom";
@@ -120,6 +121,9 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {/* Universities Carousel */}
+        <UniversitiesCarousel />
 
         {/* Payment Methods - PIX Only */}
         <section className="py-8 bg-card border-y border-border relative overflow-hidden">
