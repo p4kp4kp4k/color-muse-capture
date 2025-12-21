@@ -17,7 +17,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full">
       {/* Top Banner */}
       <div className="bg-primary text-primary-foreground py-2 text-center text-sm font-medium">
-        PROMOÇÃO ESPECIAL: Documentação completa com até 40% OFF!
+        Confira Antes, Pague Depois
       </div>
 
       {/* Main Header */}
