@@ -186,33 +186,26 @@ const Index = () => {
         </section>
 
         {/* Featured Courses */}
-        <section className="py-20 md:py-28 bg-primary relative overflow-hidden">
+        <section className="py-12 md:py-16 bg-primary relative overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
             {/* Header Text */}
-            <div className="text-center mb-12 text-primary-foreground">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading">
-                Tire suas duvidas sobre seu curso com a equipe <span className="font-extrabold">CENTRAL</span> DO DIPLOMA
+            <div className="text-center mb-8 text-primary-foreground max-w-3xl mx-auto">
+              <h2 className="text-xl md:text-2xl font-bold mb-3 font-heading">
+                Escolha seu curso e fale com a <span className="font-extrabold">CENTRAL DO DIPLOMA</span>
               </h2>
-              <p className="text-lg text-primary-foreground/90 max-w-4xl mx-auto leading-relaxed mb-10">
-                Sem dúvida há diversas equipes em todo o País que oferecem diplomas de cursos de graduação. No entanto, é muito importante verificar se esses cursos e os documentos são autorizados e reconhecidos pelo MEC com toda a certeza necessária antes de efetuar a compra, pois esse é um pré-requisito para que o diploma seja válido para o uso legal e seguro em todo o território nacional sem dúvida.
-              </p>
-              
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 font-heading">
-                Escolha seu curso e fale com a CENTRAL DO DIPLOMA
-              </h3>
-              <p className="text-lg text-primary-foreground/90 max-w-4xl mx-auto leading-relaxed">
-                Confira os valores prazos e condições para o curso escolhido junto a um de nossos representantes assim como a necessidade de um curso específico não apenas de pós-graduação ou ensino médio, trabalhamos apenas com cursos reconhecidos pelo MEC ou que sejam válidos para o uso legal e profissional como certificados ANBIMA!
+              <p className="text-sm md:text-base text-primary-foreground/85 leading-relaxed">
+                Confira os valores, prazos e condições para o curso escolhido. Trabalhamos apenas com cursos reconhecidos pelo MEC.
               </p>
             </div>
             
             {/* Course Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
               {featuredCourses.map((course, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-28 md:h-36 overflow-hidden">
                     <img 
                       src={COURSE_IMAGES[course.name] || "/images/courses/pedagogia.jpg"} 
                       alt={course.name}
@@ -220,20 +213,20 @@ const Index = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-5">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
-                      Adquira o Diploma<br />de {course.name}
+                  <div className="p-3 md:p-4">
+                    <h3 className="text-sm md:text-base font-bold text-gray-900 mb-2 leading-tight">
+                      Adquira o Diploma de {course.name}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-5 leading-relaxed">
-                      Dentre as graduações disponíveis, você pode escolher diploma de nível superior bacharelado, licenciatura ou pós-graduação.
+                    <p className="text-xs text-gray-600 mb-3 leading-relaxed hidden md:block">
+                      Diploma de nível superior bacharelado, licenciatura ou pós-graduação.
                     </p>
                     <a
                       href={WHATSAPP_LINK}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold/90 text-navy font-bold py-3 px-6 rounded-full transition-all duration-300 hover:scale-105 w-full"
+                      className="inline-flex items-center justify-center gap-1.5 bg-gold hover:bg-gold/90 text-navy text-xs md:text-sm font-bold py-2 px-3 md:px-4 rounded-full transition-all duration-300 w-full"
                     >
-                      <MessageCircle size={18} />
+                      <MessageCircle size={14} />
                       Fale Conosco
                     </a>
                   </div>
@@ -241,8 +234,8 @@ const Index = () => {
               ))}
             </div>
             
-            <div className="text-center mt-12">
-              <Button asChild size="lg" className="bg-gold hover:bg-gold/90 text-navy font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105">
+            <div className="text-center mt-8">
+              <Button asChild size="default" className="bg-gold hover:bg-gold/90 text-navy font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105">
                 <Link to="/cursos">Ver Todos os Cursos</Link>
               </Button>
             </div>
