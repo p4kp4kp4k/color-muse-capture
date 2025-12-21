@@ -186,46 +186,63 @@ const Index = () => {
         </section>
 
         {/* Featured Courses */}
-        <section className="py-20 md:py-28 bg-gradient-to-b from-secondary/30 to-background relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-          </div>
-          
+        <section className="py-20 md:py-28 bg-primary relative overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 font-heading">
-                Cursos <span className="text-primary">Disponíveis</span>
+            {/* Header Text */}
+            <div className="text-center mb-12 text-primary-foreground">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading">
+                Tire suas duvidas sobre seu curso com a equipe <span className="font-extrabold">CENTRAL</span> DO DIPLOMA
               </h2>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Confira alguns dos nossos cursos mais procurados
+              <p className="text-lg text-primary-foreground/90 max-w-4xl mx-auto leading-relaxed mb-10">
+                Sem dúvida há diversas equipes em todo o País que oferecem diplomas de cursos de graduação. No entanto, é muito importante verificar se esses cursos e os documentos são autorizados e reconhecidos pelo MEC com toda a certeza necessária antes de efetuar a compra, pois esse é um pré-requisito para que o diploma seja válido para o uso legal e seguro em todo o território nacional sem dúvida.
+              </p>
+              
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 font-heading">
+                Escolha seu curso e fale com a CENTRAL DO DIPLOMA
+              </h3>
+              <p className="text-lg text-primary-foreground/90 max-w-4xl mx-auto leading-relaxed">
+                Confira os valores prazos e condições para o curso escolhido junto a um de nossos representantes assim como a necessidade de um curso específico não apenas de pós-graduação ou ensino médio, trabalhamos apenas com cursos reconhecidos pelo MEC ou que sejam válidos para o uso legal e profissional como certificados ANBIMA!
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            
+            {/* Course Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {featuredCourses.map((course, index) => (
-                <a
+                <div
                   key={index}
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
                 >
-                  <div className="relative h-32 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
                     <img 
-                      src={COURSE_IMAGES[course.name] || "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop"} 
+                      src={COURSE_IMAGES[course.name] || "/images/courses/pedagogia.jpg"} 
                       alt={course.name}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
-                  <div className="p-4 text-center">
-                    <h3 className="font-semibold text-foreground">{course.name}</h3>
+                  <div className="p-5">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                      Adquira o Diploma<br />de {course.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-5 leading-relaxed">
+                      Dentre as graduações disponíveis, você pode escolher diploma de nível superior bacharelado, licenciatura ou pós-graduação.
+                    </p>
+                    <a
+                      href={WHATSAPP_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold/90 text-navy font-bold py-3 px-6 rounded-full transition-all duration-300 hover:scale-105 w-full"
+                    >
+                      <MessageCircle size={18} />
+                      Fale Conosco
+                    </a>
                   </div>
-                </a>
+                </div>
               ))}
             </div>
+            
             <div className="text-center mt-12">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all hover:scale-105">
+              <Button asChild size="lg" className="bg-gold hover:bg-gold/90 text-navy font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105">
                 <Link to="/cursos">Ver Todos os Cursos</Link>
               </Button>
             </div>
