@@ -69,6 +69,10 @@ const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1523050854058-8df90110c
 const CourseCard = ({ name, category }: CourseCardProps) => {
   const imageUrl = COURSE_IMAGES[name] || DEFAULT_IMAGE;
   
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = DEFAULT_IMAGE;
+  };
+  
   return (
     <a
       href={WHATSAPP_LINK}
@@ -76,11 +80,12 @@ const CourseCard = ({ name, category }: CourseCardProps) => {
       rel="noopener noreferrer"
       className="group bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl"
     >
-      <div className="relative h-32 overflow-hidden">
+      <div className="relative h-32 overflow-hidden bg-muted">
         <img 
           src={imageUrl} 
           alt={name}
           loading="lazy"
+          onError={handleImageError}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
