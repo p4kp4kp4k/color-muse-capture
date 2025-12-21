@@ -30,16 +30,16 @@ const benefitIcons = [
 ];
 
 const COURSE_IMAGES: Record<string, string> = {
-  "Pedagogia": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop",
-  "Letras": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=300&fit=crop",
-  "Educação Física": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=300&fit=crop",
-  "História": "https://images.unsplash.com/photo-1461360370896-922624d12a74?w=400&h=300&fit=crop",
-  "Geografia": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&h=300&fit=crop",
-  "Matemática": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop",
-  "Física": "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=400&h=300&fit=crop",
-  "Química": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=300&fit=crop",
-  "Enfermagem": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=300&fit=crop",
-  "Administração": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop",
+  "Pedagogia": "/images/courses/pedagogia.jpg",
+  "Letras": "/images/courses/letras.jpg",
+  "Educação Física": "/images/courses/educacao-fisica.jpg",
+  "História": "/images/courses/historia.jpg",
+  "Geografia": "/images/courses/geografia.jpg",
+  "Matemática": "/images/courses/matematica.jpg",
+  "Física": "/images/courses/fisica.jpg",
+  "Química": "/images/courses/quimica.jpg",
+  "Enfermagem": "/images/courses/enfermagem.jpg",
+  "Administração": "/images/courses/administracao.jpg",
 };
 
 const Index = () => {

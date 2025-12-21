@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
@@ -51,7 +51,8 @@ const Header = () => {
                 asChild
                 className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-semibold"
               >
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <MessageCircle size={18} />
                   Fale Conosco
                 </a>
               </Button>
@@ -86,7 +87,8 @@ const Header = () => {
                 asChild
                 className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-semibold w-full"
               >
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                  <MessageCircle size={18} />
                   Fale Conosco
                 </a>
               </Button>
