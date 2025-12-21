@@ -61,9 +61,9 @@ const CourseList = ({ courses, title }: { courses: string[]; title: string }) =>
   return (
     <section className="py-8">
       <div className="container mx-auto px-4">
-        {/* Section Header with Gold Bar */}
-        <div className="bg-gold py-3 px-6 mb-6">
-          <h2 className="text-xl md:text-2xl font-bold text-center font-heading text-primary">
+        {/* Section Header */}
+        <div className="bg-primary py-3 px-6 mb-6 rounded-sm">
+          <h2 className="text-xl md:text-2xl font-bold text-center font-heading text-primary-foreground">
             Diplomas de {title}
           </h2>
         </div>
