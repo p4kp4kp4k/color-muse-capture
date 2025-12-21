@@ -8,61 +8,61 @@ interface CourseCardProps {
 
 const COURSE_IMAGES: Record<string, string> = {
   // Educação
-  "Pedagogia": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop",
-  "Letras": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=300&fit=crop",
-  "Educação Física": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=300&fit=crop",
-  "História": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop",
-  "Geografia": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&h=300&fit=crop",
-  "Matemática": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop",
-  "Física": "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=400&h=300&fit=crop",
-  "Química": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=300&fit=crop",
-  "Biologia": "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&h=300&fit=crop",
-  "Artes": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&h=300&fit=crop",
+  "Pedagogia": "/images/courses/pedagogia.jpg",
+  "Letras": "/images/courses/letras.jpg",
+  "Educação Física": "/images/courses/educacao-fisica.jpg",
+  "História": "/images/courses/historia.jpg",
+  "Geografia": "/images/courses/geografia.jpg",
+  "Matemática": "/images/courses/matematica.jpg",
+  "Física": "/images/courses/fisica.jpg",
+  "Química": "/images/courses/quimica.jpg",
+  "Biologia": "/images/courses/biologia.jpg",
+  "Artes": "/images/courses/artes.jpg",
   
   // Saúde
-  "Enfermagem": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=300&fit=crop",
-  "Farmácia": "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=400&h=300&fit=crop",
-  "Fisioterapia": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=300&fit=crop",
-  "Nutrição": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=300&fit=crop",
-  "Psicologia": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=300&fit=crop",
-  "Odontologia": "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=300&fit=crop",
-  "Biomedicina": "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=300&fit=crop",
-  "Medicina Veterinária": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=400&h=300&fit=crop",
+  "Enfermagem": "/images/courses/enfermagem.jpg",
+  "Farmácia": "/images/courses/farmacia.jpg",
+  "Fisioterapia": "/images/courses/fisioterapia.jpg",
+  "Nutrição": "/images/courses/nutricao.jpg",
+  "Psicologia": "/images/courses/psicologia.jpg",
+  "Odontologia": "/images/courses/odontologia.jpg",
+  "Biomedicina": "/images/courses/biomedicina.jpg",
+  "Medicina Veterinária": "/images/courses/veterinaria.jpg",
   
   // Negócios
-  "Administração": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop",
-  "Contabilidade": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop",
-  "Economia": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=300&fit=crop",
-  "Marketing": "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=400&h=300&fit=crop",
-  "Recursos Humanos": "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=300&fit=crop",
-  "Logística": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop",
-  "Gestão Financeira": "https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?w=400&h=300&fit=crop",
-  "Comércio Exterior": "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=400&h=300&fit=crop",
+  "Administração": "/images/courses/administracao.jpg",
+  "Contabilidade": "/images/courses/contabilidade.jpg",
+  "Economia": "/images/courses/economia.jpg",
+  "Marketing": "/images/courses/marketing.jpg",
+  "Recursos Humanos": "/images/courses/rh.jpg",
+  "Logística": "/images/courses/logistica.jpg",
+  "Gestão Financeira": "/images/courses/gestao-financeira.jpg",
+  "Comércio Exterior": "/images/courses/comercio-exterior.jpg",
   
   // Tecnologia
-  "Sistemas de Informação": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
-  "Ciência da Computação": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop",
-  "Engenharia de Software": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop",
-  "Análise de Sistemas": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=300&fit=crop",
-  "Redes de Computadores": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop",
-  "Banco de Dados": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&h=300&fit=crop",
+  "Sistemas de Informação": "/images/courses/sistemas-info.jpg",
+  "Ciência da Computação": "/images/courses/ciencia-computacao.jpg",
+  "Engenharia de Software": "/images/courses/eng-software.jpg",
+  "Análise de Sistemas": "/images/courses/analise-sistemas.jpg",
+  "Redes de Computadores": "/images/courses/redes.jpg",
+  "Banco de Dados": "/images/courses/banco-dados.jpg",
   
   // Engenharias
-  "Engenharia Civil": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&h=300&fit=crop",
-  "Engenharia Elétrica": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=300&fit=crop",
-  "Engenharia Mecânica": "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=400&h=300&fit=crop",
-  "Engenharia de Produção": "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=400&h=300&fit=crop",
-  "Engenharia Ambiental": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=300&fit=crop",
-  "Engenharia Química": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=300&fit=crop",
+  "Engenharia Civil": "/images/courses/eng-civil.jpg",
+  "Engenharia Elétrica": "/images/courses/eng-eletrica.jpg",
+  "Engenharia Mecânica": "/images/courses/eng-mecanica.jpg",
+  "Engenharia de Produção": "/images/courses/eng-producao.jpg",
+  "Engenharia Ambiental": "/images/courses/eng-ambiental.jpg",
+  "Engenharia Química": "/images/courses/quimica.jpg",
   
   // Direito e Humanas
-  "Direito": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=300&fit=crop",
-  "Serviço Social": "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=400&h=300&fit=crop",
-  "Sociologia": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=300&fit=crop",
-  "Filosofia": "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop",
-  "Jornalismo": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400&h=300&fit=crop",
-  "Publicidade": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop",
-  "Relações Públicas": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=300&fit=crop",
+  "Direito": "/images/courses/direito.jpg",
+  "Serviço Social": "/images/courses/servico-social.jpg",
+  "Sociologia": "/images/courses/sociologia.jpg",
+  "Filosofia": "/images/courses/filosofia.jpg",
+  "Jornalismo": "/images/courses/jornalismo.jpg",
+  "Publicidade": "/images/courses/publicidade.jpg",
+  "Relações Públicas": "/images/courses/relacoes-publicas.jpg",
 };
 
 const DEFAULT_IMAGE = "/placeholder.svg";
@@ -107,7 +107,6 @@ const CourseCard = ({ name, category }: CourseCardProps) => {
           alt={name}
           loading="lazy"
           decoding="async"
-          referrerPolicy="no-referrer"
           onLoad={handleImageLoad}
           onError={handleImageError}
           className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
