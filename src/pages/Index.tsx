@@ -103,6 +103,9 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Universities Carousel */}
+        <UniversitiesCarousel />
+
         {/* Payment Methods - PIX Only */}
         <section className="py-8 bg-card border-y border-border relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5" />
