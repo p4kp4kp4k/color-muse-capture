@@ -224,7 +224,7 @@ const Index = () => {
                       href={WHATSAPP_LINK}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 bg-gold hover:bg-gold/90 text-navy text-xs md:text-sm font-bold py-2 px-3 md:px-4 rounded-full transition-all duration-300 w-full"
+                      className="inline-flex items-center justify-center gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground text-xs md:text-sm font-medium py-2.5 px-4 rounded-lg transition-all duration-300 w-full shadow-sm hover:shadow-md"
                     >
                       <MessageCircle size={14} />
                       Fale Conosco
@@ -235,7 +235,7 @@ const Index = () => {
             </div>
             
             <div className="text-center mt-8">
-              <Button asChild size="default" className="bg-gold hover:bg-gold/90 text-navy font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105">
+              <Button asChild size="default" variant="secondary" className="font-medium shadow-md hover:shadow-lg transition-all hover:scale-105 border border-primary-foreground/20">
                 <Link to="/cursos">Ver Todos os Cursos</Link>
               </Button>
             </div>
