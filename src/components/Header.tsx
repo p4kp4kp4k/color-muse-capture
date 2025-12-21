@@ -26,8 +26,8 @@ const Header = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-primary font-heading">Central</span>
-              <span className="text-2xl font-bold text-foreground font-heading">do Diploma</span>
+              <span className="text-2xl font-bold text-primary font-heading">EAD Cursos</span>
+              <span className="text-2xl font-bold text-foreground font-heading">Nacional</span>
             </Link>
 
             {/* Desktop Navigation */}
