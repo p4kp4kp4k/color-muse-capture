@@ -12,10 +12,12 @@ import {
 } from "lucide-react";
 
 // Import banner images
-import heroGraduationBanner from "@/assets/banners/hero-graduation.jpg";
-import mecCertificateBanner from "@/assets/banners/mec-certificate.jpg";
-import securityTrustBanner from "@/assets/banners/security-trust.jpg";
-import coursesOnlineBanner from "@/assets/banners/courses-online.jpg";
+import heroMainBanner from "@/assets/banners/hero-main.jpg";
+import celebrationBanner from "@/assets/banners/celebration.jpg";
+import testimonialBanner from "@/assets/banners/testimonial.png";
+import graduateOutdoorBanner from "@/assets/banners/graduate-outdoor.png";
+import graduateClassroomBanner from "@/assets/banners/graduate-classroom.png";
+import classroomTeacherBanner from "@/assets/banners/classroom-teacher.png";
 
 const benefitIcons = [
   <GraduationCap key="0" className="w-8 h-8" />,
@@ -49,6 +51,15 @@ const Index = () => {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="bg-gradient-hero text-primary-foreground py-20 md:py-32 relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img 
+              src={celebrationBanner} 
+              alt="Celebração de formatura" 
+              className="w-full h-full object-cover opacity-15"
+            />
+            <div className="absolute inset-0 bg-gradient-hero/90" />
+          </div>
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-10 left-10 w-80 h-80 bg-gold/15 rounded-full blur-3xl float-animation" />
@@ -173,7 +184,7 @@ const Index = () => {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-gold/20 rounded-3xl blur-2xl" />
                 <img 
-                  src={mecCertificateBanner}
+                  src={graduateOutdoorBanner}
                   alt="Diploma certificado pelo MEC"
                   className="relative rounded-3xl shadow-2xl w-full object-cover"
                   loading="lazy"
@@ -188,6 +199,27 @@ const Index = () => {
                 </p>
               </div>
             </div>
+
+            {/* Additional Testimonial Image */}
+            <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
+              <div className="text-center md:text-left order-2 md:order-1">
+                <h3 className="text-2xl md:text-4xl font-bold mb-6 font-heading">
+                  Realize seu <span className="text-primary">Sonho</span>
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Nunca é tarde para conquistar o seu diploma. Milhares de pessoas já realizaram o sonho da formatura com nossa ajuda. Você também pode!
+                </p>
+              </div>
+              <div className="relative order-1 md:order-2">
+                <div className="absolute -inset-4 bg-gradient-to-br from-gold/20 to-primary/20 rounded-3xl blur-2xl" />
+                <img 
+                  src={testimonialBanner}
+                  alt="Formanda realizando o sonho do diploma"
+                  className="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -196,7 +228,7 @@ const Index = () => {
           {/* Background Banner */}
           <div className="absolute inset-0">
             <img 
-              src={coursesOnlineBanner} 
+              src={classroomTeacherBanner} 
               alt="Cursos online EAD" 
               className="w-full h-full object-cover opacity-10"
             />
@@ -261,7 +293,7 @@ const Index = () => {
           {/* Banner Image */}
           <div className="absolute inset-0">
             <img 
-              src={securityTrustBanner} 
+              src={graduateClassroomBanner} 
               alt="Segurança e confiança" 
               className="w-full h-full object-cover opacity-5"
             />
@@ -347,7 +379,7 @@ const Index = () => {
         <section className="py-20 md:py-28 bg-gradient-hero text-primary-foreground relative overflow-hidden">
           <div className="absolute inset-0">
             <img 
-              src={heroGraduationBanner} 
+              src={heroMainBanner} 
               alt="Formandos celebrando" 
               className="w-full h-full object-cover opacity-20"
             />
