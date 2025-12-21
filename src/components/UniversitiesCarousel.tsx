@@ -1,19 +1,18 @@
 import { useEffect, useRef } from "react";
 
 const UNIVERSITIES = [
-  { name: "Universidade 1", logo: "https://centraldodiploma.com/wp-content/uploads/2025/01/logo-22.png" },
-  { name: "Universidade 2", logo: "https://centraldodiploma.com/wp-content/uploads/2025/01/logo-2.png" },
-  { name: "Universidade 3", logo: "https://centraldodiploma.com/wp-content/uploads/2025/01/logo-5.png" },
-  { name: "Universidade 4", logo: "https://centraldodiploma.com/wp-content/uploads/2025/01/logo-1.png" },
-  { name: "Universidade 5", logo: "https://centraldodiploma.com/wp-content/uploads/2025/01/logo-3.png" },
-  { name: "Universidade 6", logo: "https://centraldodiploma.com/wp-content/uploads/2025/01/logo-4.png" },
-  { name: "Universidade 7", logo: "https://centraldodiploma.com/wp-content/uploads/2025/01/logo-6.png" },
-  { name: "Universidade 8", logo: "https://centraldodiploma.com/wp-content/uploads/2025/01/logo-9.png" },
-  { name: "Cruzeiro do Sul", logo: "https://logospng.org/wp-content/uploads/cruzeiro-do-sul.png" },
-  { name: "Anhembi Morumbi", logo: "https://p7.hiclipart.com/preview/129/836/856/anhembi-morumbi-university-student-laureate-international-universities-vestibular-exam-student.jpg" },
-  { name: "Unicesumar", logo: "https://logodownload.org/wp-content/uploads/2021/02/unicesumar-logo.png" },
-  { name: "Uninove", logo: "https://portal.coren-sp.gov.br/wp-content/uploads/2014/11/logo%20uninove.png" },
-  { name: "Mackenzie", logo: "https://w7.pngwing.com/pngs/388/593/png-transparent-universidade-presbiteriana-mackenzie-hd-logo.png" },
+  { name: "Universidade 1", logo: "/images/universities/uni-1.png" },
+  { name: "Universidade 2", logo: "/images/universities/uni-2.png" },
+  { name: "Universidade 3", logo: "/images/universities/uni-3.png" },
+  { name: "Universidade 4", logo: "/images/universities/uni-4.png" },
+  { name: "Universidade 5", logo: "/images/universities/uni-5.png" },
+  { name: "Universidade 6", logo: "/images/universities/uni-6.png" },
+  { name: "Universidade 7", logo: "/images/universities/uni-7.png" },
+  { name: "Universidade 8", logo: "/images/universities/uni-8.png" },
+  { name: "Cruzeiro do Sul", logo: "/images/universities/cruzeiro-do-sul.png" },
+  { name: "Anhembi Morumbi", logo: "/images/universities/anhembi-morumbi.jpg" },
+  { name: "Unicesumar", logo: "/images/universities/unicesumar.png" },
+  { name: "Mackenzie", logo: "/images/universities/mackenzie.png" },
 ];
 
 const UniversitiesCarousel = () => {
