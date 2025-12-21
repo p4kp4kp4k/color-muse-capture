@@ -91,11 +91,11 @@ export const BRAZILIAN_STATES = [
 
 export const FAQ_ITEMS = [
   {
-    question: "Os documentos vendidos pela CENTRAL DO DIPLOMAS são reconhecidos pelo MEC?",
+    question: "Os documentos vendidos pela EAD CURSOS NACIONAL são reconhecidos pelo MEC?",
     answer: "Sim. Nossa equipe MEC Diplomas trabalha apenas com documentação reconhecida pelo MEC assim de tal forma os diplomas são emitidos dentro das próprias instituições de ensino."
   },
   {
-    question: "A CENTRAL DO Diplomas consegue a documentação superior por qualquer instituição de ensino?",
+    question: "A EAD CURSOS NACIONAL consegue a documentação superior por qualquer instituição de ensino?",
     answer: "Sim. Ao mesmo tempo continuamente estamos aumentando nossos esforços para que possamos oferecer mais opções de instituições que sejam reconhecidas pelo MEC de forma que consigamos realizar todas as etapas do processo para garantir sempre a documentação completa e reconhecida."
   },
   {
@@ -103,11 +103,11 @@ export const FAQ_ITEMS = [
     answer: "Sim. O documento pode ser utilizado em qualquer finalidade legal necessária com toda a certeza."
   },
   {
-    question: "Mas como é feito o envio, posso retirar pessoalmente com a CENTRAL DO Diplomas?",
+    question: "Mas como é feito o envio, posso retirar pessoalmente com a EAD CURSOS NACIONAL?",
     answer: "Entre em contato conosco via WhatsApp para mais informações sobre opções de envio e retirada."
   },
   {
-    question: "O site CENTRAL DO Diplomas é seguro?",
+    question: "O site EAD CURSOS NACIONAL é seguro?",
     answer: "Sim! Trabalhamos com total sigilo e segurança. Todos os documentos são emitidos seguindo os padrões exigidos pelo MEC."
   },
 ];

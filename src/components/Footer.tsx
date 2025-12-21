@@ -116,7 +116,7 @@ const Footer = () => {
               </Link>
             </div>
             <p className="text-primary-foreground/60 text-sm text-center">
-              © 2025 Central do Diploma. Todos os direitos reservados.
+              © 2025 Ead Cursos Nacional. Todos os direitos reservados.
             </p>
           </div>
         </div>
