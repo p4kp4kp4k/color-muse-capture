@@ -26,12 +26,12 @@ const Admin = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [editedValues, setEditedValues] = useState<Record<string, string>>({});
-  const { user, isAdmin, loading: authLoading, signOut } = useAuth();
+  const { user, isAdmin, roleChecked, loading: authLoading, signOut } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
   useEffect(() => {
-    if (!authLoading) {
+    if (!authLoading && roleChecked) {
       if (!user) {
         navigate('/admin-login');
         return;
@@ -46,13 +46,13 @@ const Admin = () => {
         return;
       }
     }
-  }, [user, isAdmin, authLoading, navigate, toast]);
+  }, [user, isAdmin, roleChecked, authLoading, navigate, toast]);
 
   useEffect(() => {
-    if (user && isAdmin) {
+    if (user && roleChecked && isAdmin) {
       fetchConfigs();
     }
-  }, [user, isAdmin]);
+  }, [user, roleChecked, isAdmin]);
 
   const fetchConfigs = async () => {
     try {
@@ -163,7 +163,7 @@ const Admin = () => {
     }
   };
 
-  if (authLoading || loading) {
+  if (authLoading || loading || !roleChecked) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>

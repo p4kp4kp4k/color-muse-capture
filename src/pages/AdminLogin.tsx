@@ -15,17 +15,17 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
-  const { signIn, signUp, user, isAdmin, loading } = useAuth();
+  const { signIn, signUp, user, isAdmin, roleChecked, loading } = useAuth();
   const { checkRateLimit, recordAttempt, resetAttempts } = useRateLimit({ maxAttempts: 5, windowMs: 60000 });
   const navigate = useNavigate();
   const { toast } = useToast();
 
   useEffect(() => {
-    if (!loading && user && isAdmin) {
+    if (!loading && roleChecked && user && isAdmin) {
       resetAttempts();
       navigate('/admin');
     }
-  }, [user, isAdmin, loading, navigate, resetAttempts]);
+  }, [user, isAdmin, roleChecked, loading, navigate, resetAttempts]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
