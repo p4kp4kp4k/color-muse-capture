@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import UniversitiesCarousel from "@/components/UniversitiesCarousel";
+import StatsSection from "@/components/StatsSection";
 import { Button } from "@/components/ui/button";
 import { COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
@@ -131,6 +132,9 @@ const Index = () => {
 
         {/* Universities Carousel */}
         <UniversitiesCarousel />
+
+        {/* Stats Section */}
+        <StatsSection />
 
         {/* Payment Methods - PIX Only */}
         <section className="py-8 bg-card border-y border-border relative overflow-hidden">
