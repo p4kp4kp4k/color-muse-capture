@@ -58,7 +58,7 @@ const Index = () => {
                   <GraduationCap className="w-7 h-7 text-gold" />
                 </div>
                 <span className="text-2xl font-bold font-heading tracking-wide">
-                  Central do <span className="text-gold">Diploma</span>
+                  EAD Cursos <span className="text-gold">Nacional</span>
                 </span>
                 <CheckCircle className="w-5 h-5 text-gold" />
               </div>
@@ -317,49 +317,6 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
-        <section className="py-20 md:py-28 bg-background relative overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute top-10 left-10 w-40 h-40 bg-gold/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-10 w-60 h-60 bg-primary/10 rounded-full blur-3xl" />
-          </div>
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 font-heading">
-                O que nossos <span className="text-primary">clientes</span> dizem
-              </h2>
-              <p className="text-muted-foreground text-lg">
-                Milhares de brasileiros já conquistaram seus diplomas conosco
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {TESTIMONIALS.slice(0, 3).map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="bg-card border border-border rounded-2xl p-8 hover-3d"
-                >
-                  <div className="flex items-center gap-1 mb-6">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={20} className="fill-gold text-gold" />
-                    ))}
-                  </div>
-                  <p className="text-foreground mb-6 text-lg italic leading-relaxed">"{testimonial.text}"</p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/60 rounded-full flex items-center justify-center text-primary-foreground font-bold text-lg">
-                      {testimonial.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-lg">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.location}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
