@@ -10,7 +10,6 @@ const UNIVERSITIES = [
   { name: "Universidade 7", logo: "/images/universities/uni-7.png" },
   { name: "Universidade 8", logo: "/images/universities/uni-8.png" },
   { name: "Unicesumar", logo: "/images/universities/unicesumar.png" },
-  { name: "Mackenzie", logo: "/images/universities/mackenzie.png" },
 ];
 
 const UniversitiesCarousel = () => {
