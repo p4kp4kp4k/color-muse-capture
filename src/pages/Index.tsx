@@ -11,6 +11,12 @@ import {
   Users, Wallet, Trophy, Globe
 } from "lucide-react";
 
+// Import banner images
+import heroGraduationBanner from "@/assets/banners/hero-graduation.jpg";
+import mecCertificateBanner from "@/assets/banners/mec-certificate.jpg";
+import securityTrustBanner from "@/assets/banners/security-trust.jpg";
+import coursesOnlineBanner from "@/assets/banners/courses-online.jpg";
+
 const benefitIcons = [
   <GraduationCap key="0" className="w-8 h-8" />,
   <BookOpen key="1" className="w-8 h-8" />,
@@ -167,8 +173,8 @@ const Index = () => {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-gold/20 rounded-3xl blur-2xl" />
                 <img 
-                  src="https://centraldodiploma.com/wp-content/uploads/2025/01/1694606550honoriscausa5-1024x755.jpeg"
-                  alt="Formandos recebendo diploma"
+                  src={mecCertificateBanner}
+                  alt="Diploma certificado pelo MEC"
                   className="relative rounded-3xl shadow-2xl w-full object-cover"
                   loading="lazy"
                 />
@@ -187,6 +193,14 @@ const Index = () => {
 
         {/* Featured Courses */}
         <section className="py-12 md:py-16 bg-primary relative overflow-hidden">
+          {/* Background Banner */}
+          <div className="absolute inset-0">
+            <img 
+              src={coursesOnlineBanner} 
+              alt="Cursos online EAD" 
+              className="w-full h-full object-cover opacity-10"
+            />
+          </div>
           <div className="container mx-auto px-4 relative z-10">
             {/* Header Text */}
             <div className="text-center mb-8 text-primary-foreground max-w-3xl mx-auto">
@@ -244,6 +258,14 @@ const Index = () => {
 
         {/* Security Section */}
         <section className="py-20 md:py-28 bg-card relative overflow-hidden">
+          {/* Banner Image */}
+          <div className="absolute inset-0">
+            <img 
+              src={securityTrustBanner} 
+              alt="Segurança e confiança" 
+              className="w-full h-full object-cover opacity-5"
+            />
+          </div>
           <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent" />
           
           <div className="container mx-auto px-4 relative z-10">
@@ -324,8 +346,12 @@ const Index = () => {
         {/* Team Section */}
         <section className="py-20 md:py-28 bg-gradient-hero text-primary-foreground relative overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1920&q=80')] bg-cover bg-center opacity-10" />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
+            <img 
+              src={heroGraduationBanner} 
+              alt="Formandos celebrando" 
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/90 to-primary/70" />
           </div>
           
           <div className="container mx-auto px-4 text-center relative z-10">
