@@ -11,7 +11,7 @@ const COURSE_IMAGES: Record<string, string> = {
   "Pedagogia": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop",
   "Letras": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=300&fit=crop",
   "Educação Física": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=300&fit=crop",
-  "História": "https://images.unsplash.com/photo-1461360370896-922624d12a74?w=400&h=300&fit=crop",
+  "História": "https://images.unsplash.com/photo-1447069387593-a5de0862481e?w=400&h=300&fit=crop",
   "Geografia": "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&h=300&fit=crop",
   "Matemática": "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop",
   "Física": "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=400&h=300&fit=crop",
@@ -26,7 +26,7 @@ const COURSE_IMAGES: Record<string, string> = {
   "Nutrição": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=300&fit=crop",
   "Psicologia": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=300&fit=crop",
   "Odontologia": "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&h=300&fit=crop",
-  "Biomedicina": "https://images.unsplash.com/photo-1579165466741-7f35e4755182?w=400&h=300&fit=crop",
+  "Biomedicina": "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=300&fit=crop",
   "Medicina Veterinária": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=400&h=300&fit=crop",
   
   // Negócios
