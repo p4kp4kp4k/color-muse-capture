@@ -33,7 +33,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <h3 className="text-2xl font-bold mb-4 font-heading">
-              <span className="text-primary">Central</span> do Diploma
+              <span className="text-primary">EAD Cursos</span> Nacional
             </h3>
             <p className="text-primary-foreground/80 mb-4 max-w-md">
               Somos especializados em documentação acadêmica. Nossa missão é
@@ -89,7 +89,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={18} />
-                <span>contato@centraldodiploma.com</span>
+                <span>contato@eadcursosnacional.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Clock size={18} />
@@ -111,8 +111,12 @@ const Footer = () => {
                 Termos de Uso
               </Link>
               <span className="hidden md:inline">|</span>
-              <Link to="/politica-reembolso" className="hover:text-primary transition-colors">
-                Política de Reembolso
+              <Link to="/politica-cookies" className="hover:text-primary transition-colors">
+                Política de Cookies
+              </Link>
+              <span className="hidden md:inline">|</span>
+              <Link to="/faq" className="hover:text-primary transition-colors">
+                FAQ
               </Link>
             </div>
             <p className="text-primary-foreground/60 text-sm text-center">
