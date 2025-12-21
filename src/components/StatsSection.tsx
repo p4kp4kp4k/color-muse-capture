@@ -41,23 +41,23 @@ const StatsSection = () => {
     },
     {
       icon: <Users className="w-8 h-8 text-gold" />,
-      end: 5000,
+      end: 49085,
       suffix: "+",
-      label: "Alunos Formados",
+      label: "Matrículas Realizadas",
       delay: 150
     },
     {
       icon: <GraduationCap className="w-8 h-8 text-gold" />,
-      end: 50,
+      end: 10000,
       suffix: "+",
-      label: "Cursos Disponíveis",
+      label: "Alunos Formados",
       delay: 300
     },
     {
       icon: <Award className="w-8 h-8 text-gold" />,
-      end: 100,
-      suffix: "%",
-      label: "Satisfação Garantida",
+      end: 50,
+      suffix: "+",
+      label: "Cursos Disponíveis",
       delay: 450
     }
   ];
