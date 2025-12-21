@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import { WHATSAPP_LINK } from "@/lib/constants";
-import { Phone, Mail, Clock, MessageCircle, Wallet } from "lucide-react";
+import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
+import { Phone, Clock, MessageCircle, Wallet } from "lucide-react";
 
 const Footer = () => {
+  const { getWhatsAppLink, siteName } = useSiteConfigContext();
+  const whatsappLink = getWhatsAppLink();
+
   return (
     <footer className="bg-navy text-primary-foreground">
       {/* CTA Section */}
@@ -16,7 +19,7 @@ const Footer = () => {
             Atendimento 24 horas pelo WhatsApp.
           </p>
           <a
-            href={WHATSAPP_LINK}
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-card text-foreground px-8 py-4 rounded-lg font-bold text-lg hover:bg-card/90 transition-colors"
@@ -46,6 +49,7 @@ const Footer = () => {
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg/80px-Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg.png" 
                 alt="PIX" 
                 className="h-5 opacity-80"
+                loading="lazy"
               />
             </div>
           </div>
@@ -79,17 +83,13 @@ const Footer = () => {
               <li className="flex items-center gap-2">
                 <Phone size={18} />
                 <a
-                  href={WHATSAPP_LINK}
+                  href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
                 >
                   WhatsApp 24h
                 </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail size={18} />
-                <span>contato@eadcursosnacional.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Clock size={18} />
@@ -120,7 +120,7 @@ const Footer = () => {
               </Link>
             </div>
             <p className="text-primary-foreground/60 text-sm text-center">
-              © 2025 Ead Cursos Nacional. Todos os direitos reservados.
+              © 2025 {siteName}. Todos os direitos reservados.
             </p>
           </div>
         </div>

@@ -3,7 +3,8 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import UniversitiesCarousel from "@/components/UniversitiesCarousel";
 import { Button } from "@/components/ui/button";
-import { WHATSAPP_LINK, COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
+import { COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
+import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 import { Link } from "react-router-dom";
 import { 
   Star, Shield, Clock, GraduationCap, BookOpen, 
@@ -42,6 +43,8 @@ const COURSE_IMAGES: Record<string, string> = {
 };
 
 const Index = () => {
+  const { getWhatsAppLink } = useSiteConfigContext();
+  const whatsappLink = getWhatsAppLink();
   const featuredCourses = COURSES.slice(0, 8);
 
   return (
@@ -103,7 +106,7 @@ const Index = () => {
                   size="lg"
                   className="bg-gold hover:bg-gold/90 text-navy text-lg font-bold px-10 py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-xl"
                 >
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                  <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                     Fale Conosco Agora!
                   </a>
                 </Button>
@@ -267,7 +270,7 @@ const Index = () => {
                       Diploma de nível superior bacharelado, licenciatura ou pós-graduação.
                     </p>
                     <a
-                      href={WHATSAPP_LINK}
+                      href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground text-xs md:text-sm font-medium py-2.5 px-4 rounded-lg transition-all duration-300 w-full shadow-sm hover:shadow-md"
