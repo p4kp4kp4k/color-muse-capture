@@ -5,6 +5,7 @@ import UniversitiesCarousel from "@/components/UniversitiesCarousel";
 import { Button } from "@/components/ui/button";
 import { COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Link } from "react-router-dom";
 import { 
   Star, Shield, Clock, GraduationCap, BookOpen, 
@@ -46,6 +47,7 @@ const Index = () => {
   const { getWhatsAppLink } = useSiteConfigContext();
   const whatsappLink = getWhatsAppLink();
   const featuredCourses = COURSES.slice(0, 8);
+  const { ref: coursesRef, isVisible: coursesVisible } = useScrollAnimation({ threshold: 0.15 });
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -248,12 +250,19 @@ const Index = () => {
             </div>
             
             {/* Course Cards */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div ref={coursesRef} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {featuredCourses.map((course, index) => (
                 <div
                   key={index}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className={`group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative ${
+                    coursesVisible 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ 
+                    transitionDelay: coursesVisible ? `${index * 100}ms` : '0ms',
+                    transitionProperty: 'opacity, transform'
+                  }}
                 >
                   {/* Glow effect on hover */}
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-gold to-primary rounded-2xl opacity-0 group-hover:opacity-75 blur transition-all duration-500 group-hover:duration-200" />
