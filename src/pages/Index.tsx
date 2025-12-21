@@ -42,44 +42,49 @@ const Index = () => {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-hero text-primary-foreground py-16 md:py-24 relative overflow-hidden">
+        <section className="bg-gradient-hero text-primary-foreground py-20 md:py-32 relative overflow-hidden">
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-gold/10 rounded-full blur-3xl float-animation" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl float-animation" style={{ animationDelay: '2s' }} />
+            <div className="absolute top-10 left-10 w-80 h-80 bg-gold/15 rounded-full blur-3xl float-animation" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl float-animation" style={{ animationDelay: '2s' }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
           </div>
           
           <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-5xl mx-auto text-center">
               {/* Logo and Stars */}
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <GraduationCap className="w-10 h-10 text-gold" />
-                <span className="text-2xl font-bold font-heading">
+              <div className="flex items-center justify-center gap-3 mb-3 animate-fade-in">
+                <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center">
+                  <GraduationCap className="w-7 h-7 text-gold" />
+                </div>
+                <span className="text-2xl font-bold font-heading tracking-wide">
                   Central do <span className="text-gold">Diploma</span>
                 </span>
+                <CheckCircle className="w-5 h-5 text-gold" />
               </div>
-              <div className="flex justify-center gap-1 mb-8">
+              <div className="flex justify-center gap-1 mb-10">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={18} className="fill-gold text-gold" />
+                  <Star key={i} size={16} className="fill-gold text-gold" />
                 ))}
               </div>
 
               {/* Main Heading */}
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-8 font-heading leading-tight">
-                Sem tempo para estudar, precisa entrar rapidamente no mercado de trabalho? podemos te ajudar!!!!
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 font-heading leading-[1.1] tracking-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                Sem tempo para estudar, precisa entrar rapidamente no mercado de trabalho?{" "}
+                <span className="text-gold">podemos te ajudar!!!!</span>
               </h1>
 
               {/* Description */}
-              <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed mb-10 max-w-3xl mx-auto">
-                A equipe CENTRAL DO DIPLOMA foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. Trabalhamos a mais de 10 anos em virtude de você, para conseguirmos o melhor e mais eficiente resultado no processo de seu diploma superior com maior segurança e transparência!
+              <p className="text-lg md:text-xl text-primary-foreground/85 leading-relaxed mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                A equipe <strong className="text-white font-semibold">CENTRAL DO DIPLOMA</strong> foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. Trabalhamos a mais de 10 anos em virtude de você, para conseguirmos o melhor e mais eficiente resultado no processo de seu diploma superior com maior segurança e transparência!
               </p>
 
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-5 justify-center animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <Button
                   asChild
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-bold px-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="bg-gold hover:bg-gold/90 text-navy text-lg font-bold px-10 py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-xl"
                 >
                   <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                     Fale Conosco Agora!
@@ -89,7 +94,7 @@ const Index = () => {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-2 border-white/80 text-white hover:bg-white/10 text-lg font-bold px-8 transition-all duration-300 hover:scale-105"
+                  className="border-2 border-white/60 bg-white/5 backdrop-blur-sm text-white hover:bg-white/15 text-lg font-bold px-10 py-6 transition-all duration-300 hover:scale-105 rounded-xl"
                 >
                   <Link to="/estados">Escolha o estado</Link>
                 </Button>
