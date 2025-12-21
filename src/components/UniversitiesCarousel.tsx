@@ -10,6 +10,16 @@ const UNIVERSITIES = [
   { name: "Universidade 7", logo: "/images/universities/uni-7.png" },
   { name: "Universidade 8", logo: "/images/universities/uni-8.png" },
   { name: "Unicesumar", logo: "/images/universities/unicesumar.png" },
+  { name: "Cruzeiro do Sul", logo: "/images/universities/cruzeiro-do-sul.png" },
+  { name: "Instituto Federal", logo: "/images/universities/instituto-federal.png" },
+  { name: "Anhembi Morumbi", logo: "/images/universities/anhembi-morumbi.png" },
+  { name: "UNIFACS", logo: "/images/universities/unifacs.png" },
+  { name: "USP", logo: "/images/universities/usp.png" },
+  { name: "UNICAMP", logo: "/images/universities/unicamp.png" },
+  { name: "UnB", logo: "/images/universities/unb.png" },
+  { name: "UFMG", logo: "/images/universities/ufmg.png" },
+  { name: "SENAC", logo: "/images/universities/senac.png" },
+  { name: "SENAI", logo: "/images/universities/senai.png" },
 ];
 
 const UniversitiesCarousel = () => {
