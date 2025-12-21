@@ -125,6 +125,57 @@ const Index = () => {
         {/* Universities Carousel */}
         <UniversitiesCarousel />
 
+        {/* About Section */}
+        <section className="py-16 md:py-24 bg-background relative overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              {/* Logo and Stars */}
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <GraduationCap className="w-10 h-10 text-gold" />
+                <span className="text-2xl font-bold font-heading">
+                  Central do <span className="text-primary">Diploma</span>
+                </span>
+              </div>
+              <div className="flex justify-center gap-1 mb-8">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={20} className="fill-gold text-gold" />
+                ))}
+              </div>
+
+              {/* Main Heading */}
+              <h2 className="text-3xl md:text-5xl font-extrabold mb-8 font-heading leading-tight">
+                Sem tempo para estudar, precisa entrar rapidamente no mercado de trabalho? podemos te ajudar!!!!
+              </h2>
+
+              {/* Description */}
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10">
+                A equipe CENTRAL DO DIPLOMA foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. Trabalhamos a mais de 10 anos em virtude de você, para conseguirmos o melhor e mais eficiente resultado no processo de seu diploma superior com maior segurança e transparência!
+              </p>
+
+              {/* Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-bold px-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                >
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                    Fale Conosco Agora!
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-primary text-primary hover:bg-primary/10 text-lg font-bold px-8 transition-all duration-300 hover:scale-105"
+                >
+                  <Link to="/estados">Escolha o estado</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Payment Methods - PIX Only */}
         <section className="py-8 bg-card border-y border-border relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5" />
