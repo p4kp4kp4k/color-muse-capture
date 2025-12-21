@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useParallax } from "@/hooks/useParallax";
 import { Link } from "react-router-dom";
 import { 
   Star, Shield, Clock, GraduationCap, BookOpen, 
@@ -48,6 +49,8 @@ const Index = () => {
   const whatsappLink = getWhatsAppLink();
   const featuredCourses = COURSES.slice(0, 8);
   const { ref: coursesRef, isVisible: coursesVisible } = useScrollAnimation({ threshold: 0.15 });
+  const { ref: benefitsRef, isVisible: benefitsVisible } = useScrollAnimation({ threshold: 0.1 });
+  const parallaxOffset = useParallax(0.3);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -56,12 +59,13 @@ const Index = () => {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="bg-gradient-hero text-primary-foreground py-20 md:py-32 relative overflow-hidden">
-          {/* Background Image */}
+          {/* Background Image with Parallax */}
           <div className="absolute inset-0">
             <img 
               src={celebrationBanner} 
               alt="Celebração de formatura" 
               className="w-full h-full object-cover opacity-15"
+              style={{ transform: `translateY(${parallaxOffset * 0.5}px)` }}
             />
             <div className="absolute inset-0 bg-gradient-hero/90" />
           </div>
@@ -149,9 +153,14 @@ const Index = () => {
         {/* Benefits Section - New Design */}
         <section className="py-16 bg-primary/10 relative overflow-hidden">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div ref={benefitsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
               {/* Card 1 */}
-              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div 
+                className={`bg-card border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
+                  benefitsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: benefitsVisible ? '0ms' : '0ms' }}
+              >
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <GraduationCap className="w-8 h-8 text-primary" />
                 </div>
@@ -162,7 +171,12 @@ const Index = () => {
               </div>
               
               {/* Card 2 */}
-              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div 
+                className={`bg-card border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
+                  benefitsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: benefitsVisible ? '150ms' : '0ms' }}
+              >
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <BookOpen className="w-8 h-8 text-primary" />
                 </div>
@@ -173,7 +187,12 @@ const Index = () => {
               </div>
               
               {/* Card 3 */}
-              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div 
+                className={`bg-card border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
+                  benefitsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: benefitsVisible ? '300ms' : '0ms' }}
+              >
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Shield className="w-8 h-8 text-primary" />
                 </div>
