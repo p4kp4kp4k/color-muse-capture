@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { WHATSAPP_LINK } from "@/lib/constants";
 
 interface CourseCardProps {
@@ -67,12 +68,19 @@ const COURSE_IMAGES: Record<string, string> = {
 const DEFAULT_IMAGE = "/placeholder.svg";
 
 const CourseCard = ({ name, category }: CourseCardProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
   const imageUrl = COURSE_IMAGES[name] || DEFAULT_IMAGE;
   
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    setIsLoading(false);
+    setHasError(true);
     const img = e.currentTarget;
 
-    // Evita loop caso o fallback também falhe
     if (img.dataset.fallbackApplied === "true") return;
 
     img.dataset.fallbackApplied = "true";
@@ -87,14 +95,24 @@ const CourseCard = ({ name, category }: CourseCardProps) => {
       className="group bg-card border border-border rounded-2xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl"
     >
       <div className="relative h-32 overflow-hidden bg-muted">
+        {/* Skeleton loader */}
+        {isLoading && (
+          <div className="absolute inset-0 bg-muted animate-pulse">
+            <div className="absolute inset-0 bg-gradient-to-r from-muted via-muted-foreground/10 to-muted animate-[shimmer_1.5s_infinite]" />
+          </div>
+        )}
+        
         <img 
           src={imageUrl} 
           alt={name}
           loading="lazy"
           decoding="async"
           referrerPolicy="no-referrer"
+          onLoad={handleImageLoad}
           onError={handleImageError}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
+            isLoading ? "opacity-0" : "opacity-100"
+          }`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <span className="absolute bottom-2 left-3 text-xs font-medium text-white/90 bg-primary/80 px-2 py-1 rounded-full">
