@@ -64,13 +64,19 @@ const COURSE_IMAGES: Record<string, string> = {
   "Relações Públicas": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=300&fit=crop",
 };
 
-const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop";
+const DEFAULT_IMAGE = "/placeholder.svg";
 
 const CourseCard = ({ name, category }: CourseCardProps) => {
   const imageUrl = COURSE_IMAGES[name] || DEFAULT_IMAGE;
   
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src = DEFAULT_IMAGE;
+    const img = e.currentTarget;
+
+    // Evita loop caso o fallback também falhe
+    if (img.dataset.fallbackApplied === "true") return;
+
+    img.dataset.fallbackApplied = "true";
+    img.src = DEFAULT_IMAGE;
   };
   
   return (
@@ -85,6 +91,8 @@ const CourseCard = ({ name, category }: CourseCardProps) => {
           src={imageUrl} 
           alt={name}
           loading="lazy"
+          decoding="async"
+          referrerPolicy="no-referrer"
           onError={handleImageError}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
