@@ -64,12 +64,14 @@ const UniversitiesCarousel = () => {
             key={`${university.name}-${index}`}
             className="flex-shrink-0 flex items-center justify-center h-20 px-6 hover:scale-110 transition-transform duration-300"
           >
-            <img
-              src={university.logo}
-              alt={university.name}
-              className="h-14 w-auto object-contain"
-              loading="lazy"
-            />
+            <div className="bg-white rounded-lg p-3 shadow-sm">
+              <img
+                src={university.logo}
+                alt={university.name}
+                className="h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            </div>
           </div>
         ))}
       </div>
