@@ -5,40 +5,103 @@ import { WHATSAPP_LINK } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, BookOpen, Monitor, Wrench, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
-// Cursos organizados por tipo de diploma
+// Cursos de Bacharelado
 const BACHARELADO_COURSES = [
-  "Diploma de Administração", "Diploma de Enfermagem", "Diploma de Psicologia", "Diploma de Direito",
-  "Diploma de Contabilidade", "Diploma de Economia", "Diploma de Farmácia", "Diploma de Fisioterapia",
-  "Diploma de Medicina", "Diploma de Odontologia", "Diploma de Arquitetura", "Diploma de Biomedicina",
-  "Diploma de Ciência da Computação", "Diploma de Engenharia Civil", "Diploma de Engenharia Elétrica", "Diploma de Engenharia Mecânica",
-  "Diploma de Engenharia de Produção", "Diploma de Engenharia Química", "Diploma de Jornalismo", "Diploma de Publicidade",
-  "Diploma de Relações Internacionais", "Diploma de Serviço Social", "Diploma de Nutrição", "Diploma de Medicina Veterinária",
-  "Diploma de Design Gráfico", "Diploma de Educação Física", "Diploma de Turismo", "Diploma de Ciências Econômicas",
+  "Diploma de Administração", "Diploma de Administração Pública", "Diploma de Agronomia", "Diploma de Análise de Sistemas",
+  "Diploma de Arquitetura e Urbanismo", "Diploma de Arquivologia", "Diploma de Artes", "Diploma de Artes Cênicas",
+  "Diploma de Artes Plásticas", "Diploma de Biologia", "Diploma de Biomedicina", "Diploma de Bioquímica",
+  "Diploma de Canto", "Diploma de Ciência da Computação", "Diploma de Ciências Contábeis", "Diploma de Ciências Sociais",
+  "Diploma de Ciências Agrícolas", "Diploma de Ciências da Natureza", "Diploma de Ciências Exatas", "Diploma de Comunicação e Marketing",
+  "Diploma de Comunicação Social", "Diploma de Desenho Industrial", "Diploma de Desenho e Plástica", "Diploma de Design",
+  "Diploma de Design de Ambientes", "Diploma de Design de Games", "Diploma de Design de Interiores", "Diploma de Design de Produto",
+  "Diploma de Design Digital", "Diploma de Design Gráfico", "Diploma de Direito", "Diploma de Educação do Campo",
+  "Diploma de Educação Especial", "Diploma de Educação Física", "Diploma de Enfermagem", "Diploma de Engenharia Acústica",
+  "Diploma de Engenharia Aeroespacial", "Diploma de Engenharia Aeronáutica", "Diploma de Engenharia Agrícola", "Diploma de Engenharia Agroindustrial",
+  "Diploma de Engenharia Agronômica", "Diploma de Engenharia Ambiental", "Diploma de Engenharia Automotiva", "Diploma de Engenharia Biomédica",
+  "Diploma de Engenharia Bioenergética", "Diploma de Engenharia Bioquímica", "Diploma de Engenharia Civil", "Diploma de Engenharia da Computação",
+  "Diploma de Engenharia da Mobilidade", "Diploma de Engenharia de Agrimensura", "Diploma de Engenharia de Agronegócios", "Diploma de Engenharia de Alimentos",
+  "Diploma de Engenharia de Aquicultura", "Diploma de Engenharia de Bioprocessos", "Diploma de Engenharia de Biossistemas", "Diploma de Engenharia de Biotecnologia",
+  "Diploma de Engenharia de Energia", "Diploma de Engenharia de Informação", "Diploma de Engenharia de Instrumentação", "Diploma de Engenharia de Manufatura",
+  "Diploma de Engenharia de Materiais", "Diploma de Engenharia de Minas", "Diploma de Engenharia de Pesca", "Diploma de Engenharia de Petróleo",
+  "Diploma de Engenharia de Produção", "Diploma de Engenharia de Recursos Hídricos", "Diploma de Engenharia de Saúde e Segurança", "Diploma de Engenharia de Sistemas",
+  "Diploma de Engenharia de Software", "Diploma de Engenharia de Telecomunicações", "Diploma de Engenharia de Transporte", "Diploma de Engenharia Elétrica",
+  "Diploma de Engenharia Eletrônica", "Diploma de Engenharia em Sistemas Digitais", "Diploma de Engenharia Ferroviária e Metroviária", "Diploma de Engenharia Física",
+  "Diploma de Engenharia Florestal", "Diploma de Engenharia Geológica", "Diploma de Engenharia Hídrica", "Diploma de Engenharia Industrial",
+  "Diploma de Engenharia Mecânica", "Diploma de Engenharia Mecatrônica", "Diploma de Engenharia Metalúrgica", "Diploma de Engenharia Naval",
+  "Diploma de Engenharia Química", "Diploma de Engenharia Têxtil", "Diploma de Estatística", "Diploma de Farmácia",
+  "Diploma de Filosofia", "Diploma de Física", "Diploma de Fisioterapia", "Diploma de Fonoaudiologia",
+  "Diploma de Geografia", "Diploma de Gestão Ambiental", "Diploma de Gestão da Informação", "Diploma de Gestão de Políticas Públicas",
+  "Diploma de Gestão de Serviços de Saúde", "Diploma de Gestão do Agronegócio", "Diploma de Gestão Pública", "Diploma de História",
+  "Diploma de Informática", "Diploma de Jornalismo", "Diploma de Letras", "Diploma de Marketing",
+  "Diploma de Matemática", "Diploma de Mecânica Industrial", "Diploma de Medicina", "Diploma de Medicina Veterinária",
+  "Diploma de Música", "Diploma de Nutrição", "Diploma de Odontologia", "Diploma de Psicologia",
+  "Diploma de Publicidade e Propaganda", "Diploma de Química", "Diploma de Segunda Licenciatura", "Diploma de Serviço Social",
+  "Diploma de Sistemas de Informação", "Diploma de Teatro",
 ];
 
-const LICENCIATURA_COURSES = [
-  "Diploma de Pedagogia", "Diploma de Letras", "Diploma de Matemática", "Diploma de História",
-  "Diploma de Geografia", "Diploma de Biologia", "Diploma de Física", "Diploma de Química",
-  "Diploma de Educação Física", "Diploma de Artes", "Diploma de Filosofia", "Diploma de Sociologia",
-  "Diploma de Ciências", "Diploma de Música", "Diploma de Teatro", "Diploma de Dança",
-  "Diploma de Língua Portuguesa", "Diploma de Língua Inglesa", "Diploma de Língua Espanhola", "Diploma de Libras",
-];
-
+// Cursos de Tecnólogo
 const TECNOLOGO_COURSES = [
-  "Diploma de Gestão de RH", "Diploma de Gestão Financeira", "Diploma de Marketing", "Diploma de Logística",
-  "Diploma de Gestão Comercial", "Diploma de Processos Gerenciais", "Diploma de Gestão Pública", "Diploma de Gestão Hospitalar",
-  "Diploma de Análise de Sistemas", "Diploma de Redes de Computadores", "Diploma de Banco de Dados", "Diploma de Desenvolvimento Web",
-  "Diploma de Segurança da Informação", "Diploma de Sistemas para Internet", "Diploma de Jogos Digitais", "Diploma de Big Data",
-  "Diploma de Design de Interiores", "Diploma de Design de Moda", "Diploma de Fotografia", "Diploma de Gastronomia",
+  "Diploma de Acupuntura", "Diploma de Agrimensura", "Diploma de Agrocomputação", "Diploma de Agroecologia",
+  "Diploma de Agroindústria", "Diploma de Agronegócio", "Diploma de Agropecuária", "Diploma de Alimentos",
+  "Diploma de Análise de Dados", "Diploma de Análise e Desenvolvimento", "Diploma de Apicultura e Meliponicultura", "Diploma de Aquicultura",
+  "Diploma de Arqueologia", "Diploma de Arquitetura de Dados", "Diploma de Artes do Espetáculo", "Diploma de Artes e Mídias Digitais",
+  "Diploma de Assessoria Executiva Digital", "Diploma de Atividades de Inteligência e Gestão", "Diploma de Automação de Escritórios", "Diploma de Automação e Manufatura Digital",
+  "Diploma de Automação Industrial", "Diploma de Banco de Dados", "Diploma de Big Data e Inteligência Analítica", "Diploma de Big Data no Agronegócio",
+  "Diploma de Biocombustíveis", "Diploma de Bioenergia", "Diploma de Bioinformática", "Diploma de Biotecnologia",
+  "Diploma de Blockchain e Criptografia Digital", "Diploma de Cibersegurança", "Diploma de Ciência de Dados", "Diploma de Cinema e Audiovisual",
+  "Diploma de Coach Digital", "Diploma de Coaching e Mentoring", "Diploma de Coding", "Diploma de Comércio Exterior",
+  "Diploma de Computação em Nuvem", "Diploma de Comunicação Assistiva", "Diploma de Comunicação Digital", "Diploma de Comunicação em Computação",
+  "Diploma de Comunicação Institucional", "Diploma de Conservação e Restauro", "Diploma de Construção Civil", "Diploma de Construção de Edifícios",
+  "Diploma de Construção Naval", "Diploma de Controle Ambiental", "Diploma de Controle de Obras", "Diploma de Cosmetologia e Estética",
+  "Diploma de Cozinha Contemporânea", "Diploma de Data Science", "Diploma de Defesa Cibernética", "Diploma de Defesa Médica Hospitalar",
+  "Diploma de Desenho de Animação", "Diploma de Desenvolvimento Back-End", "Diploma de Desenvolvimento de Aplicativos", "Diploma de Desenvolvimento de Produtos",
+  "Diploma de Desenvolvimento de Sistemas", "Diploma de Desenvolvimento e Gestão", "Diploma de Desenvolvimento Mobile", "Diploma de Desenvolvimento para Internet",
+  "Diploma de Desenvolvimento para Web", "Diploma de Design", "Diploma de Design Comercial", "Diploma de Design de Animação",
+  "Diploma de Design de Aplicações", "Diploma de Design de Experiência e de Serviços", "Diploma de Design de Games", "Diploma de Design de Interiores",
+  "Diploma de Design de Moda", "Diploma de Design de Produto", "Diploma de Design Editorial", "Diploma de Design Educacional",
+  "Diploma de Design Gráfico", "Diploma de Devops", "Diploma de Digital Influencer", "Diploma de Digital Security",
+  "Diploma de E-Commerce", "Diploma de Educador Social", "Diploma de Eletrônica Automotiva", "Diploma de Eletrônica Industrial",
+  "Diploma de Eletrotécnica Industrial", "Diploma de Empreendedorismo", "Diploma de Energias Renováveis", "Diploma de Escrita Criativa",
+  "Diploma de Estética e Cosmética", "Diploma de Estilismo", "Diploma de Fabricação Mecânica", "Diploma de Fitoterapia",
+  "Diploma de Gastronomia", "Diploma de Geoprocessamento", "Diploma de Gestão Ambiental", "Diploma de Gestão Comercial",
+  "Diploma de Gestão da Produção Industrial", "Diploma de Gestão da Qualidade", "Diploma de Gestão da Tecnologia", "Diploma de Gestão de Negócios",
+  "Diploma de Gestão de Pessoas", "Diploma de Gestão de Recursos Humanos", "Diploma de Gestão de Saúde Pública", "Diploma de Gestão Financeira",
+  "Diploma de Gestão Pública", "Diploma de Hotelaria", "Diploma de Informática", "Diploma de Marketing",
+  "Diploma de Mecânica", "Diploma de Mecatrônica Industrial",
 ];
 
+// Certificados Técnicos
 const TECNICO_COURSES = [
-  "Técnico em Enfermagem", "Técnico em Radiologia", "Técnico em Farmácia", "Técnico em Laboratório",
-  "Técnico em Segurança do Trabalho", "Técnico em Edificações", "Técnico em Eletrotécnica", "Técnico em Mecânica",
-  "Técnico em Informática", "Técnico em Administração", "Técnico em Contabilidade", "Técnico em Logística",
-  "Técnico em Marketing", "Técnico em Recursos Humanos", "Técnico em Secretariado", "Técnico em Vendas",
-  "Técnico em Nutrição e Dietética", "Técnico em Estética", "Técnico em Massoterapia", "Técnico em Podologia",
+  "Técnico em Agente Comunitário", "Técnico em Análises Clínicas", "Técnico em Biotecnologia", "Técnico em Citopatologia",
+  "Técnico em Equipamentos Biomédicos", "Técnico em Estética", "Técnico em Farmácia", "Técnico em Gerência em Saúde",
+  "Técnico em Hemoterapia", "Técnico em Saúde Bucal", "Técnico em Imagem Pessoal", "Técnico em Imobilizações Ortopédicas",
+  "Técnico em Massoterapia", "Técnico em Meio Ambiente", "Técnico em Meteorologia", "Técnico em Nutrição e Dietética",
+  "Técnico em Óptica", "Técnico em Órteses e Próteses", "Técnico em Podologia", "Técnico em Prótese Dentária",
+  "Técnico em Radiologia", "Técnico em Segurança do Trabalho", "Técnico em Vigilância em Saúde", "Técnico em Alimentação Escolar",
+  "Técnico em Biblioteconomia", "Técnico em Infraestrutura Escolar", "Técnico em Multimeios Didáticos", "Técnico em Geodésia e Cartografia",
+  "Técnico em Orientação Comunitária", "Técnico em Secretaria Escolar", "Técnico em Análises Químicas", "Técnico em Automação Industrial",
+  "Técnico em Eletroeletrônica", "Técnico em Eletromecânica", "Técnico em Eletrônica", "Técnico em Eletrotécnica",
+  "Técnico em Manutenção Automotiva", "Técnico em Máquinas Navais", "Técnico em Mecânica", "Técnico em Mecatrônica",
+  "Técnico em Metalurgia", "Técnico em Petroquímica", "Técnico em Química", "Técnico em Refrigeração e Climatização",
+  "Técnico em Sistemas a Gás", "Técnico em Administração", "Técnico em Comércio", "Técnico em Comércio Exterior",
+  "Técnico em Contabilidade", "Técnico em Cooperativismo", "Técnico em Finanças", "Técnico em Logística",
+  "Técnico em Marketing", "Técnico em Qualidade", "Técnico em Recursos Humanos", "Técnico em Secretariado",
+  "Técnico em Digital Security", "Técnico em Seguros", "Técnico em Serviços de Condomínio", "Técnico em Serviços Públicos",
+  "Técnico em Transações Imobiliárias", "Técnico em Vendas", "Técnico em Agenciamento de Viagem", "Técnico em Cozinha",
+  "Técnico em Eventos", "Técnico em Guia de Turismo", "Técnico em Hospedagem", "Técnico em Lazer",
+  "Técnico em Serviços de Restaurante e Bar", "Técnico em Informática", "Técnico em Informática para Internet", "Técnico em Suporte em Informática",
+  "Técnico em Programação de Jogos", "Técnico em Redes de Computadores", "Técnico em Sistemas de Comutação", "Técnico em Sistemas de Transmissão",
+  "Técnico em Telecomunicações", "Técnico Aeroportuário", "Técnico em Agrimensura", "Técnico em Carpintaria",
+  "Técnico em Desenho de Construção Civil", "Técnico em Edificações", "Técnico em Estradas", "Técnico em Geoprocessamento",
+  "Técnico em Hidrologia", "Técnico em Manutenção de Aeronaves", "Técnico em Portos", "Técnico em Saneamento",
+  "Técnico em Trânsito", "Técnico em Transporte Aquaviário", "Técnico em Transporte Dutoviário", "Técnico em Transporte Ferroviário",
+  "Técnico em Transporte Rodoviário", "Técnico em Comunicações Aeronáuticas", "Técnico em Controle de Tráfego Aéreo", "Técnico em Desenho Militar",
+  "Técnico em Equipamentos de Voo", "Técnico em Fotointeligência", "Técnico em Guarda e Segurança", "Técnico em Hidrografia",
+  "Técnico em Informações Aeronáuticas", "Técnico em Material Bélico", "Técnico em Mergulho", "Técnico em Operação de Radar",
+  "Técnico em Operação de Sonar", "Técnico em Sinais Navais", "Técnico em Suprimento", "Técnico em Agroindústria",
+  "Técnico em Açúcar e Álcool", "Técnico em Biocombustíveis", "Técnico em Enfermagem",
 ];
 
 const CategoryIcon = ({ icon: Icon, title, description }: { icon: React.ElementType; title: string; description: string }) => (
@@ -51,7 +114,7 @@ const CategoryIcon = ({ icon: Icon, title, description }: { icon: React.ElementT
   </div>
 );
 
-const CourseList = ({ courses, title }: { courses: string[]; title: string }) => {
+const CourseList = ({ courses, title, id }: { courses: string[]; title: string; id: string }) => {
   const columns = 4;
   const itemsPerColumn = Math.ceil(courses.length / columns);
   const columnArrays = Array.from({ length: columns }, (_, i) =>
@@ -59,30 +122,31 @@ const CourseList = ({ courses, title }: { courses: string[]; title: string }) =>
   );
 
   return (
-    <section className="py-8">
+    <section className="py-8" id={id} aria-labelledby={`${id}-title`}>
       <div className="container mx-auto px-4">
-        {/* Section Header */}
         <div className="bg-primary py-3 px-6 mb-6 rounded-sm">
-          <h2 className="text-xl md:text-2xl font-bold text-center font-heading text-primary-foreground">
-            Diplomas de {title}
+          <h2 id={`${id}-title`} className="text-xl md:text-2xl font-bold text-center font-heading text-primary-foreground">
+            {title}
           </h2>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-1">
           {columnArrays.map((column, colIndex) => (
-            <div key={colIndex} className="space-y-1">
+            <ul key={colIndex} className="space-y-1" role="list">
               {column.map((course, index) => (
-                <a
-                  key={index}
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-sm text-primary hover:text-primary/70 hover:underline transition-colors py-0.5"
-                >
-                  {course}
-                </a>
+                <li key={index}>
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm text-primary hover:text-primary/70 hover:underline transition-colors py-0.5"
+                    title={`Adquirir ${course} - Reconhecido pelo MEC`}
+                  >
+                    {course}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           ))}
         </div>
       </div>
@@ -91,12 +155,23 @@ const CourseList = ({ courses, title }: { courses: string[]; title: string }) =>
 };
 
 const CursosDisponiveis = () => {
+  useEffect(() => {
+    document.title = "Cursos Disponíveis - Diplomas Reconhecidos pelo MEC | EAD Cursos Nacional";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", 
+        "Confira mais de 300 cursos disponíveis: Bacharelado, Tecnólogo e Técnico. Diplomas e certificados reconhecidos pelo MEC. Atendimento 24h via WhatsApp."
+      );
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
 
       <main className="flex-1">
-        {/* Hero Section - Compact */}
+        {/* Hero Section */}
         <section className="bg-gradient-hero text-primary-foreground py-12 md:py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
@@ -106,18 +181,18 @@ const CursosDisponiveis = () => {
               </h1>
               <p className="text-sm md:text-base text-primary-foreground/85 max-w-2xl mx-auto mb-6 leading-relaxed">
                 A equipe EAD CURSOS NACIONAL foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. 
-                Trabalhamos a mais de 10 anos para conseguirmos o melhor resultado no processo de seu diploma superior com maior segurança e transparência!
+                Trabalhamos há mais de 10 anos para conseguirmos o melhor resultado no processo de seu diploma superior com maior segurança e transparência!
               </p>
               
               <div className="flex flex-wrap justify-center gap-3">
                 <Button asChild className="bg-card text-primary hover:bg-card/90 font-medium border-0">
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
                     <MessageCircle className="w-4 h-4 mr-2" />
                     Fale Conosco
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent">
-                  <Link to="/estados">
+                  <Link to="/estados" aria-label="Escolher seu estado">
                     Escolher o estado
                   </Link>
                 </Button>
@@ -126,24 +201,19 @@ const CursosDisponiveis = () => {
           </div>
         </section>
 
-        {/* Category Icons - Compact */}
-        <section className="py-8 bg-primary">
+        {/* Category Icons */}
+        <section className="py-8 bg-primary" aria-label="Categorias de cursos">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-4xl mx-auto">
               <CategoryIcon 
                 icon={GraduationCap} 
                 title="Bacharelado" 
                 description="Graduação completa de 4 a 6 anos" 
               />
               <CategoryIcon 
-                icon={BookOpen} 
-                title="Licenciatura" 
-                description="Formação para lecionar" 
-              />
-              <CategoryIcon 
                 icon={Monitor} 
                 title="Tecnólogo" 
-                description="Cursos de curta duração" 
+                description="Cursos superiores de curta duração" 
               />
               <CategoryIcon 
                 icon={Wrench} 
@@ -159,16 +229,15 @@ const CursosDisponiveis = () => {
           <div className="container mx-auto px-4 text-center max-w-3xl">
             <p className="text-sm text-muted-foreground">
               Confira todos os Cursos <span className="text-primary font-medium">Reconhecidos pelo MEC</span> ofertados pela nossa equipe. 
-              Trabalhamos apenas com cursos reconhecidos pelo MEC.
+              Mais de <strong>300 opções</strong> de diplomas e certificados para você escolher.
             </p>
           </div>
         </section>
 
         {/* Course Lists */}
-        <CourseList courses={BACHARELADO_COURSES} title="Bacharelado" />
-        <CourseList courses={LICENCIATURA_COURSES} title="Licenciatura" />
-        <CourseList courses={TECNOLOGO_COURSES} title="Tecnólogo" />
-        <CourseList courses={TECNICO_COURSES} title="Técnico" />
+        <CourseList courses={BACHARELADO_COURSES} title="Diplomas de Bacharelado" id="bacharelado" />
+        <CourseList courses={TECNOLOGO_COURSES} title="Diplomas de Tecnólogo" id="tecnologo" />
+        <CourseList courses={TECNICO_COURSES} title="Certificado Técnico" id="tecnico" />
 
         {/* CTA Section */}
         <section className="py-12 bg-gradient-hero text-primary-foreground">
@@ -181,13 +250,44 @@ const CursosDisponiveis = () => {
               size="lg"
               className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-medium"
             >
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Falar com a equipe pelo WhatsApp">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Falar com a Equipe
               </a>
             </Button>
           </div>
         </section>
+
+        {/* Schema.org Structured Data */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Cursos Disponíveis - EAD Cursos Nacional",
+            "description": "Lista completa de cursos de Bacharelado, Tecnólogo e Técnico reconhecidos pelo MEC",
+            "numberOfItems": BACHARELADO_COURSES.length + TECNOLOGO_COURSES.length + TECNICO_COURSES.length,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Diplomas de Bacharelado",
+                "description": `${BACHARELADO_COURSES.length} cursos de graduação disponíveis`
+              },
+              {
+                "@type": "ListItem", 
+                "position": 2,
+                "name": "Diplomas de Tecnólogo",
+                "description": `${TECNOLOGO_COURSES.length} cursos tecnológicos disponíveis`
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Certificados Técnicos",
+                "description": `${TECNICO_COURSES.length} cursos técnicos disponíveis`
+              }
+            ]
+          })
+        }} />
       </main>
 
       <Footer />
