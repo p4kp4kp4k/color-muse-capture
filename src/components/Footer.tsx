@@ -118,6 +118,10 @@ const Footer = () => {
               <Link to="/faq" className="hover:text-primary transition-colors">
                 FAQ
               </Link>
+              <span className="hidden md:inline">|</span>
+              <Link to="/admin-login" className="hover:text-primary transition-colors opacity-50 hover:opacity-100">
+                ●
+              </Link>
             </div>
             <p className="text-primary-foreground/60 text-sm text-center">
               © 2025 {siteName}. Todos os direitos reservados.
