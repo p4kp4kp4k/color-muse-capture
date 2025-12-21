@@ -76,7 +76,7 @@ const Index = () => {
 
               {/* Description */}
               <p className="text-lg md:text-xl text-primary-foreground/85 leading-relaxed mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                A equipe <strong className="text-white font-semibold">CENTRAL DO DIPLOMA</strong> foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. Trabalhamos a mais de 10 anos em virtude de você, para conseguirmos o melhor e mais eficiente resultado no processo de seu diploma superior com maior segurança e transparência!
+                A equipe <strong className="text-white font-semibold">EAD CURSOS NACIONAL</strong> foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. Trabalhamos a mais de 10 anos em virtude de você, para conseguirmos o melhor e mais eficiente resultado no processo de seu diploma superior com maior segurança e transparência!
               </p>
 
               {/* Buttons */}
@@ -191,7 +191,7 @@ const Index = () => {
             {/* Header Text */}
             <div className="text-center mb-8 text-primary-foreground max-w-3xl mx-auto">
               <h2 className="text-xl md:text-2xl font-bold mb-3 font-heading">
-                Escolha seu curso e fale com a <span className="font-extrabold">CENTRAL DO DIPLOMA</span>
+                Escolha seu curso e fale com a <span className="font-extrabold">EAD CURSOS NACIONAL</span>
               </h2>
               <p className="text-sm md:text-base text-primary-foreground/85 leading-relaxed">
                 Confira os valores, prazos e condições para o curso escolhido. Trabalhamos apenas com cursos reconhecidos pelo MEC.
@@ -373,7 +373,7 @@ const Index = () => {
           
           <div className="container mx-auto px-4 text-center relative z-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-8 font-heading">
-              Somos a Equipe Central do Diploma
+              Somos a Equipe Ead Cursos Nacional
             </h2>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto mb-12 leading-relaxed">
               Nossa missão é ajudar você a conquistar seus objetivos profissionais
