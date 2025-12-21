@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { WHATSAPP_LINK } from "@/lib/constants";
+import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { getWhatsAppLink, bannerText } = useSiteConfigContext();
+  const whatsappLink = getWhatsAppLink();
 
   const navLinks = [
     { name: "Início", href: "/" },
@@ -17,7 +19,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full">
       {/* Top Banner */}
       <div className="bg-primary text-primary-foreground py-2 text-center text-sm font-medium">
-        Confira Antes, Pague Depois
+        {bannerText}
       </div>
 
       {/* Main Header */}
@@ -26,8 +28,8 @@ const Header = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-primary font-heading">EAD Cursos</span>
-              <span className="text-2xl font-bold text-foreground font-heading">Nacional</span>
+              <span className="text-xl md:text-2xl font-bold text-primary font-heading">EAD Cursos</span>
+              <span className="text-xl md:text-2xl font-bold text-foreground font-heading">Nacional</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -49,7 +51,7 @@ const Header = () => {
                 asChild
                 className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-semibold"
               >
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   Fale Conosco
                 </a>
               </Button>
@@ -84,7 +86,7 @@ const Header = () => {
                 asChild
                 className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-semibold w-full"
               >
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                   Fale Conosco
                 </a>
               </Button>
