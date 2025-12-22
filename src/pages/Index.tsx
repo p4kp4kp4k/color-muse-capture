@@ -1,9 +1,11 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import UniversitiesCarousel from "@/components/UniversitiesCarousel";
 import StatsSection from "@/components/StatsSection";
 import FAQSection from "@/components/FAQSection";
+import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
 import { Button } from "@/components/ui/button";
 import { COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
@@ -53,6 +55,14 @@ const Index = () => {
   const { ref: coursesRef, isVisible: coursesVisible } = useScrollAnimation({ threshold: 0.15 });
   const { ref: benefitsRef, isVisible: benefitsVisible } = useScrollAnimation({ threshold: 0.1 });
   const parallaxOffset = useParallax(0.3);
+  
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState("");
+
+  const handleWhatsAppClick = (courseName?: string) => {
+    setSelectedCourse(courseName || "");
+    setDialogOpen(true);
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -110,13 +120,11 @@ const Index = () => {
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-5 justify-center animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <Button
-                  asChild
                   size="lg"
+                  onClick={() => handleWhatsAppClick()}
                   className="bg-gold hover:bg-gold/90 text-navy text-lg font-bold px-10 py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 rounded-xl"
                 >
-                  <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                    Fale Conosco Agora!
-                  </a>
+                  Fale Conosco Agora!
                 </Button>
                 <Button
                   asChild
@@ -326,15 +334,13 @@ const Index = () => {
                       <p className="text-xs text-gray-500 mb-4 leading-relaxed hidden md:block">
                         Diploma de nível superior bacharelado, licenciatura ou pós-graduação.
                       </p>
-                      <a
-                        href={whatsappLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button
+                        onClick={() => handleWhatsAppClick(course.name)}
                         className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs md:text-sm font-semibold py-3 px-4 rounded-xl transition-all duration-300 w-full shadow-md hover:shadow-lg group-hover:bg-whatsapp group-hover:shadow-whatsapp/30"
                       >
                         <MessageCircle size={16} className="transition-transform duration-300 group-hover:scale-110" />
                         Fale Conosco
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -478,6 +484,11 @@ const Index = () => {
 
       <Footer />
       <WhatsAppButton />
+      <WhatsAppContactDialog 
+        open={dialogOpen} 
+        onOpenChange={setDialogOpen} 
+        courseName={selectedCourse}
+      />
     </div>
   );
 };

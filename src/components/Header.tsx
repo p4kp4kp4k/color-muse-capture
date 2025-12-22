@@ -3,11 +3,12 @@ import { Menu, X, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
+import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { getWhatsAppLink, bannerText } = useSiteConfigContext();
-  const whatsappLink = getWhatsAppLink();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const { bannerText } = useSiteConfigContext();
 
   const navLinks = [
     { name: "Início", href: "/" },
@@ -48,13 +49,11 @@ const Header = () => {
             {/* CTA Button */}
             <div className="hidden md:block">
               <Button
-                asChild
-                className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-semibold"
+                onClick={() => setDialogOpen(true)}
+                className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-semibold flex items-center gap-2"
               >
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  <MessageCircle size={18} />
-                  Fale Conosco
-                </a>
+                <MessageCircle size={18} />
+                Fale Conosco
               </Button>
             </div>
 
@@ -84,18 +83,20 @@ const Header = () => {
                 </Link>
               ))}
               <Button
-                asChild
-                className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-semibold w-full"
+                onClick={() => {
+                  setDialogOpen(true);
+                  setIsMenuOpen(false);
+                }}
+                className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-semibold w-full flex items-center justify-center gap-2"
               >
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                  <MessageCircle size={18} />
-                  Fale Conosco
-                </a>
+                <MessageCircle size={18} />
+                Fale Conosco
               </Button>
             </nav>
           </div>
         )}
       </div>
+      <WhatsAppContactDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </header>
   );
 };
