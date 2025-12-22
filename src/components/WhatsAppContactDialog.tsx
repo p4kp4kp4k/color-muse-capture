@@ -151,6 +151,12 @@ const WhatsAppContactDialog = ({
                 onChange={(e) => setCurso(e.target.value)}
                 className="h-10 sm:h-11 text-sm bg-background border-border focus:border-foreground/30 focus:ring-foreground/10"
               />
+              <div className="text-[10px] sm:text-xs text-muted-foreground space-y-0.5 mt-1">
+                <p><span className="font-medium">Técnico:</span> Enfermagem, Radiologia, Segurança do Trabalho</p>
+                <p><span className="font-medium">Graduação:</span> Direito, Medicina, Engenharia Civil</p>
+                <p><span className="font-medium">Tecnólogo:</span> Gestão de RH, Marketing, Análise de Sistemas</p>
+                <p><span className="font-medium">Pós:</span> MBA em Gestão, Docência, Direito Tributário</p>
+              </div>
             </div>
 
             {/* Notice */}
