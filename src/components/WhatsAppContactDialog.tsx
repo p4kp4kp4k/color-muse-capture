@@ -8,8 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CheckCircle2, AlertTriangle, X } from "lucide-react";
-import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
+import { Check, AlertCircle, X, FileText, Shield, CreditCard, Building2, MessageCircle } from "lucide-react";
 
 interface WhatsAppContactDialogProps {
   open: boolean;
@@ -24,7 +23,6 @@ const WhatsAppContactDialog = ({
 }: WhatsAppContactDialogProps) => {
   const [nome, setNome] = useState("");
   const [curso, setCurso] = useState(courseName);
-  const { getWhatsAppLink } = useSiteConfigContext();
 
   const handleSubmit = (interested: boolean) => {
     if (!nome.trim() || !curso.trim()) return;
@@ -42,200 +40,153 @@ const WhatsAppContactDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0">
-        <DialogHeader className="p-6 pb-0">
-          <DialogTitle className="text-xl font-bold text-center text-foreground">
-            Documentação Completa - Valores sob Consulta
+      <DialogContent className="w-[95vw] max-w-2xl max-h-[90vh] overflow-y-auto p-0 bg-background border-border shadow-2xl rounded-xl">
+        {/* Header */}
+        <DialogHeader className="p-4 sm:p-6 pb-0 border-b border-border/50">
+          <DialogTitle className="text-lg sm:text-xl font-semibold text-foreground tracking-tight">
+            Documentação Completa
           </DialogTitle>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+            Valores sob consulta conforme curso e instituição
+          </p>
         </DialogHeader>
 
-        <div className="p-6 grid md:grid-cols-2 gap-4">
-          {/* Left Column */}
-          <div className="space-y-4">
-            {/* Warning Box */}
-            <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded-r-lg">
-              <div className="flex items-start gap-2">
-                <AlertTriangle className="h-5 w-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold text-orange-700">
-                    ATENÇÃO - VALOR VARIÁVEL
-                  </h3>
-                  <p className="text-sm text-orange-600">
-                    O valor final pode variar conforme o curso e a instituição
-                    escolhida.
-                  </p>
-                </div>
-              </div>
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-5">
+          {/* Warning */}
+          <div className="flex items-start gap-3 p-3 sm:p-4 bg-muted/40 border border-border rounded-lg">
+            <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-xs sm:text-sm font-medium text-foreground">Valor variável</p>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                O valor final pode variar conforme o curso e instituição escolhida.
+              </p>
             </div>
+          </div>
 
+          {/* Info Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {/* Documentation */}
-            <div className="bg-muted/30 border border-border p-4 rounded-lg">
-              <div className="flex items-center gap-2 mb-2">
-                <CheckCircle2 className="h-5 w-5 text-primary" />
-                <h3 className="font-semibold text-foreground">
-                  Documentação Completa
-                </h3>
+            <div className="p-3 sm:p-4 border border-border rounded-lg space-y-2 sm:space-y-3">
+              <div className="flex items-center gap-2">
+                <FileText className="h-4 w-4 text-foreground" />
+                <span className="text-xs sm:text-sm font-medium text-foreground">Documentação</span>
               </div>
-              <ul className="text-sm text-muted-foreground space-y-1 ml-7">
-                <li>• Diploma</li>
-                <li>• Declaração de Conclusão</li>
-                <li>• Histórico Escolar (com notas e carga horária)</li>
-                <li>• Certificado de Conclusão</li>
+              <ul className="text-xs text-muted-foreground space-y-1.5 ml-6">
+                <li className="flex items-center gap-2">
+                  <Check className="h-3 w-3 text-foreground" />
+                  Diploma
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-3 w-3 text-foreground" />
+                  Declaração de Conclusão
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-3 w-3 text-foreground" />
+                  Histórico Escolar
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-3 w-3 text-foreground" />
+                  Certificado de Conclusão
+                </li>
               </ul>
             </div>
 
             {/* Benefits */}
-            <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
-              <div className="flex items-center gap-2 mb-2">
-                <CheckCircle2 className="h-5 w-5 text-green-600" />
-                <h3 className="font-semibold text-green-700">
-                  Benefícios e Garantias
-                </h3>
+            <div className="p-3 sm:p-4 border border-border rounded-lg space-y-2 sm:space-y-3">
+              <div className="flex items-center gap-2">
+                <Shield className="h-4 w-4 text-foreground" />
+                <span className="text-xs sm:text-sm font-medium text-foreground">Garantias</span>
               </div>
-              <p className="text-sm text-green-600 ml-7">
-                Válido para todos os fins legais: participação em concursos
-                públicos, processos seletivos, registros em conselhos
-                profissionais, entre outras finalidades oficiais
+              <p className="text-xs text-muted-foreground ml-6">
+                Válido para concursos públicos, processos seletivos e registros em conselhos profissionais.
               </p>
             </div>
 
             {/* Payment */}
-            <div className="bg-purple-50 border border-purple-200 p-4 rounded-lg">
+            <div className="p-3 sm:p-4 border border-border rounded-lg space-y-2 sm:space-y-3">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-purple-600" />
-                <div>
-                  <h3 className="font-semibold text-purple-700">
-                    O pagamento pode ser feito por meio tradicional:
-                  </h3>
-                  <p className="text-sm text-purple-600">
-                    Pix, transferência bancária, boleto.
-                  </p>
-                </div>
+                <CreditCard className="h-4 w-4 text-foreground" />
+                <span className="text-xs sm:text-sm font-medium text-foreground">Pagamento</span>
               </div>
+              <p className="text-xs text-muted-foreground ml-6">
+                Pix, transferência bancária ou boleto.
+              </p>
+            </div>
+
+            {/* Institutions */}
+            <div className="p-3 sm:p-4 border border-border rounded-lg space-y-2 sm:space-y-3">
+              <div className="flex items-center gap-2">
+                <Building2 className="h-4 w-4 text-foreground" />
+                <span className="text-xs sm:text-sm font-medium text-foreground">Instituições</span>
+              </div>
+              <p className="text-xs text-muted-foreground ml-6">
+                Uniasselvi, Unicesumar, Estácio, Anhanguera, Mackenzie e outras.
+              </p>
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className="space-y-4">
-            {/* Institutions */}
-            <div className="bg-muted/30 border border-border p-4 rounded-lg">
-              <div className="flex items-center gap-2 mb-2">
-                <CheckCircle2 className="h-5 w-5 text-primary" />
-                <h3 className="font-semibold text-foreground">
-                  Instituições disponíveis:
-                </h3>
-              </div>
-              <p className="text-sm text-muted-foreground ml-7">
-                Uniasselvi, Unicesumar, Estácio, Uninter, Anhanguera, Mackenzie,
-                UFRN, UNIP, Unisul, Cruzeiro do Sul, entre outras.{" "}
-                <span className="text-primary font-medium">
-                  Verificar instituição e valores de acordo com o curso
-                  desejado.
-                </span>
-              </p>
+          {/* Form */}
+          <div className="space-y-3 sm:space-y-4 pt-2">
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="nome" className="text-xs sm:text-sm font-medium text-foreground">
+                Nome completo
+              </Label>
+              <Input
+                id="nome"
+                placeholder="Digite seu nome"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                className="h-10 sm:h-11 text-sm bg-background border-border focus:border-foreground/30 focus:ring-foreground/10"
+              />
             </div>
 
-            {/* Security */}
-            <div className="bg-muted/30 border border-border p-4 rounded-lg">
-              <div className="flex items-center gap-2 mb-2">
-                <CheckCircle2 className="h-5 w-5 text-primary" />
-                <h3 className="font-semibold text-foreground">
-                  Segurança e credibilidade:
-                </h3>
-              </div>
-              <p className="text-sm text-muted-foreground ml-7">
-                Documentação chancelada, autenticada e homologada com
-                reconhecimento oficial pelo MEC.
-              </p>
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="curso" className="text-xs sm:text-sm font-medium text-foreground">
+                Nome do curso
+              </Label>
+              <Input
+                id="curso"
+                placeholder="Ex: Técnico em Enfermagem"
+                value={curso}
+                onChange={(e) => setCurso(e.target.value)}
+                className="h-10 sm:h-11 text-sm bg-background border-border focus:border-foreground/30 focus:ring-foreground/10"
+              />
             </div>
 
-            {/* Form */}
-            <div className="bg-muted/30 border border-border p-4 rounded-lg space-y-4">
-              <h3 className="font-semibold text-foreground">
-                Dados para Atendimento
-              </h3>
-
-              <div className="space-y-2">
-                <Label htmlFor="nome">Nome completo *</Label>
-                <Input
-                  id="nome"
-                  placeholder="Digite seu nome completo"
-                  value={nome}
-                  onChange={(e) => setNome(e.target.value)}
-                  className="bg-background"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="curso">Nome exato do curso *</Label>
-                <Input
-                  id="curso"
-                  placeholder="Ex: Técnico em Enfermagem, Técnico em Informática para Int"
-                  value={curso}
-                  onChange={(e) => setCurso(e.target.value)}
-                  className="bg-background"
-                />
-              </div>
-
-              {/* Important Notice */}
-              <div className="bg-red-50 border border-red-200 p-4 rounded-lg">
-                <div className="flex items-start gap-2">
-                  <AlertTriangle className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-red-700">IMPORTANTE!</h4>
-                    <div className="text-sm space-y-2 mt-2">
-                      <p className="flex items-start gap-2">
-                        <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">
-                          Respostas genéricas como{" "}
-                          <span className="text-red-500 font-medium">
-                            "Qualquer técnico"
-                          </span>
-                          ,{" "}
-                          <span className="text-red-500 font-medium">
-                            "Curso na área de saúde"
-                          </span>{" "}
-                          NÃO serão aceitas.
-                        </span>
-                      </p>
-                      <p className="flex items-start gap-2">
-                        <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">
-                          Seja claro e específico:{" "}
-                          <span className="text-green-600 font-medium">
-                            "Técnico em Enfermagem"
-                          </span>
-                          ,{" "}
-                          <span className="text-green-600 font-medium">
-                            "Técnico em Informática para Internet"
-                          </span>
-                          .
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+            {/* Notice */}
+            <div className="flex items-start gap-2 p-3 bg-muted/30 border border-border rounded-lg">
+              <AlertCircle className="h-3.5 w-3.5 text-muted-foreground mt-0.5 flex-shrink-0" />
+              <div className="text-xs text-muted-foreground space-y-1">
+                <p className="flex items-center gap-1.5">
+                  <X className="h-3 w-3 text-destructive" />
+                  <span>Evite respostas genéricas como "Qualquer técnico"</span>
+                </p>
+                <p className="flex items-center gap-1.5">
+                  <Check className="h-3 w-3 text-foreground" />
+                  <span>Seja específico: "Técnico em Enfermagem"</span>
+                </p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="p-6 pt-0 grid md:grid-cols-2 gap-4">
+        <div className="p-4 sm:p-6 pt-0 flex flex-col sm:flex-row gap-2 sm:gap-3">
           <Button
             onClick={() => handleSubmit(true)}
             disabled={!nome.trim() || !curso.trim()}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base font-semibold"
+            className="flex-1 h-11 sm:h-12 text-xs sm:text-sm font-medium bg-foreground hover:bg-foreground/90 text-background transition-all disabled:opacity-40"
           >
-            Sim! Tenho real interesse em atendimento
+            <MessageCircle className="h-4 w-4 mr-2" />
+            Tenho interesse
           </Button>
           <Button
             onClick={() => handleSubmit(false)}
             disabled={!nome.trim() || !curso.trim()}
             variant="outline"
-            className="border-2 border-destructive text-destructive hover:bg-destructive/10 py-6 text-base font-semibold"
+            className="flex-1 h-11 sm:h-12 text-xs sm:text-sm font-medium border-border text-foreground hover:bg-muted/50 transition-all disabled:opacity-40"
           >
-            Não. Achei o valor muito alto
+            Saber valores
           </Button>
         </div>
       </DialogContent>
