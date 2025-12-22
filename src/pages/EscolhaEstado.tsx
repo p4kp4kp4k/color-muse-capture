@@ -10,6 +10,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { MapPin, Sparkles, MessageCircle, HelpCircle } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useState } from "react";
+import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
 
 const STATES_WITH_FLAGS = [
   { name: "Acre", abbr: "AC", flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Bandeira_do_Acre.svg/45px-Bandeira_do_Acre.svg.png" },
@@ -42,81 +46,119 @@ const STATES_WITH_FLAGS = [
 ];
 
 const EscolhaEstado = () => {
+  const { ref: statesRef, isVisible: statesVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: faqRef, isVisible: faqVisible } = useScrollAnimation({ threshold: 0.1 });
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-1">
-        {/* Hero */}
-        <section className="bg-gradient-hero text-primary-foreground py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 font-heading">
+        {/* Hero with futuristic design */}
+        <section className="bg-gradient-hero text-primary-foreground py-20 md:py-28 relative overflow-hidden">
+          <div className="absolute inset-0 cyber-grid opacity-20" />
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-10 left-10 w-80 h-80 bg-gold/15 rounded-full blur-3xl float-animation" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+          </div>
+          
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-5 py-2.5 mb-6 border border-white/20">
+              <MapPin className="w-5 h-5 text-gold" />
+              <span className="text-sm font-medium">27 Estados</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 font-heading animate-fade-in">
               Escolha seu <span className="text-gold">Estado</span>
             </h1>
-            <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
+            <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.1s' }}>
               Atendemos em todos os 27 estados do Brasil. Selecione o seu estado
               e fale com nossa equipe especializada.
             </p>
           </div>
         </section>
 
-        {/* States Grid */}
-        <section className="py-16 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-              {STATES_WITH_FLAGS.map((state) => (
-                <StateCard
+        {/* States Grid with animations */}
+        <section className="py-16 md:py-24 bg-gradient-to-b from-background to-muted/30 relative">
+          <div className="absolute inset-0 cyber-grid opacity-20" />
+          <div className="container mx-auto px-4 relative z-10">
+            <div 
+              ref={statesRef}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"
+            >
+              {STATES_WITH_FLAGS.map((state, index) => (
+                <div
                   key={state.abbr}
-                  name={state.name}
-                  abbr={state.abbr}
-                  flagUrl={state.flagUrl}
-                />
+                  className={`transition-all duration-500 ${
+                    statesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ transitionDelay: statesVisible ? `${index * 30}ms` : '0ms' }}
+                >
+                  <StateCard
+                    name={state.name}
+                    abbr={state.abbr}
+                    flagUrl={state.flagUrl}
+                  />
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 bg-secondary/50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
+        {/* FAQ Section with enhanced styling */}
+        <section className="py-20 md:py-28 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden" ref={faqRef}>
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+          </div>
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className={`text-center mb-12 transition-all duration-700 ${faqVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm rounded-full px-5 py-2.5 mb-6 border border-primary/20">
+                <HelpCircle className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">FAQ</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-heading">
                 Dúvidas e <span className="text-primary">Perguntas Frequentes</span>
               </h2>
               <p className="text-muted-foreground text-lg">
                 Tire suas dúvidas sobre nossos serviços
               </p>
             </div>
+            
             <div className="max-w-3xl mx-auto">
               <Accordion type="single" collapsible className="space-y-4">
                 {FAQ_ITEMS.map((item, index) => (
                   <AccordionItem
                     key={index}
                     value={`item-${index}`}
-                    className="bg-card border border-border rounded-lg px-6"
+                    className={`group bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl px-6 hover:border-primary/30 transition-all duration-500 ${
+                      faqVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+                    }`}
+                    style={{ transitionDelay: faqVisible ? `${200 + index * 100}ms` : '0ms' }}
                   >
-                    <AccordionTrigger className="text-left font-semibold hover:no-underline">
+                    <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary py-5">
                       {item.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground">
+                    <AccordionContent className="text-muted-foreground pb-5">
                       {item.answer}
                     </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
             </div>
-            <div className="text-center mt-12">
-              <p className="text-muted-foreground mb-4">
+            
+            <div className={`text-center mt-12 transition-all duration-700 ${faqVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '600ms' }}>
+              <p className="text-muted-foreground mb-6 text-lg">
                 Ainda tem dúvidas? Fale diretamente com nossa equipe!
               </p>
               <Button
-                asChild
+                onClick={() => setDialogOpen(true)}
                 size="lg"
-                className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-bold"
+                className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-bold px-8 py-6 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-whatsapp/30"
               >
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  Chamar no WhatsApp
-                </a>
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Chamar no WhatsApp
               </Button>
             </div>
           </div>
@@ -125,6 +167,7 @@ const EscolhaEstado = () => {
 
       <Footer />
       <WhatsAppButton />
+      <WhatsAppContactDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </div>
   );
 };
