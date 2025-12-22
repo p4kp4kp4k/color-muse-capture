@@ -9,28 +9,28 @@ import { HelpCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "Como funciona o processo de matrícula?",
-    answer: "O processo é simples e 100% online. Você escolhe o curso desejado, preenche seus dados e em poucos minutos já está matriculado. Nossa equipe entrará em contato para orientar os próximos passos."
+    question: "Os documentos são reconhecidos pelo MEC?",
+    answer: "Sim. Nossa equipe trabalha apenas com documentação reconhecida pelo MEC, de forma que os diplomas são emitidos dentro das próprias instituições de ensino credenciadas."
   },
   {
-    question: "Os diplomas são reconhecidos pelo MEC?",
-    answer: "Sim! Todos os nossos cursos são oferecidos por instituições credenciadas e reconhecidas pelo Ministério da Educação (MEC), garantindo a validade do seu diploma em todo o território nacional."
+    question: "A EAD Cursos Nacional consegue documentação de qualquer instituição?",
+    answer: "Sim. Continuamente estamos aumentando nossos esforços para oferecer mais opções de instituições reconhecidas pelo MEC, garantindo sempre a documentação completa e reconhecida."
   },
   {
-    question: "Qual a duração dos cursos?",
-    answer: "A duração varia de acordo com o tipo de curso. Graduações têm duração média de 2 a 4 anos, enquanto pós-graduações e cursos técnicos podem variar de 6 meses a 2 anos."
+    question: "Posso usar o documento em concursos públicos, RH ou universidades?",
+    answer: "Sim. O documento pode ser utilizado em qualquer finalidade legal necessária, seja para fins profissionais, acadêmicos ou pessoais."
   },
   {
-    question: "Posso estudar no meu próprio ritmo?",
-    answer: "Sim! A modalidade EAD permite que você estude quando e onde quiser, adaptando os estudos à sua rotina. Você tem acesso 24 horas ao ambiente virtual de aprendizagem."
+    question: "Como é feito o envio da documentação?",
+    answer: "A documentação é enviada de forma segura pelos Correios ou transportadora para todo o Brasil. Entre em contato conosco via WhatsApp para mais informações sobre prazos e opções de envio."
   },
   {
-    question: "Quais formas de pagamento são aceitas?",
-    answer: "Aceitamos diversas formas de pagamento: cartão de crédito (parcelado em até 12x), boleto bancário, PIX e financiamento estudantil. Consulte as condições especiais disponíveis."
+    question: "Preciso pagar adiantado?",
+    answer: "Não. Aqui você não paga nada adiantado. Garantimos a emissão e entrega segura do seu diploma ou certificado — 100% autêntico, reconhecido pelo MEC e publicado no Diário Oficial."
   },
   {
-    question: "Como funciona o suporte ao aluno?",
-    answer: "Oferecemos suporte completo via WhatsApp, e-mail e telefone. Nossa equipe está disponível para tirar dúvidas sobre matrículas, pagamentos e orientações acadêmicas."
+    question: "O diploma inclui histórico escolar?",
+    answer: "Sim. A documentação completa inclui diploma, histórico escolar com toda a grade curricular, carga horária, estágios e trabalho de conclusão de curso (quando aplicável)."
   }
 ];
 
