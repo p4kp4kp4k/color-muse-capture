@@ -95,7 +95,7 @@ const WhatsAppContactDialog = ({
       title: "Instituições",
       content: (
         <p className="text-xs text-muted-foreground ml-6">
-          Uniasselvi, Unicesumar, Estácio, Anhanguera, Mackenzie e outras.
+          Uninter, Estácio, Cruzeiro do Sul, Unopar, UniCesumar, Unip, Anhanguera, UFMG, Uniasselvi, Mackenzie, PUC, Anhembi, Uninove, Senai, Senac e outras.
         </p>
       ),
     },
