@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
+import { useSiteConfigContext } from '@/contexts/SiteConfigContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -27,6 +28,7 @@ const Admin = () => {
   const [saving, setSaving] = useState(false);
   const [editedValues, setEditedValues] = useState<Record<string, string>>({});
   const { user, isAdmin, roleChecked, loading: authLoading, signOut } = useAuth();
+  const { refetch: refetchGlobalConfig } = useSiteConfigContext();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -102,7 +104,8 @@ const Admin = () => {
         description: "Configurações salvas com sucesso",
       });
 
-      fetchConfigs();
+      await fetchConfigs();
+      await refetchGlobalConfig();
     } catch (err) {
       console.error('Error saving configs:', err);
       toast({
