@@ -38,7 +38,7 @@ const WhatsAppContactDialog = ({
 
     const message = interested
       ? `Olá, meu nome é ${nome}. Tenho interesse em adquirir a documentação do curso: ${curso}`
-      : `Olá, meu nome é ${nome}. Gostaria de saber mais sobre valores para o curso: ${curso}`;
+      : `Olá, meu nome é ${nome}. Não tenho interesse no momento, mas gostaria de receber mais informações sobre o curso: ${curso}`;
 
     const whatsappUrl = `https://api.whatsapp.com/send/?phone=447785369424&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
     window.open(whatsappUrl, "_blank");
@@ -237,7 +237,7 @@ const WhatsAppContactDialog = ({
             variant="outline"
             className="flex-1 h-11 sm:h-12 text-xs sm:text-sm font-medium border-border text-foreground hover:bg-muted/50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40 disabled:hover:scale-100"
           >
-            Saber valores
+            Não tenho interesse
           </Button>
         </div>
       </DialogContent>
