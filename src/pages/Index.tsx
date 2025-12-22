@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import UniversitiesCarousel from "@/components/UniversitiesCarousel";
 import StatsSection from "@/components/StatsSection";
+import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import { COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
@@ -470,6 +471,9 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {/* FAQ Section */}
+        <FAQSection />
       </main>
 
       <Footer />
