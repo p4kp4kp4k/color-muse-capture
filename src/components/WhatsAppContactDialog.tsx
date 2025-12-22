@@ -146,7 +146,7 @@ const WhatsAppContactDialog = ({
               </Label>
               <Input
                 id="curso"
-                placeholder="Ex: Técnico em Enfermagem, Direito, Gestão de RH, MBA em Gestão"
+                placeholder="Ex: Técnico em Enfermagem, Graduação em Direito, Tecnólogo em RH, Pós em Gestão"
                 value={curso}
                 onChange={(e) => setCurso(e.target.value)}
                 className="h-10 sm:h-11 text-sm bg-background border-border focus:border-foreground/30 focus:ring-foreground/10"
