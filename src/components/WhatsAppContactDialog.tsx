@@ -59,10 +59,6 @@ const WhatsAppContactDialog = ({
           </li>
           <li className="flex items-center gap-2">
             <Check className="h-3 w-3 text-foreground" />
-            Declaração de Conclusão
-          </li>
-          <li className="flex items-center gap-2">
-            <Check className="h-3 w-3 text-foreground" />
             Histórico Escolar
           </li>
           <li className="flex items-center gap-2">
