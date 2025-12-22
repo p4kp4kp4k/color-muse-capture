@@ -197,15 +197,25 @@ const WhatsAppContactDialog = ({
             {/* Notice */}
             <div className="flex items-start gap-2 p-3 bg-muted/30 border border-border rounded-lg">
               <AlertCircle className="h-3.5 w-3.5 text-muted-foreground mt-0.5 flex-shrink-0" />
-              <div className="text-xs text-muted-foreground space-y-1">
-                <p className="flex items-center gap-1.5">
-                  <X className="h-3 w-3 text-destructive" />
-                  <span>Evite respostas genéricas como "Qualquer técnico"</span>
-                </p>
-                <p className="flex items-center gap-1.5">
-                  <Check className="h-3 w-3 text-foreground" />
-                  <span>Seja específico: "Técnico em Enfermagem"</span>
-                </p>
+              <div className="text-xs text-muted-foreground space-y-2">
+                <div className="space-y-1">
+                  <p className="flex items-center gap-1.5">
+                    <X className="h-3 w-3 text-destructive" />
+                    <span>Evite: "Qualquer técnico", "Alguma graduação", "Curso qualquer"</span>
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="flex items-center gap-1.5">
+                    <Check className="h-3 w-3 text-foreground" />
+                    <span>Seja específico:</span>
+                  </p>
+                  <ul className="ml-5 space-y-0.5 text-[10px] sm:text-xs">
+                    <li>• "Técnico em Enfermagem", "Técnico em Radiologia"</li>
+                    <li>• "Graduação em Direito", "Bacharelado em Medicina"</li>
+                    <li>• "Tecnólogo em Gestão de RH", "Tecnólogo em Marketing"</li>
+                    <li>• "Pós-graduação em MBA Gestão", "Especialização em Docência"</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
