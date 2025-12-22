@@ -43,7 +43,7 @@ const StatsSection = () => {
       icon: <Users className="w-8 h-8 text-gold" />,
       end: 49085,
       suffix: "+",
-      label: "Matrículas Realizadas",
+      label: "Cursos Disponíveis",
       delay: 150
     },
     {
