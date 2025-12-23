@@ -254,12 +254,10 @@ const Index = () => {
               <div className={`relative group transition-all duration-1000 ${securityVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
                 <div className="absolute -inset-6 bg-gradient-to-br from-primary/30 to-gold/30 rounded-3xl blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
                 <div className="relative rounded-3xl shadow-2xl w-full overflow-hidden h-[300px] md:h-[400px]">
-                  <ImageWithSkeleton 
+                  <img 
                     src={graduateOutdoorBanner}
                     alt="Diploma certificado pelo MEC"
-                    className="w-full h-full object-cover transform group-hover:scale-[1.02] transition-transform duration-700"
-                    style={{ transform: `translateY(${parallaxOffset2 * 0.3}px)` }}
-                    skeletonClassName="rounded-3xl"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
               </div>
@@ -294,12 +292,10 @@ const Index = () => {
               <div className={`relative order-1 md:order-2 group transition-all duration-1000 ${trustVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}>
                 <div className="absolute -inset-6 bg-gradient-to-br from-gold/30 to-primary/30 rounded-3xl blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
                 <div className="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto overflow-hidden h-[350px] md:h-[450px]">
-                  <ImageWithSkeleton 
+                  <img 
                     src={testimonialBanner}
                     alt="Formanda realizando o sonho do diploma"
-                    className="w-full h-full object-cover transform group-hover:scale-[1.02] transition-transform duration-700"
-                    style={{ transform: `translateY(${parallaxOffset3 * 0.4}px)` }}
-                    skeletonClassName="rounded-3xl"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
               </div>
@@ -359,7 +355,7 @@ const Index = () => {
                     <div className="relative bg-white rounded-2xl overflow-hidden">
                       {/* Image container with overlay */}
                       <div className="relative h-36 md:h-44 overflow-hidden">
-                        <ImageWithSkeleton 
+                        <img 
                           src={COURSE_IMAGES[course.name] || "/images/courses/pedagogia.jpg"} 
                           alt={course.name}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
