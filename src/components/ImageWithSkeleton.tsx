@@ -20,12 +20,12 @@ const ImageWithSkeleton = ({
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full overflow-hidden">
       {/* Skeleton loader */}
       {isLoading && !hasError && (
         <div
           className={cn(
-            "absolute inset-0 bg-gradient-to-r from-muted via-muted/50 to-muted animate-pulse rounded-inherit overflow-hidden",
+            "absolute inset-0 bg-gradient-to-r from-muted via-muted/50 to-muted animate-pulse overflow-hidden",
             skeletonClassName
           )}
         >
@@ -33,12 +33,12 @@ const ImageWithSkeleton = ({
         </div>
       )}
       
-      {/* Actual image */}
+      {/* Actual image - using scale to prevent gaps during parallax */}
       <img
         src={src}
         alt={alt}
         className={cn(
-          "transition-opacity duration-500",
+          "transition-opacity duration-500 scale-110",
           isLoading ? "opacity-0" : "opacity-100",
           className
         )}
