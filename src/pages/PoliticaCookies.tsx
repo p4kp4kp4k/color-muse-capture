@@ -1,15 +1,22 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SEOHead from "@/components/SEOHead";
 
 const PoliticaCookies = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <SEOHead
+        title="Política de Cookies"
+        description="Conheça nossa Política de Cookies. Saiba como utilizamos cookies para melhorar sua experiência no site."
+        keywords="política de cookies, cookies, navegação, experiência do usuário"
+        canonicalPath="/politica-cookies"
+      />
       <Header />
 
-      <main className="flex-1 py-12">
+      <main className="flex-1 py-8 sm:py-12">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h1 className="text-3xl md:text-4xl font-bold mb-8 font-heading text-primary">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 font-heading text-primary">
             Política de Cookies
           </h1>
           

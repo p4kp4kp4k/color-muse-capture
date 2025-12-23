@@ -1,15 +1,22 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SEOHead from "@/components/SEOHead";
 
 const PoliticaPrivacidade = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <SEOHead
+        title="Política de Privacidade"
+        description="Conheça nossa Política de Privacidade. Saiba como coletamos, usamos e protegemos suas informações pessoais de acordo com a LGPD."
+        keywords="política de privacidade, LGPD, proteção de dados, privacidade EAD Cursos"
+        canonicalPath="/politica-privacidade"
+      />
       <Header />
 
-      <main className="flex-1 py-12">
+      <main className="flex-1 py-8 sm:py-12">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h1 className="text-3xl md:text-4xl font-bold mb-8 font-heading text-primary">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 font-heading text-primary">
             Política de Privacidade
           </h1>
           

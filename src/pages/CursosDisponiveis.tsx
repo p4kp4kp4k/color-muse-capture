@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
+import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, BookOpen, Monitor, Wrench, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
 // Cursos de Bacharelado
 const BACHARELADO_COURSES = [
@@ -174,19 +174,28 @@ const CursosDisponiveis = () => {
     setDialogOpen(true);
   };
 
-  useEffect(() => {
-    document.title = "Cursos Disponíveis - Diplomas Reconhecidos pelo MEC | EAD Cursos Nacional";
-    
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", 
-        "Confira mais de 300 cursos disponíveis: Bacharelado, Tecnólogo e Técnico. Diplomas e certificados reconhecidos pelo MEC. Atendimento 24h via WhatsApp."
-      );
-    }
-  }, []);
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Cursos Disponíveis",
+    "description": "Lista de cursos de Bacharelado, Tecnólogo e Técnico reconhecidos pelo MEC",
+    "numberOfItems": 300,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Diplomas de Bacharelado" },
+      { "@type": "ListItem", "position": 2, "name": "Diplomas de Tecnólogo" },
+      { "@type": "ListItem", "position": 3, "name": "Certificados Técnicos" }
+    ]
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <SEOHead
+        title="Cursos Disponíveis - Mais de 300 Opções"
+        description="Confira mais de 300 cursos disponíveis: Bacharelado, Tecnólogo e Técnico. Diplomas e certificados reconhecidos pelo MEC. Atendimento 24h via WhatsApp."
+        keywords="cursos bacharelado, cursos tecnólogo, cursos técnicos, diploma MEC, certificado profissional, graduação EAD"
+        canonicalPath="/cursos"
+        structuredData={faqStructuredData}
+      />
       <Header />
 
       <main className="flex-1">

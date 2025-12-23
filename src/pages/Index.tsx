@@ -8,6 +8,7 @@ import FAQSection from "@/components/FAQSection";
 import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import TypingText from "@/components/TypingText";
+import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
@@ -78,6 +79,20 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Diplomas e Certificados Reconhecidos pelo MEC"
+        description="EAD Cursos Nacional - Diplomas e certificados acadêmicos reconhecidos pelo MEC. Bacharelado, Tecnólogo, Técnico e Pós-Graduação para todo o Brasil. Atendimento 24h via WhatsApp."
+        keywords="diploma reconhecido MEC, certificado técnico, bacharelado EAD, tecnólogo, pós-graduação, graduação online, documentação acadêmica"
+        canonicalPath="/"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          "name": "EAD Cursos Nacional",
+          "description": "Diplomas e certificados acadêmicos reconhecidos pelo MEC",
+          "url": "https://eadcursosnacional.com.br",
+          "areaServed": { "@type": "Country", "name": "Brazil" }
+        }}
+      />
       <Header />
 
       <main className="flex-1">
