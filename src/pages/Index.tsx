@@ -7,6 +7,7 @@ import StatsSection from "@/components/StatsSection";
 import FAQSection from "@/components/FAQSection";
 import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import TypingText from "@/components/TypingText";
 import { Button } from "@/components/ui/button";
 import { COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
@@ -112,7 +113,11 @@ const Index = () => {
 
               {/* Main Heading */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 font-heading leading-[1.1] tracking-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                Sem tempo para estudar, precisa entrar rapidamente no mercado de trabalho?{" "}
+                <TypingText 
+                  text="Sem tempo para estudar, precisa entrar rapidamente no mercado de trabalho?" 
+                  speed={30}
+                  delay={800}
+                />{" "}
                 <span className="text-gold">podemos te ajudar!!!!</span>
               </h1>
 
@@ -169,7 +174,8 @@ const Index = () => {
 
         {/* Benefits Section - New Design */}
         <section className="py-16 bg-primary/10 relative overflow-hidden">
-          <div className="container mx-auto px-4">
+          <ParticlesBackground variant="light" />
+          <div className="container mx-auto px-4 relative z-10">
             <div ref={benefitsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
               {/* Card 1 */}
               <div 
@@ -274,6 +280,7 @@ const Index = () => {
               className="w-full h-full object-cover opacity-10"
             />
           </div>
+          <ParticlesBackground />
           <div className="container mx-auto px-4 relative z-10">
             {/* Header Text */}
             <div className="text-center mb-8 text-primary-foreground max-w-3xl mx-auto">
