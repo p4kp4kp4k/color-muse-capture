@@ -6,6 +6,7 @@ import UniversitiesCarousel from "@/components/UniversitiesCarousel";
 import StatsSection from "@/components/StatsSection";
 import FAQSection from "@/components/FAQSection";
 import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
+import ParticlesBackground from "@/components/ParticlesBackground";
 import { Button } from "@/components/ui/button";
 import { COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
@@ -81,8 +82,11 @@ const Index = () => {
             />
             <div className="absolute inset-0 bg-gradient-hero/90" />
           </div>
+          {/* Particles Animation */}
+          <ParticlesBackground />
+          
           {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-10 left-10 w-80 h-80 bg-gold/15 rounded-full blur-3xl float-animation" />
             <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl float-animation" style={{ animationDelay: '2s' }} />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
