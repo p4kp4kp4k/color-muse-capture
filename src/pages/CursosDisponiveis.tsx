@@ -3,9 +3,10 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { WHATSAPP_LINK } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, BookOpen, Monitor, Wrench, MessageCircle } from "lucide-react";
+import { GraduationCap, BookOpen, Monitor, Wrench, MessageCircle, Sparkles, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Cursos de Bacharelado
 const BACHARELADO_COURSES = [
@@ -104,17 +105,29 @@ const TECNICO_COURSES = [
   "Técnico em Açúcar e Álcool", "Técnico em Biocombustíveis", "Técnico em Enfermagem",
 ];
 
-const CategoryIcon = ({ icon: Icon, title, description }: { icon: React.ElementType; title: string; description: string }) => (
-  <div className="bg-card rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
-    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-      <Icon className="w-6 h-6 text-primary" />
+const CategoryIcon = ({ icon: Icon, title, description, delay }: { icon: React.ElementType; title: string; description: string; delay: number }) => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+  
+  return (
+    <div 
+      ref={ref}
+      className={`futuristic-card group p-6 text-center transition-all duration-700 hover:-translate-y-2 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500 relative">
+        <Icon className="w-8 h-8 text-primary" />
+        <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      </div>
+      <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{title}</h3>
+      <p className="text-sm text-muted-foreground">{description}</p>
     </div>
-    <h3 className="font-semibold text-base mb-1">{title}</h3>
-    <p className="text-xs text-muted-foreground">{description}</p>
-  </div>
-);
+  );
+};
 
-const CourseList = ({ courses, title, id }: { courses: string[]; title: string; id: string }) => {
+const CourseList = ({ courses, title, id, icon: Icon }: { courses: string[]; title: string; id: string; icon: React.ElementType }) => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const columns = 4;
   const itemsPerColumn = Math.ceil(courses.length / columns);
   const columnArrays = Array.from({ length: columns }, (_, i) =>
@@ -122,15 +135,25 @@ const CourseList = ({ courses, title, id }: { courses: string[]; title: string; 
   );
 
   return (
-    <section className="py-8" id={id} aria-labelledby={`${id}-title`}>
+    <section 
+      ref={ref}
+      className={`py-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} 
+      id={id} 
+      aria-labelledby={`${id}-title`}
+    >
       <div className="container mx-auto px-4">
-        <div className="bg-primary py-3 px-6 mb-6 rounded-sm">
-          <h2 id={`${id}-title`} className="text-xl md:text-2xl font-bold text-center font-heading text-primary-foreground">
-            {title}
-          </h2>
+        <div className="bg-gradient-to-r from-primary via-primary/90 to-primary py-4 px-8 mb-8 rounded-xl relative overflow-hidden group">
+          <div className="absolute inset-0 cyber-grid opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="flex items-center justify-center gap-3 relative z-10">
+            <Icon className="w-6 h-6 text-gold" />
+            <h2 id={`${id}-title`} className="text-xl md:text-2xl font-bold text-center font-heading text-primary-foreground">
+              {title}
+            </h2>
+          </div>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-2">
           {columnArrays.map((column, colIndex) => (
             <ul key={colIndex} className="space-y-1" role="list">
               {column.map((course, index) => (
@@ -139,10 +162,13 @@ const CourseList = ({ courses, title, id }: { courses: string[]; title: string; 
                     href={WHATSAPP_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-sm text-primary hover:text-primary/70 hover:underline transition-colors py-0.5"
+                    className="block text-sm text-primary hover:text-neon-cyan hover:translate-x-2 transition-all duration-300 py-1 relative group"
                     title={`Adquirir ${course} - Reconhecido pelo MEC`}
                   >
-                    {course}
+                    <span className="relative">
+                      {course}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-neon-cyan group-hover:w-full transition-all duration-300" />
+                    </span>
                   </a>
                 </li>
               ))}
@@ -171,27 +197,34 @@ const CursosDisponiveis = () => {
       <Header />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-gradient-hero text-primary-foreground py-12 md:py-16">
-          <div className="container mx-auto px-4">
+        {/* Hero Section - Futuristic */}
+        <section className="bg-gradient-hero text-primary-foreground py-16 md:py-20 relative overflow-hidden">
+          <div className="absolute inset-0 cyber-grid opacity-30" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-purple/10 rounded-full blur-3xl" />
+          
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
-              <p className="text-xs uppercase tracking-widest text-primary-foreground/70 mb-2">EAD CURSOS NACIONAL</p>
-              <h1 className="text-2xl md:text-4xl font-bold mb-4 font-heading">
-                Cursos Disponíveis
+              <div className="inline-flex items-center gap-2 glass-card-dark px-4 py-2 rounded-full mb-6 animate-fade-in">
+                <Award className="w-4 h-4 text-gold" />
+                <span className="text-xs uppercase tracking-widest text-gold font-medium">EAD CURSOS NACIONAL</span>
+              </div>
+              <h1 className="text-3xl md:text-5xl font-bold mb-6 font-heading animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                Cursos <span className="text-gradient-futuristic">Disponíveis</span>
               </h1>
-              <p className="text-sm md:text-base text-primary-foreground/85 max-w-2xl mx-auto mb-6 leading-relaxed">
+              <p className="text-base md:text-lg text-primary-foreground/85 max-w-2xl mx-auto mb-8 leading-relaxed glass-card-dark p-6 rounded-2xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 A equipe EAD CURSOS NACIONAL foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. 
                 Trabalhamos há mais de 10 anos para conseguirmos o melhor resultado no processo de seu diploma superior com maior segurança e transparência!
               </p>
               
-              <div className="flex flex-wrap justify-center gap-3">
-                <Button asChild className="bg-card text-primary hover:bg-card/90 font-medium border-0">
+              <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                <Button asChild className="bg-gold text-navy hover:bg-gold/90 font-bold shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300 hover:scale-105">
                   <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
-                    <MessageCircle className="w-4 h-4 mr-2" />
+                    <MessageCircle className="w-5 h-5 mr-2" />
                     Fale Conosco
                   </a>
                 </Button>
-                <Button asChild variant="outline" className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent">
+                <Button asChild variant="outline" className="border-2 border-white/40 text-white hover:bg-white/10 bg-transparent backdrop-blur-sm hover:border-neon-cyan/50 transition-all duration-300">
                   <Link to="/estados" aria-label="Escolher seu estado">
                     Escolher o estado
                   </Link>
@@ -199,95 +232,87 @@ const CursosDisponiveis = () => {
               </div>
             </div>
           </div>
+          
+          {/* Wave bottom */}
+          <div className="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 80" className="w-full h-auto">
+              <path fill="hsl(var(--primary))" d="M0,48L80,42.7C160,37,320,27,480,32C640,37,800,59,960,64C1120,69,1280,59,1360,53.3L1440,48L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z" />
+            </svg>
+          </div>
         </section>
 
-        {/* Category Icons */}
-        <section className="py-8 bg-primary" aria-label="Categorias de cursos">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-4xl mx-auto">
+        {/* Category Icons - Futuristic */}
+        <section className="py-12 bg-primary relative overflow-hidden" aria-label="Categorias de cursos">
+          <div className="absolute inset-0 cyber-grid opacity-20" />
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <CategoryIcon 
                 icon={GraduationCap} 
                 title="Bacharelado" 
                 description="Graduação completa de 4 a 6 anos" 
+                delay={0}
               />
               <CategoryIcon 
                 icon={Monitor} 
                 title="Tecnólogo" 
                 description="Cursos superiores de curta duração" 
+                delay={150}
               />
               <CategoryIcon 
                 icon={Wrench} 
                 title="Técnico" 
                 description="Formação profissional técnica" 
+                delay={300}
               />
             </div>
           </div>
         </section>
 
         {/* Info Text */}
-        <section className="py-6 bg-card border-b border-border">
-          <div className="container mx-auto px-4 text-center max-w-3xl">
-            <p className="text-sm text-muted-foreground">
-              Confira todos os Cursos <span className="text-primary font-medium">Reconhecidos pelo MEC</span> ofertados pela nossa equipe. 
-              Mais de <strong>300 opções</strong> de diplomas e certificados para você escolher.
+        <section className="py-8 bg-card border-b border-border relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/5 via-transparent to-neon-purple/5" />
+          <div className="container mx-auto px-4 text-center max-w-3xl relative z-10">
+            <p className="text-base text-muted-foreground">
+              Confira todos os Cursos <span className="text-gradient-futuristic font-semibold">Reconhecidos pelo MEC</span> ofertados pela nossa equipe. 
+              Mais de <strong className="text-primary">300 opções</strong> de diplomas e certificados para você escolher.
             </p>
           </div>
         </section>
 
         {/* Course Lists */}
-        <CourseList courses={BACHARELADO_COURSES} title="Diplomas de Bacharelado" id="bacharelado" />
-        <CourseList courses={TECNOLOGO_COURSES} title="Diplomas de Tecnólogo" id="tecnologo" />
-        <CourseList courses={TECNICO_COURSES} title="Certificado Técnico" id="tecnico" />
+        <div className="bg-background relative">
+          <div className="absolute inset-0 cyber-grid opacity-5" />
+          <CourseList courses={BACHARELADO_COURSES} title="Diplomas de Bacharelado" id="bacharelado" icon={GraduationCap} />
+          <CourseList courses={TECNOLOGO_COURSES} title="Diplomas de Tecnólogo" id="tecnologo" icon={Monitor} />
+          <CourseList courses={TECNICO_COURSES} title="Certificado Técnico" id="tecnico" icon={Wrench} />
+        </div>
 
-        {/* CTA Section */}
-        <section className="py-12 bg-gradient-hero text-primary-foreground">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-xl md:text-2xl font-bold mb-6 font-heading">
-              TENHA SEU DIPLOMA HOJE MESMO!
+        {/* CTA Section - Futuristic */}
+        <section className="py-16 bg-gradient-hero text-primary-foreground relative overflow-hidden">
+          <div className="absolute inset-0 cyber-grid opacity-20" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl" />
+          
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <div className="inline-flex items-center gap-2 glass-card-dark px-4 py-2 rounded-full mb-6">
+              <Sparkles className="w-4 h-4 text-gold" />
+              <span className="text-sm font-medium text-gold">Realize seu Sonho</span>
+            </div>
+            <h2 className="text-2xl md:text-4xl font-bold mb-8 font-heading">
+              TENHA SEU DIPLOMA <span className="text-gold">HOJE MESMO!</span>
             </h2>
             <Button
               asChild
               size="lg"
-              className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-medium"
+              className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-bold px-10 py-6 shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:shadow-[0_0_50px_rgba(37,211,102,0.6)] transition-all duration-300 hover:scale-105 rounded-xl"
             >
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Falar com a equipe pelo WhatsApp">
-                <MessageCircle className="w-5 h-5 mr-2" />
+                <MessageCircle className="w-6 h-6 mr-2" />
                 Falar com a Equipe
               </a>
             </Button>
           </div>
         </section>
-
-        {/* Schema.org Structured Data */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": "Cursos Disponíveis - EAD Cursos Nacional",
-            "description": "Lista completa de cursos de Bacharelado, Tecnólogo e Técnico reconhecidos pelo MEC",
-            "numberOfItems": BACHARELADO_COURSES.length + TECNOLOGO_COURSES.length + TECNICO_COURSES.length,
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Diplomas de Bacharelado",
-                "description": `${BACHARELADO_COURSES.length} cursos de graduação disponíveis`
-              },
-              {
-                "@type": "ListItem", 
-                "position": 2,
-                "name": "Diplomas de Tecnólogo",
-                "description": `${TECNOLOGO_COURSES.length} cursos tecnológicos disponíveis`
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Certificados Técnicos",
-                "description": `${TECNICO_COURSES.length} cursos técnicos disponíveis`
-              }
-            ]
-          })
-        }} />
       </main>
 
       <Footer />
