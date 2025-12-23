@@ -33,56 +33,133 @@ const NIVEIS = [
   { value: "pos-doutorado", label: "Pós-Graduação Stricto Sensu – Doutorado" },
 ];
 
-const NIVEL_EXAMPLES: Record<string, { placeholder: string; examples: string; avoid: string; specific: string }> = {
+const NIVEL_EXAMPLES: Record<string, { placeholder: string; examples: string; avoidList: string[]; specificList: string[] }> = {
   "graduacao-bacharelado": {
     placeholder: "Ex: Direito, Medicina, Enfermagem, Engenharia Civil",
-    examples: "Direito, Medicina, Enfermagem, Engenharia Civil, Psicologia, Administração",
-    avoid: '"Qualquer graduação", "Algum bacharelado"',
-    specific: '"Direito", "Medicina", "Engenharia Civil"',
+    examples: "Direito, Medicina, Enfermagem, Engenharia Civil, Psicologia, Administração, Arquitetura",
+    avoidList: [
+      '"Qualquer graduação"',
+      '"Algum bacharelado"',
+      '"Curso de faculdade"',
+      '"Graduação qualquer"',
+    ],
+    specificList: [
+      '"Direito"',
+      '"Medicina"',
+      '"Engenharia Civil"',
+      '"Psicologia"',
+      '"Enfermagem"',
+    ],
   },
   "graduacao-licenciatura": {
     placeholder: "Ex: Pedagogia, Matemática, Letras, História",
-    examples: "Pedagogia, Matemática, Letras, História, Geografia, Educação Física",
-    avoid: '"Qualquer licenciatura", "Alguma licenciatura"',
-    specific: '"Pedagogia", "Matemática", "Letras"',
+    examples: "Pedagogia, Matemática, Letras, História, Geografia, Educação Física, Biologia",
+    avoidList: [
+      '"Qualquer licenciatura"',
+      '"Alguma licenciatura"',
+      '"Curso para professor"',
+      '"Licenciatura qualquer"',
+    ],
+    specificList: [
+      '"Pedagogia"',
+      '"Matemática"',
+      '"Letras - Português"',
+      '"História"',
+      '"Educação Física"',
+    ],
   },
   "graduacao-tecnologo": {
     placeholder: "Ex: Gestão de RH, Marketing, Análise de Sistemas, Logística",
-    examples: "Gestão de RH, Marketing, Análise de Sistemas, Logística, Radiologia",
-    avoid: '"Qualquer tecnólogo", "Algum curso tecnológico"',
-    specific: '"Gestão de RH", "Marketing", "Logística"',
+    examples: "Gestão de RH, Marketing, Análise de Sistemas, Logística, Radiologia, Estética",
+    avoidList: [
+      '"Qualquer tecnólogo"',
+      '"Algum curso tecnológico"',
+      '"Tecnologia qualquer"',
+      '"Curso técnico superior"',
+    ],
+    specificList: [
+      '"Gestão de RH"',
+      '"Marketing"',
+      '"Análise e Desenvolvimento de Sistemas"',
+      '"Logística"',
+      '"Radiologia"',
+    ],
   },
   "tecnico": {
     placeholder: "Ex: Técnico em Enfermagem, Técnico em Mecânica, Técnico em Segurança do Trabalho",
-    examples: "Técnico em Enfermagem, Técnico em Mecânica, Técnico em Segurança do Trabalho, Técnico em Radiologia",
-    avoid: '"Qualquer técnico", "Algum curso técnico"',
-    specific: '"Técnico em Enfermagem", "Técnico em Mecânica"',
+    examples: "Técnico em Enfermagem, Técnico em Mecânica, Técnico em Segurança do Trabalho, Técnico em Radiologia, Técnico em Informática",
+    avoidList: [
+      '"Qualquer técnico"',
+      '"Algum curso técnico"',
+      '"Técnico qualquer"',
+      '"Curso profissionalizante"',
+    ],
+    specificList: [
+      '"Técnico em Enfermagem"',
+      '"Técnico em Mecânica"',
+      '"Técnico em Segurança do Trabalho"',
+      '"Técnico em Radiologia"',
+      '"Técnico em Edificações"',
+    ],
   },
   "pos-especializacao": {
-    placeholder: "Ex: MBA em Gestão, Especialização em Docência, MBA em Finanças",
-    examples: "MBA em Gestão, Especialização em Docência, MBA em Finanças, Especialização em Direito Tributário",
-    avoid: '"Qualquer pós", "Alguma especialização"',
-    specific: '"MBA em Gestão", "Especialização em Docência"',
+    placeholder: "Ex: MBA em Gestão Empresarial, Especialização em Docência, MBA em Finanças",
+    examples: "MBA em Gestão Empresarial, Especialização em Docência do Ensino Superior, MBA em Finanças, Especialização em Direito Tributário",
+    avoidList: [
+      '"Qualquer pós"',
+      '"Alguma especialização"',
+      '"MBA qualquer"',
+      '"Pós-graduação genérica"',
+    ],
+    specificList: [
+      '"MBA em Gestão Empresarial"',
+      '"Especialização em Docência do Ensino Superior"',
+      '"MBA em Finanças"',
+      '"Especialização em Direito Tributário"',
+      '"MBA em Marketing Digital"',
+    ],
   },
   "pos-mestrado": {
     placeholder: "Ex: Mestrado em Administração, Mestrado em Educação, Mestrado em Direito",
-    examples: "Mestrado em Administração, Mestrado em Educação, Mestrado em Direito, Mestrado em Engenharia",
-    avoid: '"Qualquer mestrado", "Algum mestrado"',
-    specific: '"Mestrado em Administração", "Mestrado em Educação"',
+    examples: "Mestrado em Administração, Mestrado em Educação, Mestrado em Direito, Mestrado em Engenharia, Mestrado em Psicologia",
+    avoidList: [
+      '"Qualquer mestrado"',
+      '"Algum mestrado"',
+      '"Mestrado qualquer"',
+      '"Mestrado genérico"',
+    ],
+    specificList: [
+      '"Mestrado em Administração"',
+      '"Mestrado em Educação"',
+      '"Mestrado em Direito"',
+      '"Mestrado em Engenharia Civil"',
+      '"Mestrado em Psicologia"',
+    ],
   },
   "pos-doutorado": {
     placeholder: "Ex: Doutorado em Administração, Doutorado em Educação, Doutorado em Direito",
-    examples: "Doutorado em Administração, Doutorado em Educação, Doutorado em Direito, Doutorado em Engenharia",
-    avoid: '"Qualquer doutorado", "Algum doutorado"',
-    specific: '"Doutorado em Administração", "Doutorado em Educação"',
+    examples: "Doutorado em Administração, Doutorado em Educação, Doutorado em Direito, Doutorado em Engenharia, Doutorado em Ciências da Saúde",
+    avoidList: [
+      '"Qualquer doutorado"',
+      '"Algum doutorado"',
+      '"Doutorado qualquer"',
+      '"PhD genérico"',
+    ],
+    specificList: [
+      '"Doutorado em Administração"',
+      '"Doutorado em Educação"',
+      '"Doutorado em Direito"',
+      '"Doutorado em Engenharia"',
+      '"Doutorado em Ciências da Saúde"',
+    ],
   },
 };
 
 const DEFAULT_EXAMPLES = {
   placeholder: "Selecione o nível do curso primeiro",
   examples: "Selecione o nível acima para ver exemplos",
-  avoid: '"Qualquer curso", "Alguma formação"',
-  specific: '"Enfermagem", "Direito", "Gestão de RH"',
+  avoidList: ['"Qualquer curso"', '"Alguma formação"', '"Curso qualquer"'],
+  specificList: ['"Enfermagem"', '"Direito"', '"Gestão de RH"'],
 };
 
 const WhatsAppContactDialog = ({
@@ -309,18 +386,34 @@ const WhatsAppContactDialog = ({
               className="flex items-start gap-2 p-3 bg-muted/30 border border-border rounded-lg transition-all duration-300 animate-fade-in"
             >
               <AlertCircle className="h-3.5 w-3.5 text-muted-foreground mt-0.5 flex-shrink-0" />
-              <div className="text-xs text-muted-foreground space-y-2">
-                <div className="space-y-1">
-                  <p className="flex items-center gap-1.5">
+              <div className="text-xs text-muted-foreground space-y-3">
+                <div className="space-y-1.5">
+                  <p className="flex items-center gap-1.5 font-medium text-foreground/80">
                     <X className="h-3 w-3 text-destructive" />
-                    <span>Evite: {currentExamples.avoid}</span>
+                    <span>Evite:</span>
                   </p>
+                  <ul className="ml-5 space-y-0.5">
+                    {currentExamples.avoidList.map((item, i) => (
+                      <li key={i} className="flex items-center gap-1.5">
+                        <span className="w-1 h-1 bg-destructive/60 rounded-full" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="space-y-1">
-                  <p className="flex items-center gap-1.5">
+                <div className="space-y-1.5">
+                  <p className="flex items-center gap-1.5 font-medium text-foreground/80">
                     <Check className="h-3 w-3 text-foreground" />
-                    <span>Seja específico: {currentExamples.specific}</span>
+                    <span>Seja específico:</span>
                   </p>
+                  <ul className="ml-5 space-y-0.5">
+                    {currentExamples.specificList.map((item, i) => (
+                      <li key={i} className="flex items-center gap-1.5">
+                        <span className="w-1 h-1 bg-primary/60 rounded-full" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
