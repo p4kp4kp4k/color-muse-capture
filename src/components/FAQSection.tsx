@@ -1,4 +1,5 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import ParticlesBackground from "@/components/ParticlesBackground";
 import {
   Accordion,
   AccordionContent,
@@ -38,8 +39,9 @@ const FAQSection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section className="py-16 md:py-24 bg-muted/30" ref={ref}>
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24 bg-muted/30 relative overflow-hidden" ref={ref}>
+      <ParticlesBackground variant="light" />
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div 
           className={`text-center mb-12 transition-all duration-700 ${

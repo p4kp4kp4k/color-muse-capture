@@ -10,7 +10,11 @@ interface Particle {
   color: string;
 }
 
-const ParticlesBackground = () => {
+interface ParticlesBackgroundProps {
+  variant?: "dark" | "light";
+}
+
+const ParticlesBackground = ({ variant = "dark" }: ParticlesBackgroundProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number>();
@@ -31,25 +35,36 @@ const ParticlesBackground = () => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // Initialize particles
-    const colors = [
-      "rgba(212, 175, 55, 0.6)", // gold
-      "rgba(255, 255, 255, 0.4)", // white
-      "rgba(212, 175, 55, 0.3)", // gold light
-      "rgba(59, 130, 246, 0.4)", // blue
-    ];
+    // Colors based on variant
+    const colors = variant === "dark" 
+      ? [
+          "rgba(212, 175, 55, 0.6)", // gold
+          "rgba(255, 255, 255, 0.4)", // white
+          "rgba(212, 175, 55, 0.3)", // gold light
+          "rgba(59, 130, 246, 0.4)", // blue
+        ]
+      : [
+          "rgba(15, 40, 80, 0.3)", // navy
+          "rgba(212, 175, 55, 0.4)", // gold
+          "rgba(15, 40, 80, 0.2)", // navy light
+          "rgba(59, 130, 246, 0.3)", // blue
+        ];
+
+    const connectionColor = variant === "dark" 
+      ? "rgba(212, 175, 55, 0.15)"
+      : "rgba(15, 40, 80, 0.1)";
 
     const createParticles = () => {
-      const particleCount = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+      const particleCount = Math.min(60, Math.floor((canvas.width * canvas.height) / 20000));
       particlesRef.current = [];
 
       for (let i = 0; i < particleCount; i++) {
         particlesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 3 + 1,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          size: Math.random() * 2.5 + 0.5,
           opacity: Math.random() * 0.5 + 0.2,
           color: colors[Math.floor(Math.random() * colors.length)],
         });
@@ -75,9 +90,10 @@ const ParticlesBackground = () => {
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 120) {
+          if (distance < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(212, 175, 55, ${0.15 * (1 - distance / 120)})`;
+            const opacity = 0.15 * (1 - distance / 100);
+            ctx.strokeStyle = connectionColor.replace("0.15", opacity.toString()).replace("0.1", opacity.toString());
             ctx.lineWidth = 0.5;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -96,10 +112,10 @@ const ParticlesBackground = () => {
         const dy = mouseRef.current.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 150) {
-          const force = (150 - distance) / 150;
-          particle.vx -= (dx / distance) * force * 0.02;
-          particle.vy -= (dy / distance) * force * 0.02;
+        if (distance < 120) {
+          const force = (120 - distance) / 120;
+          particle.vx -= (dx / distance) * force * 0.015;
+          particle.vy -= (dy / distance) * force * 0.015;
         }
 
         // Update position
@@ -113,8 +129,8 @@ const ParticlesBackground = () => {
         if (particle.y > canvas.height) particle.y = 0;
 
         // Apply friction
-        particle.vx *= 0.99;
-        particle.vy *= 0.99;
+        particle.vx *= 0.995;
+        particle.vy *= 0.995;
 
         // Draw particle with glow
         ctx.beginPath();
@@ -154,13 +170,13 @@ const ParticlesBackground = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [variant]);
 
   return (
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full pointer-events-auto z-0"
-      style={{ mixBlendMode: "screen" }}
+      style={{ mixBlendMode: variant === "dark" ? "screen" : "multiply" }}
     />
   );
 };
