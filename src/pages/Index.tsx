@@ -54,7 +54,12 @@ const Index = () => {
   const featuredCourses = COURSES.slice(0, 8);
   const { ref: coursesRef, isVisible: coursesVisible } = useScrollAnimation({ threshold: 0.15 });
   const { ref: benefitsRef, isVisible: benefitsVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: securityRef, isVisible: securityVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: teamRef, isVisible: teamVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: trustRef, isVisible: trustVisible } = useScrollAnimation({ threshold: 0.1 });
   const parallaxOffset = useParallax(0.3);
+  const parallaxOffset2 = useParallax(0.2);
+  const parallaxOffset3 = useParallax(0.15);
   
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState("");
@@ -243,18 +248,19 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Security Section with Image */}
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div className="relative group">
+        {/* Security Section with Image and Parallax */}
+            <div ref={securityRef} className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className={`relative group transition-all duration-1000 ${securityVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
                 <div className="absolute -inset-6 bg-gradient-to-br from-primary/30 to-gold/30 rounded-3xl blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
                 <img 
                   src={graduateOutdoorBanner}
                   alt="Diploma certificado pelo MEC"
                   className="relative rounded-3xl shadow-2xl w-full object-cover transform group-hover:scale-[1.02] transition-transform duration-700"
+                  style={{ transform: `translateY(${parallaxOffset2 * 0.3}px)` }}
                   loading="lazy"
                 />
               </div>
-              <div className="text-center md:text-left">
+              <div className={`text-center md:text-left transition-all duration-1000 delay-200 ${securityVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}>
                 <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-6">
                   <Shield className="w-4 h-4 text-primary" />
                   <span className="text-sm font-medium text-primary">100% Seguro</span>
@@ -268,9 +274,9 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Additional Testimonial Image */}
-            <div className="mt-20 md:mt-28 grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div className="text-center md:text-left order-2 md:order-1">
+            {/* Additional Testimonial Image with Parallax */}
+            <div ref={trustRef} className="mt-20 md:mt-28 grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className={`text-center md:text-left order-2 md:order-1 transition-all duration-1000 delay-200 ${trustVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-20'}`}>
                 <div className="inline-flex items-center gap-2 bg-gold/10 rounded-full px-4 py-2 mb-6">
                   <Sparkles className="w-4 h-4 text-gold" />
                   <span className="text-sm font-medium text-gold">Realize seu sonho</span>
@@ -282,12 +288,13 @@ const Index = () => {
                   Nunca é tarde para conquistar o seu diploma. Milhares de pessoas já realizaram o sonho da formatura com nossa ajuda. Você também pode!
                 </p>
               </div>
-              <div className="relative order-1 md:order-2 group">
+              <div className={`relative order-1 md:order-2 group transition-all duration-1000 ${trustVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}>
                 <div className="absolute -inset-6 bg-gradient-to-br from-gold/30 to-primary/30 rounded-3xl blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
                 <img 
                   src={testimonialBanner}
                   alt="Formanda realizando o sonho do diploma"
                   className="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-700"
+                  style={{ transform: `translateY(${parallaxOffset3 * 0.4}px)` }}
                   loading="lazy"
                 />
               </div>
@@ -295,14 +302,15 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Featured Courses with 3D hover effects */}
+        {/* Featured Courses with 3D hover effects and Parallax */}
         <section className="py-16 md:py-24 bg-primary relative overflow-hidden">
-          {/* Background Banner */}
+          {/* Background Banner with Parallax */}
           <div className="absolute inset-0">
             <img 
               src={classroomTeacherBanner} 
               alt="Cursos online EAD" 
-              className="w-full h-full object-cover opacity-10"
+              className="w-full h-full object-cover opacity-10 scale-110"
+              style={{ transform: `translateY(${parallaxOffset2 * 0.2}px) scale(1.1)` }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-primary/95 via-primary to-primary/95" />
           </div>
@@ -404,14 +412,15 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Security Section with enhanced styling */}
+        {/* Security Section with enhanced styling and Parallax */}
         <section className="py-24 md:py-32 bg-card relative overflow-hidden">
-          {/* Banner Image */}
+          {/* Banner Image with Parallax */}
           <div className="absolute inset-0">
             <img 
               src={graduateClassroomBanner} 
               alt="Segurança e confiança" 
-              className="w-full h-full object-cover opacity-5"
+              className="w-full h-full object-cover opacity-5 scale-110"
+              style={{ transform: `translateY(${parallaxOffset3 * 0.25}px) scale(1.1)` }}
             />
           </div>
           <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent" />
@@ -474,28 +483,29 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Team Section with glass morphism */}
+        {/* Team Section with glass morphism and Parallax */}
         <section className="py-24 md:py-32 bg-gradient-hero text-primary-foreground relative overflow-hidden">
           <div className="absolute inset-0">
             <img 
               src={heroMainBanner} 
               alt="Formandos celebrando" 
-              className="w-full h-full object-cover opacity-20"
+              className="w-full h-full object-cover opacity-20 scale-110"
+              style={{ transform: `translateY(${parallaxOffset * 0.15}px) scale(1.1)` }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-primary/70 to-navy/80" />
           </div>
           <div className="absolute inset-0 cyber-grid opacity-10" />
           
-          <div className="container mx-auto px-4 text-center relative z-10">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 border border-white/20">
+          <div ref={teamRef} className="container mx-auto px-4 text-center relative z-10">
+            <div className={`inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 border border-white/20 transition-all duration-700 ${teamVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
               <Users className="w-5 h-5 text-gold" />
               <span className="text-sm font-medium">Nossa Equipe</span>
             </div>
             
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 font-heading">
+            <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-8 font-heading transition-all duration-700 delay-100 ${teamVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               Somos a Equipe <span className="text-gold">Ead Cursos Nacional</span>
             </h2>
-            <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto mb-14 leading-relaxed">
+            <p className={`text-xl text-primary-foreground/90 max-w-3xl mx-auto mb-14 leading-relaxed transition-all duration-700 delay-200 ${teamVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               Nossa missão é ajudar você a conquistar seus objetivos profissionais
               com documentação acadêmica de qualidade, segurança e agilidade.
             </p>
@@ -505,7 +515,11 @@ const Index = () => {
                 { icon: Trophy, label: "+5 Anos de Experiência" },
                 { icon: Globe, label: "Atendemos Todo Brasil" }
               ].map((item, index) => (
-                <div key={index} className="group glass-card rounded-2xl px-8 py-5 flex items-center gap-4 hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-default">
+                <div 
+                  key={index} 
+                  className={`group glass-card rounded-2xl px-8 py-5 flex items-center gap-4 hover:bg-white/20 hover:scale-105 transition-all duration-500 cursor-default ${teamVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  style={{ transitionDelay: teamVisible ? `${300 + index * 100}ms` : '0ms' }}
+                >
                   <item.icon className="w-8 h-8 text-gold group-hover:scale-110 transition-transform" />
                   <span className="font-semibold text-lg">{item.label}</span>
                 </div>
