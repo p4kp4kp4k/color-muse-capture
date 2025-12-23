@@ -94,6 +94,7 @@ const WhatsAppContactDialog = ({
   const [nivel, setNivel] = useState("");
   const [curso, setCurso] = useState(courseName);
   const [isAnimated, setIsAnimated] = useState(false);
+  const [examplesKey, setExamplesKey] = useState(0);
 
   useEffect(() => {
     if (open) {
@@ -108,6 +109,12 @@ const WhatsAppContactDialog = ({
       setCurso(courseName);
     }
   }, [courseName]);
+
+  const handleNivelChange = (newNivel: string) => {
+    setNivel(newNivel);
+    setCurso(""); // Clear course when level changes
+    setExamplesKey(prev => prev + 1); // Trigger animation
+  };
 
   const getNivelLabel = (value: string) => {
     const found = NIVEIS.find(n => n.value === value);
@@ -262,7 +269,7 @@ const WhatsAppContactDialog = ({
                 <GraduationCap className="h-4 w-4" />
                 Nível do curso
               </Label>
-              <Select value={nivel} onValueChange={setNivel}>
+              <Select value={nivel} onValueChange={handleNivelChange}>
                 <SelectTrigger className="h-10 sm:h-11 text-sm bg-background border-border focus:border-foreground/30 focus:ring-foreground/10">
                   <SelectValue placeholder="Selecione o nível do curso" />
                 </SelectTrigger>
@@ -288,13 +295,19 @@ const WhatsAppContactDialog = ({
                 disabled={!nivel}
                 className="h-10 sm:h-11 text-sm bg-background border-border focus:border-foreground/30 focus:ring-foreground/10 transition-all duration-200 disabled:opacity-50"
               />
-              <div className="text-[10px] sm:text-xs text-muted-foreground space-y-0.5 mt-1">
+              <div 
+                key={examplesKey}
+                className="text-[10px] sm:text-xs text-muted-foreground space-y-0.5 mt-1 animate-fade-in"
+              >
                 <p><span className="font-medium">Exemplos:</span> {currentExamples.examples}</p>
               </div>
             </div>
 
             {/* Notice */}
-            <div className="flex items-start gap-2 p-3 bg-muted/30 border border-border rounded-lg">
+            <div 
+              key={`notice-${examplesKey}`}
+              className="flex items-start gap-2 p-3 bg-muted/30 border border-border rounded-lg transition-all duration-300 animate-fade-in"
+            >
               <AlertCircle className="h-3.5 w-3.5 text-muted-foreground mt-0.5 flex-shrink-0" />
               <div className="text-xs text-muted-foreground space-y-2">
                 <div className="space-y-1">
