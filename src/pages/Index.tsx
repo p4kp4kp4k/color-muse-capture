@@ -332,12 +332,12 @@ const Index = () => {
               </p>
             </div>
             
-            {/* Course Cards with 3D effects */}
+            {/* Course Cards - Minimalist Design */}
             <div ref={coursesRef} className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {featuredCourses.map((course, index) => (
                 <div
                   key={index}
-                  className={`group perspective-1000 ${
+                  className={`group ${
                     coursesVisible 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-8'
@@ -348,53 +348,28 @@ const Index = () => {
                     transitionDuration: '700ms'
                   }}
                 >
-                  <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 hover:rotate-1">
-                    {/* Glow effect on hover */}
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-gold to-primary rounded-2xl opacity-0 group-hover:opacity-75 blur transition-all duration-500" />
+                  <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    {/* Image */}
+                    <div className="relative h-32 md:h-40 overflow-hidden">
+                      <img 
+                        src={COURSE_IMAGES[course.name] || "/images/courses/pedagogia.jpg"} 
+                        alt={course.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
                     
-                    <div className="relative bg-white rounded-2xl overflow-hidden">
-                      {/* Image container with overlay */}
-                      <div className="relative h-36 md:h-44 overflow-hidden">
-                        <img 
-                          src={COURSE_IMAGES[course.name] || "/images/courses/pedagogia.jpg"} 
-                          alt={course.name}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-                        
-                        {/* Badge */}
-                        <div className="absolute top-3 left-3">
-                          <span className="bg-gold text-navy text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
-                            {course.category}
-                          </span>
-                        </div>
-                        
-                        {/* Floating icon on hover */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-100 scale-75">
-                          <div className="w-16 h-16 bg-white/95 rounded-2xl flex items-center justify-center shadow-2xl">
-                            <GraduationCap className="w-8 h-8 text-primary" />
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="p-5 md:p-6">
-                        <h3 className="text-sm md:text-base font-bold text-gray-900 mb-2 leading-tight group-hover:text-primary transition-colors duration-300">
-                          Adquira o Diploma de {course.name}
-                        </h3>
-                        <p className="text-xs text-gray-500 mb-4 leading-relaxed hidden md:block">
-                          Diploma de nível superior bacharelado, licenciatura ou pós-graduação.
-                        </p>
-                        <button
-                          onClick={() => handleWhatsAppClick(course.name)}
-                          className="group/btn inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs md:text-sm font-semibold py-3.5 px-4 rounded-xl transition-all duration-300 w-full shadow-md hover:shadow-lg group-hover:bg-whatsapp group-hover:shadow-whatsapp/30"
-                        >
-                          <MessageCircle size={16} className="transition-transform duration-300 group-hover/btn:scale-110" />
-                          Fale Conosco
-                          <ArrowRight size={14} className="transform group-hover/btn:translate-x-1 transition-transform" />
-                        </button>
-                      </div>
+                    {/* Content */}
+                    <div className="p-4">
+                      <h3 className="text-sm md:text-base font-semibold text-gray-900 mb-3 line-clamp-2">
+                        {course.name}
+                      </h3>
+                      <button
+                        onClick={() => handleWhatsAppClick(course.name)}
+                        className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs md:text-sm font-medium py-2.5 px-4 rounded-lg transition-colors duration-200 w-full"
+                      >
+                        <MessageCircle size={14} />
+                        Fale Conosco
+                      </button>
                     </div>
                   </div>
                 </div>
