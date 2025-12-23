@@ -10,8 +10,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { MapPin, MessageCircle, HelpCircle, Sparkles } from "lucide-react";
 
 const STATES_WITH_FLAGS = [
   { name: "Acre", abbr: "AC", flagUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Bandeira_do_Acre.svg/45px-Bandeira_do_Acre.svg.png" },
@@ -44,110 +42,60 @@ const STATES_WITH_FLAGS = [
 ];
 
 const EscolhaEstado = () => {
-  const { ref: statesRef, isVisible: statesVisible } = useScrollAnimation({ threshold: 0.1 });
-  const { ref: faqRef, isVisible: faqVisible } = useScrollAnimation({ threshold: 0.1 });
-
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-1">
-        {/* Hero - Futuristic */}
-        <section className="bg-gradient-hero text-primary-foreground py-20 relative overflow-hidden">
-          <div className="absolute inset-0 cyber-grid opacity-30" />
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-purple/10 rounded-full blur-3xl" />
-          
-          {/* Floating particles */}
-          <div className="absolute top-20 right-20 w-2 h-2 bg-gold rounded-full animate-ping" style={{ animationDuration: '3s' }} />
-          <div className="absolute bottom-32 left-32 w-3 h-3 bg-neon-cyan rounded-full animate-ping" style={{ animationDuration: '4s' }} />
-          
-          <div className="container mx-auto px-4 text-center relative z-10">
-            <div className="inline-flex items-center gap-2 glass-card-dark px-4 py-2 rounded-full mb-6 animate-fade-in">
-              <MapPin className="w-4 h-4 text-gold" />
-              <span className="text-xs uppercase tracking-widest text-gold font-medium">Atendimento Nacional</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-6 font-heading animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              Escolha seu <span className="text-gradient-futuristic">Estado</span>
+        {/* Hero */}
+        <section className="bg-gradient-hero text-primary-foreground py-16">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 font-heading">
+              Escolha seu <span className="text-gold">Estado</span>
             </h1>
-            <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto glass-card-dark p-6 rounded-2xl animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
               Atendemos em todos os 27 estados do Brasil. Selecione o seu estado
               e fale com nossa equipe especializada.
             </p>
           </div>
-          
-          {/* Wave bottom */}
-          <div className="absolute bottom-0 left-0 right-0">
-            <svg viewBox="0 0 1440 80" className="w-full h-auto">
-              <path fill="hsl(var(--background))" d="M0,48L80,42.7C160,37,320,27,480,32C640,37,800,59,960,64C1120,69,1280,59,1360,53.3L1440,48L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z" />
-            </svg>
-          </div>
         </section>
 
-        {/* States Grid - Futuristic */}
-        <section className="py-20 bg-background relative overflow-hidden">
-          <div className="absolute inset-0 cyber-grid opacity-5" />
-          <div className="absolute top-1/4 left-0 w-96 h-96 bg-neon-purple/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-neon-cyan/5 rounded-full blur-3xl" />
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <div 
-              ref={statesRef}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"
-            >
-              {STATES_WITH_FLAGS.map((state, index) => (
-                <div
+        {/* States Grid */}
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+              {STATES_WITH_FLAGS.map((state) => (
+                <StateCard
                   key={state.abbr}
-                  className={`transition-all duration-700 ${
-                    statesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}
-                  style={{ transitionDelay: `${Math.min(index * 50, 500)}ms` }}
-                >
-                  <StateCard
-                    name={state.name}
-                    abbr={state.abbr}
-                    flagUrl={state.flagUrl}
-                  />
-                </div>
+                  name={state.name}
+                  abbr={state.abbr}
+                  flagUrl={state.flagUrl}
+                />
               ))}
             </div>
           </div>
         </section>
 
-        {/* FAQ Section - Futuristic */}
-        <section className="py-20 bg-gradient-to-b from-secondary/30 to-background relative overflow-hidden">
-          <div className="absolute inset-0 cyber-grid opacity-5" />
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <div 
-              ref={faqRef}
-              className={`text-center mb-14 transition-all duration-1000 ${faqVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-            >
-              <div className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full mb-6">
-                <HelpCircle className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-primary">FAQ</span>
-              </div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4 font-heading">
-                Dúvidas e <span className="text-gradient-futuristic">Perguntas Frequentes</span>
+        {/* FAQ Section */}
+        <section className="py-16 bg-secondary/50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
+                Dúvidas e <span className="text-primary">Perguntas Frequentes</span>
               </h2>
               <p className="text-muted-foreground text-lg">
                 Tire suas dúvidas sobre nossos serviços
               </p>
             </div>
-            
             <div className="max-w-3xl mx-auto">
               <Accordion type="single" collapsible className="space-y-4">
                 {FAQ_ITEMS.map((item, index) => (
                   <AccordionItem
                     key={index}
                     value={`item-${index}`}
-                    className={`futuristic-card px-6 transition-all duration-700 ${
-                      faqVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}
-                    style={{ transitionDelay: `${index * 100}ms` }}
+                    className="bg-card border border-border rounded-lg px-6"
                   >
-                    <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary transition-colors">
+                    <AccordionTrigger className="text-left font-semibold hover:no-underline">
                       {item.question}
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground">
@@ -157,18 +105,16 @@ const EscolhaEstado = () => {
                 ))}
               </Accordion>
             </div>
-            
-            <div className="text-center mt-14">
-              <p className="text-muted-foreground mb-6">
+            <div className="text-center mt-12">
+              <p className="text-muted-foreground mb-4">
                 Ainda tem dúvidas? Fale diretamente com nossa equipe!
               </p>
               <Button
                 asChild
                 size="lg"
-                className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-bold px-10 py-6 shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:shadow-[0_0_50px_rgba(37,211,102,0.6)] transition-all duration-300 hover:scale-105 rounded-xl"
+                className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-bold"
               >
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-5 h-5 mr-2" />
                   Chamar no WhatsApp
                 </a>
               </Button>
