@@ -12,7 +12,8 @@ import { Button } from "@/components/ui/button";
 import { COURSES, BENEFITS, TESTIMONIALS } from "@/lib/constants";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { useParallax } from "@/hooks/useParallax";
+import { useParallax, useParallax3D, useScrollReveal3D } from "@/hooks/useParallax";
+import { useCardReveal3D } from "@/hooks/useCardReveal3D";
 import { Link } from "react-router-dom";
 import { 
   Star, Shield, Clock, GraduationCap, BookOpen, 
@@ -54,9 +55,18 @@ const Index = () => {
   const { getWhatsAppLink } = useSiteConfigContext();
   const whatsappLink = getWhatsAppLink();
   const featuredCourses = COURSES.slice(0, 8);
-  const { ref: coursesRef, isVisible: coursesVisible } = useScrollAnimation({ threshold: 0.15 });
   const { ref: benefitsRef, isVisible: benefitsVisible } = useScrollAnimation({ threshold: 0.1 });
   const parallaxOffset = useParallax(0.3);
+  
+  // 3D Parallax for images
+  const { ref: image1Ref, style: image1Style } = useParallax3D<HTMLDivElement>({ intensity: 0.6, scale: 1.03 });
+  const { ref: image2Ref, style: image2Style } = useParallax3D<HTMLDivElement>({ intensity: 0.5, scale: 1.02 });
+  
+  // 3D Card reveal for courses
+  const { containerRef: coursesRef, isVisible: coursesVisible, getCardStyle } = useCardReveal3D({ 
+    staggerDelay: 80, 
+    duration: 700 
+  });
   
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState("");
@@ -228,12 +238,16 @@ const Index = () => {
 
             {/* Security Section with Image */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-gold/20 rounded-3xl blur-2xl" />
+              <div 
+                ref={image1Ref}
+                className="relative"
+                style={image1Style}
+              >
+                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-gold/20 rounded-3xl blur-2xl animate-pulse" />
                 <img 
                   src={graduateOutdoorBanner}
                   alt="Diploma certificado pelo MEC"
-                  className="relative rounded-3xl shadow-2xl w-full object-cover"
+                  className="relative rounded-3xl shadow-2xl w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
                   loading="lazy"
                 />
               </div>
@@ -257,12 +271,16 @@ const Index = () => {
                   Nunca é tarde para conquistar o seu diploma. Milhares de pessoas já realizaram o sonho da formatura com nossa ajuda. Você também pode!
                 </p>
               </div>
-              <div className="relative order-1 md:order-2">
-                <div className="absolute -inset-4 bg-gradient-to-br from-gold/20 to-primary/20 rounded-3xl blur-2xl" />
+              <div 
+                ref={image2Ref}
+                className="relative order-1 md:order-2"
+                style={image2Style}
+              >
+                <div className="absolute -inset-4 bg-gradient-to-br from-gold/20 to-primary/20 rounded-3xl blur-2xl animate-pulse" />
                 <img 
                   src={testimonialBanner}
                   alt="Formanda realizando o sonho do diploma"
-                  className="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto object-cover"
+                  className="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto object-cover transition-transform duration-300 hover:scale-[1.02]"
                   loading="lazy"
                 />
               </div>
@@ -297,15 +315,8 @@ const Index = () => {
               {featuredCourses.map((course, index) => (
                 <div
                   key={index}
-                  className={`group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative ${
-                    coursesVisible 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-8'
-                  }`}
-                  style={{ 
-                    transitionDelay: coursesVisible ? `${index * 100}ms` : '0ms',
-                    transitionProperty: 'opacity, transform'
-                  }}
+                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-3 relative"
+                  style={getCardStyle(index)}
                 >
                   {/* Glow effect on hover */}
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-gold to-primary rounded-2xl opacity-0 group-hover:opacity-75 blur transition-all duration-500 group-hover:duration-200" />
