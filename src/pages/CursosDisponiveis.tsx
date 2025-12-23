@@ -1,7 +1,8 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { WHATSAPP_LINK } from "@/lib/constants";
+import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, BookOpen, Monitor, Wrench, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -114,7 +115,14 @@ const CategoryIcon = ({ icon: Icon, title, description }: { icon: React.ElementT
   </div>
 );
 
-const CourseList = ({ courses, title, id }: { courses: string[]; title: string; id: string }) => {
+interface CourseListProps {
+  courses: string[];
+  title: string;
+  id: string;
+  onCourseClick: (course: string) => void;
+}
+
+const CourseList = ({ courses, title, id, onCourseClick }: CourseListProps) => {
   const columns = 4;
   const itemsPerColumn = Math.ceil(courses.length / columns);
   const columnArrays = Array.from({ length: columns }, (_, i) =>
@@ -135,15 +143,13 @@ const CourseList = ({ courses, title, id }: { courses: string[]; title: string; 
             <ul key={colIndex} className="space-y-1" role="list">
               {column.map((course, index) => (
                 <li key={index}>
-                  <a
-                    href={WHATSAPP_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-sm text-primary hover:text-primary/70 hover:underline transition-colors py-0.5"
+                  <button
+                    onClick={() => onCourseClick(course)}
+                    className="block text-sm text-primary hover:text-primary/70 hover:underline transition-colors py-0.5 text-left w-full"
                     title={`Adquirir ${course} - Reconhecido pelo MEC`}
                   >
                     {course}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -155,6 +161,19 @@ const CourseList = ({ courses, title, id }: { courses: string[]; title: string; 
 };
 
 const CursosDisponiveis = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState("");
+
+  const handleCourseClick = (course: string) => {
+    setSelectedCourse(course);
+    setDialogOpen(true);
+  };
+
+  const handleContactClick = () => {
+    setSelectedCourse("");
+    setDialogOpen(true);
+  };
+
   useEffect(() => {
     document.title = "Cursos Disponíveis - Diplomas Reconhecidos pelo MEC | EAD Cursos Nacional";
     
@@ -185,11 +204,9 @@ const CursosDisponiveis = () => {
               </p>
               
               <div className="flex flex-wrap justify-center gap-3">
-                <Button asChild className="bg-card text-primary hover:bg-card/90 font-medium border-0">
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    Fale Conosco
-                  </a>
+                <Button onClick={handleContactClick} className="bg-card text-primary hover:bg-card/90 font-medium border-0">
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Fale Conosco
                 </Button>
                 <Button asChild variant="outline" className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent">
                   <Link to="/estados" aria-label="Escolher seu estado">
@@ -235,9 +252,9 @@ const CursosDisponiveis = () => {
         </section>
 
         {/* Course Lists */}
-        <CourseList courses={BACHARELADO_COURSES} title="Diplomas de Bacharelado" id="bacharelado" />
-        <CourseList courses={TECNOLOGO_COURSES} title="Diplomas de Tecnólogo" id="tecnologo" />
-        <CourseList courses={TECNICO_COURSES} title="Certificado Técnico" id="tecnico" />
+        <CourseList courses={BACHARELADO_COURSES} title="Diplomas de Bacharelado" id="bacharelado" onCourseClick={handleCourseClick} />
+        <CourseList courses={TECNOLOGO_COURSES} title="Diplomas de Tecnólogo" id="tecnologo" onCourseClick={handleCourseClick} />
+        <CourseList courses={TECNICO_COURSES} title="Certificado Técnico" id="tecnico" onCourseClick={handleCourseClick} />
 
         {/* CTA Section */}
         <section className="py-12 bg-gradient-hero text-primary-foreground">
@@ -246,52 +263,48 @@ const CursosDisponiveis = () => {
               TENHA SEU DIPLOMA HOJE MESMO!
             </h2>
             <Button
-              asChild
+              onClick={handleContactClick}
               size="lg"
               className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-medium"
             >
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" aria-label="Falar com a equipe pelo WhatsApp">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Falar com a Equipe
-              </a>
+              <MessageCircle className="w-5 h-5 mr-2" />
+              Falar com a Equipe
             </Button>
           </div>
         </section>
 
-        {/* Schema.org Structured Data */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": "Cursos Disponíveis - EAD Cursos Nacional",
-            "description": "Lista completa de cursos de Bacharelado, Tecnólogo e Técnico reconhecidos pelo MEC",
-            "numberOfItems": BACHARELADO_COURSES.length + TECNOLOGO_COURSES.length + TECNICO_COURSES.length,
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Diplomas de Bacharelado",
-                "description": `${BACHARELADO_COURSES.length} cursos de graduação disponíveis`
-              },
-              {
-                "@type": "ListItem", 
-                "position": 2,
-                "name": "Diplomas de Tecnólogo",
-                "description": `${TECNOLOGO_COURSES.length} cursos tecnológicos disponíveis`
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Certificados Técnicos",
-                "description": `${TECNICO_COURSES.length} cursos técnicos disponíveis`
-              }
-            ]
-          })
-        }} />
+        {/* Pós-Graduação Section */}
+        <section className="py-12 bg-card">
+          <div className="container mx-auto px-4">
+            <div className="bg-primary py-3 px-6 mb-6 rounded-sm">
+              <h2 className="text-xl md:text-2xl font-bold text-center font-heading text-primary-foreground">
+                Pós-Graduação
+              </h2>
+            </div>
+            <div className="text-center max-w-2xl mx-auto">
+              <p className="text-muted-foreground mb-6">
+                Cursos de pós-graduação (especialização, mestrado e doutorado) também disponíveis. 
+                Entre em contato para mais informações sobre valores e prazos.
+              </p>
+              <Button
+                onClick={handleContactClick}
+                className="bg-primary hover:bg-primary/90"
+              >
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Consultar Pós-Graduação
+              </Button>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />
       <WhatsAppButton />
+      <WhatsAppContactDialog 
+        open={dialogOpen} 
+        onOpenChange={setDialogOpen}
+        courseName={selectedCourse}
+      />
     </div>
   );
 };
