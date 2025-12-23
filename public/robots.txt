@@ -1,8 +1,13 @@
+# Robots.txt for EAD Cursos Nacional
+# https://eadcursosnacional.com.br
+
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +15,19 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
 User-agent: *
 Allow: /
+Crawl-delay: 2
+
+# Sitemap location
+Sitemap: https://eadcursosnacional.com.br/sitemap.xml
+
+# Disallow admin pages
+Disallow: /admin
+Disallow: /admin-login

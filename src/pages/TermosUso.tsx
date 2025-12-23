@@ -1,15 +1,22 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SEOHead from "@/components/SEOHead";
 
 const TermosUso = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <SEOHead
+        title="Termos de Uso"
+        description="Leia nossos Termos de Uso. Conheça as regras e condições para utilização do site e serviços da EAD Cursos Nacional."
+        keywords="termos de uso, condições de uso, regras do site, termos EAD Cursos"
+        canonicalPath="/termos-uso"
+      />
       <Header />
 
-      <main className="flex-1 py-12">
+      <main className="flex-1 py-8 sm:py-12">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h1 className="text-3xl md:text-4xl font-bold mb-8 font-heading text-primary">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 font-heading text-primary">
             Termos de Uso
           </h1>
           

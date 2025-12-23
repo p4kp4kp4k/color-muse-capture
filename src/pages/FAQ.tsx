@@ -1,7 +1,9 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { WHATSAPP_LINK } from "@/lib/constants";
+import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
+import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import {
@@ -63,37 +65,59 @@ const FAQ_DATA = [
 ];
 
 const FAQ = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQ_DATA.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <SEOHead
+        title="Perguntas Frequentes - Tire suas Dúvidas"
+        description="Tire todas as suas dúvidas sobre diplomas e certificados reconhecidos pelo MEC. Saiba sobre segurança, formas de pagamento, prazos e mais."
+        keywords="FAQ diploma, dúvidas certificado MEC, perguntas frequentes documentação acadêmica, como funciona diploma EAD"
+        canonicalPath="/faq"
+        structuredData={faqStructuredData}
+      />
       <Header />
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="bg-gradient-hero text-primary-foreground py-12">
+        <section className="bg-gradient-hero text-primary-foreground py-8 sm:py-12">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 font-heading">
               Perguntas Frequentes
             </h1>
-            <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-primary-foreground/90 max-w-2xl mx-auto">
               Tire suas dúvidas sobre nossos serviços
             </p>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-12">
+        <section className="py-8 sm:py-12">
           <div className="container mx-auto px-4 max-w-3xl">
-            <Accordion type="single" collapsible className="space-y-3">
+            <Accordion type="single" collapsible className="space-y-2 sm:space-y-3">
               {FAQ_DATA.map((item, index) => (
                 <AccordionItem 
                   key={index} 
                   value={`item-${index}`}
-                  className="bg-card border border-border rounded-lg px-6"
+                  className="bg-card border border-border rounded-lg px-4 sm:px-6"
                 >
-                  <AccordionTrigger className="text-left font-medium hover:no-underline py-4">
+                  <AccordionTrigger className="text-left text-sm sm:text-base font-medium hover:no-underline py-3 sm:py-4">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4">
+                  <AccordionContent className="text-sm sm:text-base text-muted-foreground pb-3 sm:pb-4">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -103,23 +127,21 @@ const FAQ = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-12 bg-card border-t border-border">
+        <section className="py-8 sm:py-12 bg-card border-t border-border">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-2xl font-bold mb-4 font-heading">
+            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 font-heading">
               Ainda tem dúvidas?
             </h2>
-            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+            <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 max-w-xl mx-auto">
               Nossa equipe está disponível 24 horas para ajudar você. Entre em contato pelo WhatsApp.
             </p>
             <Button
-              asChild
+              onClick={() => setDialogOpen(true)}
               size="lg"
               className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-medium"
             >
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Falar com a Equipe
-              </a>
+              <MessageCircle className="w-5 h-5 mr-2" />
+              Falar com a Equipe
             </Button>
           </div>
         </section>
@@ -127,6 +149,7 @@ const FAQ = () => {
 
       <Footer />
       <WhatsAppButton />
+      <WhatsAppContactDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </div>
   );
 };

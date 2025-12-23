@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
+import SEOHead from "@/components/SEOHead";
 import StateCard from "@/components/StateCard";
 import { FAQ_ITEMS } from "@/lib/constants";
 import {
@@ -48,6 +49,12 @@ const EscolhaEstado = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Escolha seu Estado - Atendimento em Todo Brasil"
+        description="Atendemos todos os 27 estados do Brasil. Selecione seu estado e fale com nossa equipe especializada para obter seu diploma reconhecido pelo MEC."
+        keywords="diploma por estado, atendimento nacional, documentação acadêmica Brasil, diploma São Paulo, diploma Rio de Janeiro, diploma Minas Gerais"
+        canonicalPath="/estados"
+      />
       <Header />
 
       <main className="flex-1">
