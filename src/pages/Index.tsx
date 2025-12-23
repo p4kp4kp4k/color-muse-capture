@@ -332,8 +332,8 @@ const Index = () => {
               </p>
             </div>
             
-            {/* Course Cards - Minimalist Design */}
-            <div ref={coursesRef} className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {/* Course Cards */}
+            <div ref={coursesRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
               {featuredCourses.map((course, index) => (
                 <div
                   key={index}
@@ -348,27 +348,32 @@ const Index = () => {
                     transitionDuration: '700ms'
                   }}
                 >
-                  <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                    {/* Image */}
-                    <div className="relative h-32 md:h-40 overflow-hidden">
-                      <img 
-                        src={COURSE_IMAGES[course.name] || "/images/courses/pedagogia.jpg"} 
-                        alt={course.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
+                    {/* Compact Image */}
+                    <div className="relative overflow-hidden p-4 pb-0">
+                      <div className="rounded-xl overflow-hidden">
+                        <img 
+                          src={COURSE_IMAGES[course.name] || "/images/courses/pedagogia.jpg"} 
+                          alt={course.name}
+                          className="w-full h-28 md:h-32 object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
                     </div>
                     
                     {/* Content */}
-                    <div className="p-4">
-                      <h3 className="text-sm md:text-base font-semibold text-gray-900 mb-3 line-clamp-2">
-                        {course.name}
+                    <div className="p-4 pt-3 flex flex-col flex-1">
+                      <h3 className="text-sm md:text-base font-bold text-gray-900 mb-2 leading-tight">
+                        Adquira o Diploma de {course.name}
                       </h3>
+                      <p className="text-xs text-gray-600 mb-4 leading-relaxed flex-1">
+                        Dentre as graduações disponíveis, você pode escolher diploma de nível superior bacharelado, licenciatura ou pós-graduação.
+                      </p>
                       <button
                         onClick={() => handleWhatsAppClick(course.name)}
-                        className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground text-xs md:text-sm font-medium py-2.5 px-4 rounded-lg transition-colors duration-200 w-full"
+                        className="inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold/90 text-navy text-xs md:text-sm font-semibold py-2.5 px-4 rounded-lg transition-colors duration-200 w-full"
                       >
-                        <MessageCircle size={14} />
                         Fale Conosco
+                        <MessageCircle size={14} />
                       </button>
                     </div>
                   </div>
