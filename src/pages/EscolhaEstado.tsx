@@ -1,8 +1,10 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
 import StateCard from "@/components/StateCard";
-import { FAQ_ITEMS, WHATSAPP_LINK } from "@/lib/constants";
+import { FAQ_ITEMS } from "@/lib/constants";
 import {
   Accordion,
   AccordionContent,
@@ -42,6 +44,8 @@ const STATES_WITH_FLAGS = [
 ];
 
 const EscolhaEstado = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -110,13 +114,11 @@ const EscolhaEstado = () => {
                 Ainda tem dúvidas? Fale diretamente com nossa equipe!
               </p>
               <Button
-                asChild
+                onClick={() => setDialogOpen(true)}
                 size="lg"
                 className="bg-whatsapp hover:bg-whatsapp/90 text-whatsapp-foreground font-bold"
               >
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-                  Chamar no WhatsApp
-                </a>
+                Chamar no WhatsApp
               </Button>
             </div>
           </div>
@@ -125,6 +127,7 @@ const EscolhaEstado = () => {
 
       <Footer />
       <WhatsAppButton />
+      <WhatsAppContactDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </div>
   );
 };

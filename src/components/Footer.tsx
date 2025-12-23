@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 import { Phone, Clock, MessageCircle, Wallet, ArrowRight, Sparkles } from "lucide-react";
+import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
 
 const Footer = () => {
-  const { getWhatsAppLink, siteName } = useSiteConfigContext();
-  const whatsappLink = getWhatsAppLink();
+  const { siteName } = useSiteConfigContext();
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
     <footer className="bg-navy text-primary-foreground relative overflow-hidden">
@@ -33,17 +35,15 @@ const Footer = () => {
           <p className="text-primary-foreground/90 mb-8 max-w-2xl mx-auto text-lg">
             Entre em contato com nossa equipe e tire todas as suas dúvidas.
           </p>
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => setDialogOpen(true)}
             className="group inline-flex items-center gap-3 bg-card text-foreground px-8 py-4 rounded-xl font-bold text-lg hover:bg-card/90 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-whatsapp/20 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             <MessageCircle size={24} className="relative z-10 group-hover:animate-bounce" />
             <span className="relative z-10">Chamar no WhatsApp</span>
             <ArrowRight className="relative z-10 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-          </a>
+          </button>
         </div>
       </div>
 
@@ -101,17 +101,15 @@ const Footer = () => {
             <h4 className="font-bold mb-6 font-heading text-lg">Contato</h4>
             <ul className="space-y-4">
               <li>
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => setDialogOpen(true)}
                   className="flex items-center gap-3 text-primary-foreground/80 hover:text-whatsapp transition-colors group"
                 >
                   <div className="w-10 h-10 bg-whatsapp/20 rounded-lg flex items-center justify-center group-hover:bg-whatsapp/30 transition-colors">
                     <Phone size={18} className="text-whatsapp" />
                   </div>
                   <span>WhatsApp 24h</span>
-                </a>
+                </button>
               </li>
               <li className="flex items-center gap-3 text-primary-foreground/80">
                 <div className="w-10 h-10 bg-gold/20 rounded-lg flex items-center justify-center">
@@ -150,6 +148,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <WhatsAppContactDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </footer>
   );
 };
