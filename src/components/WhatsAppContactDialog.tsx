@@ -33,6 +33,58 @@ const NIVEIS = [
   { value: "pos-doutorado", label: "Pós-Graduação Stricto Sensu – Doutorado" },
 ];
 
+const NIVEL_EXAMPLES: Record<string, { placeholder: string; examples: string; avoid: string; specific: string }> = {
+  "graduacao-bacharelado": {
+    placeholder: "Ex: Direito, Medicina, Enfermagem, Engenharia Civil",
+    examples: "Direito, Medicina, Enfermagem, Engenharia Civil, Psicologia, Administração",
+    avoid: '"Qualquer graduação", "Algum bacharelado"',
+    specific: '"Direito", "Medicina", "Engenharia Civil"',
+  },
+  "graduacao-licenciatura": {
+    placeholder: "Ex: Pedagogia, Matemática, Letras, História",
+    examples: "Pedagogia, Matemática, Letras, História, Geografia, Educação Física",
+    avoid: '"Qualquer licenciatura", "Alguma licenciatura"',
+    specific: '"Pedagogia", "Matemática", "Letras"',
+  },
+  "graduacao-tecnologo": {
+    placeholder: "Ex: Gestão de RH, Marketing, Análise de Sistemas, Logística",
+    examples: "Gestão de RH, Marketing, Análise de Sistemas, Logística, Radiologia",
+    avoid: '"Qualquer tecnólogo", "Algum curso tecnológico"',
+    specific: '"Gestão de RH", "Marketing", "Logística"',
+  },
+  "tecnico": {
+    placeholder: "Ex: Técnico em Enfermagem, Técnico em Mecânica, Técnico em Segurança do Trabalho",
+    examples: "Técnico em Enfermagem, Técnico em Mecânica, Técnico em Segurança do Trabalho, Técnico em Radiologia",
+    avoid: '"Qualquer técnico", "Algum curso técnico"',
+    specific: '"Técnico em Enfermagem", "Técnico em Mecânica"',
+  },
+  "pos-especializacao": {
+    placeholder: "Ex: MBA em Gestão, Especialização em Docência, MBA em Finanças",
+    examples: "MBA em Gestão, Especialização em Docência, MBA em Finanças, Especialização em Direito Tributário",
+    avoid: '"Qualquer pós", "Alguma especialização"',
+    specific: '"MBA em Gestão", "Especialização em Docência"',
+  },
+  "pos-mestrado": {
+    placeholder: "Ex: Mestrado em Administração, Mestrado em Educação, Mestrado em Direito",
+    examples: "Mestrado em Administração, Mestrado em Educação, Mestrado em Direito, Mestrado em Engenharia",
+    avoid: '"Qualquer mestrado", "Algum mestrado"',
+    specific: '"Mestrado em Administração", "Mestrado em Educação"',
+  },
+  "pos-doutorado": {
+    placeholder: "Ex: Doutorado em Administração, Doutorado em Educação, Doutorado em Direito",
+    examples: "Doutorado em Administração, Doutorado em Educação, Doutorado em Direito, Doutorado em Engenharia",
+    avoid: '"Qualquer doutorado", "Algum doutorado"',
+    specific: '"Doutorado em Administração", "Doutorado em Educação"',
+  },
+};
+
+const DEFAULT_EXAMPLES = {
+  placeholder: "Selecione o nível do curso primeiro",
+  examples: "Selecione o nível acima para ver exemplos",
+  avoid: '"Qualquer curso", "Alguma formação"',
+  specific: '"Enfermagem", "Direito", "Gestão de RH"',
+};
+
 const WhatsAppContactDialog = ({
   open,
   onOpenChange,
@@ -61,6 +113,8 @@ const WhatsAppContactDialog = ({
     const found = NIVEIS.find(n => n.value === value);
     return found ? found.label : value;
   };
+
+  const currentExamples = nivel ? NIVEL_EXAMPLES[nivel] || DEFAULT_EXAMPLES : DEFAULT_EXAMPLES;
 
   const handleSubmit = (interested: boolean) => {
     if (!nome.trim() || !nivel || !curso.trim()) return;
@@ -228,13 +282,14 @@ const WhatsAppContactDialog = ({
               </Label>
               <Input
                 id="curso"
-                placeholder="Ex: Enfermagem, Direito, Gestão de RH, MBA em Gestão"
+                placeholder={currentExamples.placeholder}
                 value={curso}
                 onChange={(e) => setCurso(e.target.value)}
-                className="h-10 sm:h-11 text-sm bg-background border-border focus:border-foreground/30 focus:ring-foreground/10 transition-all duration-200"
+                disabled={!nivel}
+                className="h-10 sm:h-11 text-sm bg-background border-border focus:border-foreground/30 focus:ring-foreground/10 transition-all duration-200 disabled:opacity-50"
               />
               <div className="text-[10px] sm:text-xs text-muted-foreground space-y-0.5 mt-1">
-                <p><span className="font-medium">Exemplos:</span> Enfermagem, Direito, Medicina, Engenharia Civil, Gestão de RH, MBA em Gestão</p>
+                <p><span className="font-medium">Exemplos:</span> {currentExamples.examples}</p>
               </div>
             </div>
 
@@ -245,13 +300,13 @@ const WhatsAppContactDialog = ({
                 <div className="space-y-1">
                   <p className="flex items-center gap-1.5">
                     <X className="h-3 w-3 text-destructive" />
-                    <span>Evite: "Qualquer curso", "Alguma graduação"</span>
+                    <span>Evite: {currentExamples.avoid}</span>
                   </p>
                 </div>
                 <div className="space-y-1">
                   <p className="flex items-center gap-1.5">
                     <Check className="h-3 w-3 text-foreground" />
-                    <span>Seja específico: "Enfermagem", "Direito", "Gestão de RH"</span>
+                    <span>Seja específico: {currentExamples.specific}</span>
                   </p>
                 </div>
               </div>
