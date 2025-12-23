@@ -8,7 +8,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Check, AlertCircle, X, FileText, Shield, CreditCard, Building2, MessageCircle } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Check, AlertCircle, X, FileText, Shield, CreditCard, Building2, MessageCircle, GraduationCap } from "lucide-react";
 
 interface WhatsAppContactDialogProps {
   open: boolean;
@@ -16,12 +23,23 @@ interface WhatsAppContactDialogProps {
   courseName?: string;
 }
 
+const NIVEIS = [
+  { value: "graduacao-bacharelado", label: "Superior – Graduação (Bacharelado)" },
+  { value: "graduacao-licenciatura", label: "Superior – Licenciatura" },
+  { value: "graduacao-tecnologo", label: "Superior – Tecnólogo" },
+  { value: "tecnico", label: "Técnico" },
+  { value: "pos-especializacao", label: "Pós-Graduação Lato Sensu (Especialização / MBA)" },
+  { value: "pos-mestrado", label: "Pós-Graduação Stricto Sensu – Mestrado" },
+  { value: "pos-doutorado", label: "Pós-Graduação Stricto Sensu – Doutorado" },
+];
+
 const WhatsAppContactDialog = ({
   open,
   onOpenChange,
   courseName = "",
 }: WhatsAppContactDialogProps) => {
   const [nome, setNome] = useState("");
+  const [nivel, setNivel] = useState("");
   const [curso, setCurso] = useState(courseName);
   const [isAnimated, setIsAnimated] = useState(false);
 
@@ -33,17 +51,30 @@ const WhatsAppContactDialog = ({
     }
   }, [open]);
 
-  const handleSubmit = (interested: boolean) => {
-    if (!nome.trim() || !curso.trim()) return;
+  useEffect(() => {
+    if (courseName) {
+      setCurso(courseName);
+    }
+  }, [courseName]);
 
+  const getNivelLabel = (value: string) => {
+    const found = NIVEIS.find(n => n.value === value);
+    return found ? found.label : value;
+  };
+
+  const handleSubmit = (interested: boolean) => {
+    if (!nome.trim() || !nivel || !curso.trim()) return;
+
+    const nivelLabel = getNivelLabel(nivel);
     const message = interested
-      ? `Olá, meu nome é ${nome}. Tenho interesse em adquirir a documentação do curso: ${curso}`
-      : `Olá, meu nome é ${nome}. Não tenho interesse no momento, mas gostaria de receber mais informações sobre o curso: ${curso}`;
+      ? `Olá, meu nome é ${nome}. Tenho interesse em adquirir a documentação do curso: ${curso} (Nível: ${nivelLabel})`
+      : `Olá, meu nome é ${nome}. Não tenho interesse no momento, mas gostaria de receber mais informações sobre o curso: ${curso} (Nível: ${nivelLabel})`;
 
     const whatsappUrl = `https://api.whatsapp.com/send/?phone=447785369424&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
     window.open(whatsappUrl, "_blank");
     onOpenChange(false);
     setNome("");
+    setNivel("");
     setCurso("");
   };
 
@@ -171,22 +202,39 @@ const WhatsAppContactDialog = ({
               />
             </div>
 
+            {/* Nível Selection */}
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="nivel" className="text-xs sm:text-sm font-medium text-foreground flex items-center gap-2">
+                <GraduationCap className="h-4 w-4" />
+                Nível do curso
+              </Label>
+              <Select value={nivel} onValueChange={setNivel}>
+                <SelectTrigger className="h-10 sm:h-11 text-sm bg-background border-border focus:border-foreground/30 focus:ring-foreground/10">
+                  <SelectValue placeholder="Selecione o nível do curso" />
+                </SelectTrigger>
+                <SelectContent>
+                  {NIVEIS.map((n) => (
+                    <SelectItem key={n.value} value={n.value} className="text-sm">
+                      {n.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
             <div className="space-y-1.5 sm:space-y-2">
               <Label htmlFor="curso" className="text-xs sm:text-sm font-medium text-foreground">
                 Nome do curso
               </Label>
               <Input
                 id="curso"
-                placeholder="Ex: Técnico em Enfermagem, Graduação em Direito, Tecnólogo em RH, Pós em Gestão"
+                placeholder="Ex: Enfermagem, Direito, Gestão de RH, MBA em Gestão"
                 value={curso}
                 onChange={(e) => setCurso(e.target.value)}
                 className="h-10 sm:h-11 text-sm bg-background border-border focus:border-foreground/30 focus:ring-foreground/10 transition-all duration-200"
               />
               <div className="text-[10px] sm:text-xs text-muted-foreground space-y-0.5 mt-1">
-                <p><span className="font-medium">Técnico:</span> Enfermagem, Radiologia, Segurança do Trabalho</p>
-                <p><span className="font-medium">Graduação:</span> Direito, Medicina, Engenharia Civil</p>
-                <p><span className="font-medium">Tecnólogo:</span> Gestão de RH, Marketing, Análise de Sistemas</p>
-                <p><span className="font-medium">Pós:</span> MBA em Gestão, Docência, Direito Tributário</p>
+                <p><span className="font-medium">Exemplos:</span> Enfermagem, Direito, Medicina, Engenharia Civil, Gestão de RH, MBA em Gestão</p>
               </div>
             </div>
 
@@ -197,20 +245,14 @@ const WhatsAppContactDialog = ({
                 <div className="space-y-1">
                   <p className="flex items-center gap-1.5">
                     <X className="h-3 w-3 text-destructive" />
-                    <span>Evite: "Qualquer técnico", "Alguma graduação", "Curso qualquer"</span>
+                    <span>Evite: "Qualquer curso", "Alguma graduação"</span>
                   </p>
                 </div>
                 <div className="space-y-1">
                   <p className="flex items-center gap-1.5">
                     <Check className="h-3 w-3 text-foreground" />
-                    <span>Seja específico:</span>
+                    <span>Seja específico: "Enfermagem", "Direito", "Gestão de RH"</span>
                   </p>
-                  <ul className="ml-5 space-y-0.5 text-[10px] sm:text-xs">
-                    <li>• "Técnico em Enfermagem", "Técnico em Radiologia"</li>
-                    <li>• "Graduação em Direito", "Bacharelado em Medicina"</li>
-                    <li>• "Tecnólogo em Gestão de RH", "Tecnólogo em Marketing"</li>
-                    <li>• "Pós-graduação em MBA Gestão", "Especialização em Docência"</li>
-                  </ul>
                 </div>
               </div>
             </div>
@@ -225,7 +267,7 @@ const WhatsAppContactDialog = ({
         >
           <Button
             onClick={() => handleSubmit(true)}
-            disabled={!nome.trim() || !curso.trim()}
+            disabled={!nome.trim() || !nivel || !curso.trim()}
             className="flex-1 h-11 sm:h-12 text-xs sm:text-sm font-medium bg-foreground hover:bg-foreground/90 text-background transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40 disabled:hover:scale-100"
           >
             <MessageCircle className="h-4 w-4 mr-2" />
@@ -233,7 +275,7 @@ const WhatsAppContactDialog = ({
           </Button>
           <Button
             onClick={() => handleSubmit(false)}
-            disabled={!nome.trim() || !curso.trim()}
+            disabled={!nome.trim() || !nivel || !curso.trim()}
             variant="outline"
             className="flex-1 h-11 sm:h-12 text-xs sm:text-sm font-medium border-border text-foreground hover:bg-muted/50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40 disabled:hover:scale-100"
           >
