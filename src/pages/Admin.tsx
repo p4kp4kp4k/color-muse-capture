@@ -123,8 +123,26 @@ const Admin = () => {
     navigate('/');
   };
 
+  // Custom order for each category
+  const categoryOrder: Record<string, string[]> = {
+    general: ['site_name', 'banner_text'],
+    contact: ['whatsapp_number', 'whatsapp_message'],
+    theme: ['primary_color', 'gold_color'],
+    analytics: ['google_ads_id', 'google_ads_label', 'gtm_id', 'ga_measurement_id'],
+  };
+
   const getConfigsByCategory = (category: string) => {
-    return configs.filter(c => c.category === category);
+    const categoryConfigs = configs.filter(c => c.category === category);
+    const order = categoryOrder[category] || [];
+    
+    return categoryConfigs.sort((a, b) => {
+      const indexA = order.indexOf(a.key);
+      const indexB = order.indexOf(b.key);
+      if (indexA === -1 && indexB === -1) return 0;
+      if (indexA === -1) return 1;
+      if (indexB === -1) return -1;
+      return indexA - indexB;
+    });
   };
 
   const renderConfigInput = (config: ConfigItem) => {
