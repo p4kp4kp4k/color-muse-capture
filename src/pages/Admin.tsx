@@ -164,17 +164,18 @@ const Admin = () => {
       case 'ga_measurement_id':
       case 'google_ads_id':
       case 'google_ads_label':
+      case 'gtm_id':
         return <BarChart3 className="w-4 h-4" />;
       default:
         return <Settings className="w-4 h-4" />;
     }
   };
 
-  // Filter out meta_pixel_id and gtm_id from analytics configs
+  // Filter out meta_pixel_id from analytics configs
   const getFilteredConfigsByCategory = (category: string) => {
     return configs.filter(c => 
       c.category === category && 
-      !['meta_pixel_id', 'gtm_id'].includes(c.key)
+      !['meta_pixel_id'].includes(c.key)
     );
   };
 
@@ -307,8 +308,8 @@ const Admin = () => {
                   <p className="text-sm text-muted-foreground">
                     <strong>Google Ads Label:</strong> O rótulo da conversão específica. Encontre junto com o ID de conversão.
                   </p>
-                  <p className="text-sm text-muted-foreground italic">
-                    <strong>Nota:</strong> O Google Tag Manager já está configurado diretamente no código (GTM-M52H89NQ).
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Google Tag Manager:</strong> Encontre seu ID no GTM → Admin → Container. Formato: GTM-XXXXXXXX
                   </p>
                 </div>
               </CardContent>
