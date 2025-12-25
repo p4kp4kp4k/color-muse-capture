@@ -14,11 +14,15 @@ declare global {
 // Store IDs globally for helper functions
 let GA_ID = '';
 let META_ID = '';
+let GADS_ID = '';
+let GADS_LABEL = '';
 
 export const Analytics = () => {
   const location = useLocation();
   const [gaId, setGaId] = useState('');
   const [metaId, setMetaId] = useState('');
+  const [gadsId, setGadsId] = useState('');
+  const [gadsLabel, setGadsLabel] = useState('');
   const [initialized, setInitialized] = useState(false);
 
   // Fetch analytics IDs from database
@@ -27,11 +31,13 @@ export const Analytics = () => {
       const { data, error } = await supabase
         .from('site_config')
         .select('key, value')
-        .in('key', ['ga_measurement_id', 'meta_pixel_id']);
+        .in('key', ['ga_measurement_id', 'meta_pixel_id', 'google_ads_id', 'google_ads_label']);
 
       if (!error && data) {
         const gaConfig = data.find(c => c.key === 'ga_measurement_id');
         const metaConfig = data.find(c => c.key === 'meta_pixel_id');
+        const gadsConfig = data.find(c => c.key === 'google_ads_id');
+        const gadsLabelConfig = data.find(c => c.key === 'google_ads_label');
         
         if (gaConfig?.value) {
           setGaId(gaConfig.value);
@@ -40,6 +46,14 @@ export const Analytics = () => {
         if (metaConfig?.value) {
           setMetaId(metaConfig.value);
           META_ID = metaConfig.value;
+        }
+        if (gadsConfig?.value) {
+          setGadsId(gadsConfig.value);
+          GADS_ID = gadsConfig.value;
+        }
+        if (gadsLabelConfig?.value) {
+          setGadsLabel(gadsLabelConfig.value);
+          GADS_LABEL = gadsLabelConfig.value;
         }
       }
     };
@@ -51,11 +65,13 @@ export const Analytics = () => {
   useEffect(() => {
     if (initialized) return;
 
-    // Google Analytics 4
-    if (gaId) {
+    // Google Analytics 4 + Google Ads (same gtag)
+    const hasGoogleTag = gaId || gadsId;
+    if (hasGoogleTag) {
+      const primaryId = gaId || gadsId;
       const gaScript = document.createElement('script');
       gaScript.async = true;
-      gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+      gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${primaryId}`;
       document.head.appendChild(gaScript);
 
       window.dataLayer = window.dataLayer || [];
@@ -63,9 +79,18 @@ export const Analytics = () => {
         window.dataLayer.push(args);
       };
       window.gtag('js', new Date());
-      window.gtag('config', gaId, {
-        page_path: location.pathname,
-      });
+      
+      // Configure GA4 if available
+      if (gaId) {
+        window.gtag('config', gaId, {
+          page_path: location.pathname,
+        });
+      }
+      
+      // Configure Google Ads if available
+      if (gadsId) {
+        window.gtag('config', gadsId);
+      }
     }
 
     // Meta Pixel (Facebook)
@@ -104,10 +129,10 @@ export const Analytics = () => {
       window.fbq('track', 'PageView');
     }
 
-    if (gaId || metaId) {
+    if (gaId || metaId || gadsId) {
       setInitialized(true);
     }
-  }, [gaId, metaId, initialized, location.pathname]);
+  }, [gaId, metaId, gadsId, gadsLabel, initialized, location.pathname]);
 
   // Track page views on route change
   useEffect(() => {
@@ -144,7 +169,22 @@ export const trackConversion = (eventName: string, params?: Record<string, unkno
   }
 };
 
+// Google Ads conversion tracking
+export const trackGoogleAdsConversion = () => {
+  if (GADS_ID && GADS_LABEL && window.gtag) {
+    window.gtag('event', 'conversion', {
+      'send_to': `${GADS_ID}/${GADS_LABEL}`,
+    });
+    return true;
+  }
+  return false;
+};
+
 export const trackWhatsAppClick = (courseName?: string) => {
+  // Track Google Ads conversion
+  trackGoogleAdsConversion();
+  
+  // Track GA4 + Meta conversions
   trackConversion('Lead', {
     content_name: courseName || 'Contato WhatsApp',
     content_category: 'WhatsApp',
