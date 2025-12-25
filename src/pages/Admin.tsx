@@ -11,7 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { 
   GraduationCap, LogOut, Save, Phone, Type, Palette, 
-  MessageSquare, Settings, RefreshCw
+  MessageSquare, Settings, RefreshCw, BarChart3
 } from 'lucide-react';
 
 interface ConfigItem {
@@ -161,6 +161,9 @@ const Admin = () => {
       case 'primary_color':
       case 'gold_color':
         return <Palette className="w-4 h-4" />;
+      case 'ga_measurement_id':
+      case 'meta_pixel_id':
+        return <BarChart3 className="w-4 h-4" />;
       default:
         return <Settings className="w-4 h-4" />;
     }
@@ -208,10 +211,11 @@ const Admin = () => {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="contact" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 max-w-md">
+          <TabsList className="grid w-full grid-cols-4 max-w-lg">
             <TabsTrigger value="contact">Contato</TabsTrigger>
             <TabsTrigger value="general">Geral</TabsTrigger>
             <TabsTrigger value="theme">Tema</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
           </TabsList>
 
           <TabsContent value="contact">
@@ -265,6 +269,31 @@ const Admin = () => {
                   <p className="text-sm text-muted-foreground">
                     <strong>Nota:</strong> As cores devem estar no formato HSL sem os parênteses.
                     Exemplo: "221 83% 53%" para azul escuro.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="analytics">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5" />
+                  Configurações de Analytics
+                </CardTitle>
+                <CardDescription>
+                  Configure os IDs do Google Analytics e Meta Pixel para rastrear conversões
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {getConfigsByCategory('analytics').map(renderConfigInput)}
+                <div className="p-4 bg-muted rounded-lg space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Google Analytics:</strong> Encontre seu ID em Google Analytics → Admin → Data Streams → Seu site. Formato: G-XXXXXXXXXX
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Meta Pixel:</strong> Encontre seu ID em Meta Business Suite → Events Manager → Data Sources. Formato: 1234567890123456
                   </p>
                 </div>
               </CardContent>
