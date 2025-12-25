@@ -14,6 +14,15 @@ let GA_ID = '';
 let GADS_ID = '';
 let GADS_LABEL = '';
 
+// Debug mode - set to true to see console logs
+const DEBUG_ANALYTICS = true;
+
+const debugLog = (message: string, data?: unknown) => {
+  if (DEBUG_ANALYTICS) {
+    console.log(`%c[Analytics] ${message}`, 'color: #4CAF50; font-weight: bold;', data || '');
+  }
+};
+
 export const Analytics = () => {
   const location = useLocation();
   const [gaId, setGaId] = useState('');
@@ -24,6 +33,8 @@ export const Analytics = () => {
   // Fetch analytics IDs from database
   useEffect(() => {
     const fetchAnalyticsConfig = async () => {
+      debugLog('Fetching analytics config from database...');
+      
       const { data, error } = await supabase
         .from('site_config')
         .select('key, value')
@@ -37,15 +48,22 @@ export const Analytics = () => {
         if (gaConfig?.value) {
           setGaId(gaConfig.value);
           GA_ID = gaConfig.value;
+          debugLog('GA4 ID loaded:', gaConfig.value);
         }
         if (gadsConfig?.value) {
           setGadsId(gadsConfig.value);
           GADS_ID = gadsConfig.value;
+          debugLog('Google Ads ID loaded:', gadsConfig.value);
         }
         if (gadsLabelConfig?.value) {
           setGadsLabel(gadsLabelConfig.value);
           GADS_LABEL = gadsLabelConfig.value;
+          debugLog('Google Ads Label loaded:', gadsLabelConfig.value);
         }
+        
+        debugLog('Config summary:', { GA_ID, GADS_ID, GADS_LABEL });
+      } else if (error) {
+        debugLog('Error fetching config:', error);
       }
     };
 
@@ -59,6 +77,8 @@ export const Analytics = () => {
     const hasGoogleTag = gaId || gadsId;
     if (hasGoogleTag) {
       const primaryId = gaId || gadsId;
+      debugLog('Initializing gtag with primary ID:', primaryId);
+      
       const gaScript = document.createElement('script');
       gaScript.async = true;
       gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${primaryId}`;
@@ -75,14 +95,17 @@ export const Analytics = () => {
         window.gtag('config', gaId, {
           page_path: location.pathname,
         });
+        debugLog('GA4 configured:', gaId);
       }
       
       // Configure Google Ads if available
       if (gadsId) {
         window.gtag('config', gadsId);
+        debugLog('Google Ads configured:', gadsId);
       }
       
       setInitialized(true);
+      debugLog('Analytics initialized successfully!');
     }
   }, [gaId, gadsId, gadsLabel, initialized, location.pathname]);
 
@@ -94,6 +117,7 @@ export const Analytics = () => {
       window.gtag('config', gaId, {
         page_path: location.pathname,
       });
+      debugLog('Page view tracked:', location.pathname);
     }
   }, [location.pathname, gaId, initialized]);
 
@@ -104,29 +128,48 @@ export const Analytics = () => {
 export const trackEvent = (eventName: string, params?: Record<string, unknown>) => {
   if (GA_ID && window.gtag) {
     window.gtag('event', eventName, params);
+    debugLog(`Event tracked: ${eventName}`, params);
   }
 };
 
 export const trackConversion = (eventName: string, params?: Record<string, unknown>) => {
   if (GA_ID && window.gtag) {
     window.gtag('event', eventName, params);
+    debugLog(`Conversion tracked: ${eventName}`, params);
   }
 };
 
 // Google Ads conversion tracking
 export const trackGoogleAdsConversion = () => {
+  debugLog('Attempting Google Ads conversion...', { GADS_ID, GADS_LABEL, hasGtag: !!window.gtag });
+  
   if (GADS_ID && GADS_LABEL && window.gtag) {
+    const sendTo = `${GADS_ID}/${GADS_LABEL}`;
     window.gtag('event', 'conversion', {
-      'send_to': `${GADS_ID}/${GADS_LABEL}`,
+      'send_to': sendTo,
     });
+    debugLog(`✅ Google Ads conversion FIRED! send_to: ${sendTo}`);
     return true;
   }
+  
+  if (!GADS_ID) {
+    debugLog('⚠️ Google Ads ID not configured');
+  }
+  if (!GADS_LABEL) {
+    debugLog('⚠️ Google Ads Label not configured');
+  }
+  if (!window.gtag) {
+    debugLog('⚠️ gtag not available');
+  }
+  
   return false;
 };
 
 export const trackWhatsAppClick = (courseName?: string) => {
+  debugLog('🟢 WhatsApp click detected!', { courseName });
+  
   // Track Google Ads conversion
-  trackGoogleAdsConversion();
+  const adsSuccess = trackGoogleAdsConversion();
   
   // Track GA4 conversions
   trackConversion('Lead', {
@@ -136,6 +179,8 @@ export const trackWhatsAppClick = (courseName?: string) => {
   trackEvent('whatsapp_click', {
     course_name: courseName,
   });
+  
+  debugLog('WhatsApp tracking complete', { googleAdsConversion: adsSuccess });
 };
 
 export const trackCourseView = (courseName: string, courseLevel: string) => {
@@ -143,4 +188,5 @@ export const trackCourseView = (courseName: string, courseLevel: string) => {
     item_name: courseName,
     item_category: courseLevel,
   });
+  debugLog('Course view tracked:', { courseName, courseLevel });
 };
