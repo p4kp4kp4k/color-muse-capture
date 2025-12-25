@@ -162,14 +162,20 @@ const Admin = () => {
       case 'gold_color':
         return <Palette className="w-4 h-4" />;
       case 'ga_measurement_id':
-      case 'meta_pixel_id':
       case 'google_ads_id':
       case 'google_ads_label':
-      case 'gtm_id':
         return <BarChart3 className="w-4 h-4" />;
       default:
         return <Settings className="w-4 h-4" />;
     }
+  };
+
+  // Filter out meta_pixel_id and gtm_id from analytics configs
+  const getFilteredConfigsByCategory = (category: string) => {
+    return configs.filter(c => 
+      c.category === category && 
+      !['meta_pixel_id', 'gtm_id'].includes(c.key)
+    );
   };
 
   if (authLoading || loading || !roleChecked) {
@@ -286,23 +292,23 @@ const Admin = () => {
                   Configurações de Analytics
                 </CardTitle>
                 <CardDescription>
-                  Configure os IDs do Google Analytics e Meta Pixel para rastrear conversões
+                  Configure os IDs do Google Ads para rastrear conversões
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                {getConfigsByCategory('analytics').map(renderConfigInput)}
+                {getFilteredConfigsByCategory('analytics').map(renderConfigInput)}
                 <div className="p-4 bg-muted rounded-lg space-y-2">
                   <p className="text-sm text-muted-foreground">
                     <strong>Google Analytics:</strong> Encontre seu ID em Google Analytics → Admin → Data Streams → Seu site. Formato: G-XXXXXXXXXX
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    <strong>Meta Pixel:</strong> Encontre seu ID em Meta Business Suite → Events Manager → Data Sources. Formato: 1234567890123456
+                    <strong>Google Ads ID:</strong> Encontre o ID de conversão no Google Ads → Ferramentas → Conversões. Formato: AW-XXXXXXXXX
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    <strong>Google Ads:</strong> Encontre o ID de conversão no Google Ads → Ferramentas → Conversões. Formato: AW-XXXXXXXXX
+                    <strong>Google Ads Label:</strong> O rótulo da conversão específica. Encontre junto com o ID de conversão.
                   </p>
-                  <p className="text-sm text-muted-foreground">
-                    <strong>Google Tag Manager:</strong> Encontre seu ID no GTM → Admin → Container. Formato: GTM-XXXXXXXX
+                  <p className="text-sm text-muted-foreground italic">
+                    <strong>Nota:</strong> O Google Tag Manager já está configurado diretamente no código (GTM-M52H89NQ).
                   </p>
                 </div>
               </CardContent>
