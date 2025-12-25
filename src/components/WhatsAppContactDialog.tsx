@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Check, AlertCircle, X, FileText, Shield, CreditCard, Building2, MessageCircle, GraduationCap } from "lucide-react";
+import { trackWhatsAppClick } from "@/components/Analytics";
 
 interface WhatsAppContactDialogProps {
   open: boolean;
@@ -207,6 +208,11 @@ const WhatsAppContactDialog = ({
     const message = interested
       ? `Olá, meu nome é ${nome}. Tenho interesse em adquirir a documentação do curso: ${curso} (Nível: ${nivelLabel})`
       : `Olá, meu nome é ${nome}. Não tenho interesse no momento, mas gostaria de receber mais informações sobre o curso: ${curso} (Nível: ${nivelLabel})`;
+
+    // Track conversion when user clicks "Tenho interesse"
+    if (interested) {
+      trackWhatsAppClick(`${curso} (${nivelLabel})`);
+    }
 
     const whatsappUrl = `https://api.whatsapp.com/send/?phone=447785369424&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
     window.open(whatsappUrl, "_blank");
