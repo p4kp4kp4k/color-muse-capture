@@ -8,6 +8,16 @@ const Footer = () => {
   const { siteName } = useSiteConfigContext();
   const [dialogOpen, setDialogOpen] = useState(false);
 
+  const splitBrand = (name: string) => {
+    const trimmed = (name || "").trim();
+    if (!trimmed) return { main: "EAD Cursos Nacional", accent: "" };
+    const idx = trimmed.lastIndexOf(" ");
+    if (idx <= 0) return { main: trimmed, accent: "" };
+    return { main: trimmed.slice(0, idx), accent: trimmed.slice(idx + 1) };
+  };
+
+  const { main: brandMain, accent: brandAccent } = splitBrand(siteName);
+
   return (
     <footer className="bg-navy text-primary-foreground relative overflow-hidden">
       {/* Decorative elements */}
@@ -53,7 +63,8 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <h3 className="text-2xl md:text-3xl font-bold mb-6 font-heading">
-              <span className="text-primary">EAD Cursos</span> Nacional
+              <span className="text-primary">{brandMain}</span>
+              {brandAccent ? <span> {brandAccent}</span> : null}
             </h3>
             <p className="text-primary-foreground/80 mb-6 max-w-md leading-relaxed">
               Somos especializados em documentação acadêmica. Nossa missão é

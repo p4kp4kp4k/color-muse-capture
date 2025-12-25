@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 
 interface SEOHeadProps {
   title: string;
@@ -19,9 +20,12 @@ const SEOHead = ({
   ogType = "website",
   structuredData,
 }: SEOHeadProps) => {
+  const { siteName } = useSiteConfigContext();
+  const brandName = (siteName || "EAD Cursos Nacional").trim();
+
   const baseUrl = "https://eadcursosnacional.com.br";
   const fullUrl = `${baseUrl}${canonicalPath}`;
-  const fullTitle = `${title} | EAD Cursos Nacional`;
+  const fullTitle = `${title} | ${brandName}`;
 
   useEffect(() => {
     // Update document title
@@ -51,7 +55,7 @@ const SEOHead = ({
     updateMeta("og:image", ogImage, true);
     updateMeta("og:type", ogType, true);
     updateMeta("og:locale", "pt_BR", true);
-    updateMeta("og:site_name", "EAD Cursos Nacional", true);
+    updateMeta("og:site_name", brandName, true);
 
     // Twitter Card
     updateMeta("twitter:card", "summary_large_image");
