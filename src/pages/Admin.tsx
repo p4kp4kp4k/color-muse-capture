@@ -163,6 +163,9 @@ const Admin = () => {
         return <Palette className="w-4 h-4" />;
       case 'ga_measurement_id':
       case 'meta_pixel_id':
+      case 'google_ads_id':
+      case 'google_ads_label':
+      case 'gtm_id':
         return <BarChart3 className="w-4 h-4" />;
       default:
         return <Settings className="w-4 h-4" />;
@@ -294,6 +297,12 @@ const Admin = () => {
                   </p>
                   <p className="text-sm text-muted-foreground">
                     <strong>Meta Pixel:</strong> Encontre seu ID em Meta Business Suite → Events Manager → Data Sources. Formato: 1234567890123456
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Google Ads:</strong> Encontre o ID de conversão no Google Ads → Ferramentas → Conversões. Formato: AW-XXXXXXXXX
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    <strong>Google Tag Manager:</strong> Encontre seu ID no GTM → Admin → Container. Formato: GTM-XXXXXXXX
                   </p>
                 </div>
               </CardContent>
