@@ -6,25 +6,19 @@ declare global {
   interface Window {
     gtag: (...args: unknown[]) => void;
     dataLayer: unknown[];
-    fbq: (...args: unknown[]) => void;
-    _fbq: unknown;
   }
 }
 
 // Store IDs globally for helper functions
 let GA_ID = '';
-let META_ID = '';
 let GADS_ID = '';
 let GADS_LABEL = '';
-let GTM_ID = '';
 
 export const Analytics = () => {
   const location = useLocation();
   const [gaId, setGaId] = useState('');
-  const [metaId, setMetaId] = useState('');
   const [gadsId, setGadsId] = useState('');
   const [gadsLabel, setGadsLabel] = useState('');
-  const [gtmId, setGtmId] = useState('');
   const [initialized, setInitialized] = useState(false);
 
   // Fetch analytics IDs from database
@@ -33,22 +27,16 @@ export const Analytics = () => {
       const { data, error } = await supabase
         .from('site_config')
         .select('key, value')
-        .in('key', ['ga_measurement_id', 'meta_pixel_id', 'google_ads_id', 'google_ads_label', 'gtm_id']);
+        .in('key', ['ga_measurement_id', 'google_ads_id', 'google_ads_label']);
 
       if (!error && data) {
         const gaConfig = data.find(c => c.key === 'ga_measurement_id');
-        const metaConfig = data.find(c => c.key === 'meta_pixel_id');
         const gadsConfig = data.find(c => c.key === 'google_ads_id');
         const gadsLabelConfig = data.find(c => c.key === 'google_ads_label');
-        const gtmConfig = data.find(c => c.key === 'gtm_id');
         
         if (gaConfig?.value) {
           setGaId(gaConfig.value);
           GA_ID = gaConfig.value;
-        }
-        if (metaConfig?.value) {
-          setMetaId(metaConfig.value);
-          META_ID = metaConfig.value;
         }
         if (gadsConfig?.value) {
           setGadsId(gadsConfig.value);
@@ -58,116 +46,45 @@ export const Analytics = () => {
           setGadsLabel(gadsLabelConfig.value);
           GADS_LABEL = gadsLabelConfig.value;
         }
-        if (gtmConfig?.value) {
-          setGtmId(gtmConfig.value);
-          GTM_ID = gtmConfig.value;
-        }
       }
     };
 
     fetchAnalyticsConfig();
   }, []);
 
-  // Initialize analytics scripts
+  // Initialize analytics scripts (GA4 + Google Ads via gtag - GTM is in index.html)
   useEffect(() => {
     if (initialized) return;
 
-    // Google Tag Manager (loads first if available)
-    if (gtmId) {
-      // GTM inline script
+    const hasGoogleTag = gaId || gadsId;
+    if (hasGoogleTag) {
+      const primaryId = gaId || gadsId;
+      const gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${primaryId}`;
+      document.head.appendChild(gaScript);
+
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      
-      const gtmScript = document.createElement('script');
-      gtmScript.async = true;
-      gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${gtmId}`;
-      document.head.appendChild(gtmScript);
-      
-      // Add noscript iframe to body
-      const noscript = document.createElement('noscript');
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.googletagmanager.com/ns.html?id=${gtmId}`;
-      iframe.height = '0';
-      iframe.width = '0';
-      iframe.style.display = 'none';
-      iframe.style.visibility = 'hidden';
-      noscript.appendChild(iframe);
-      document.body.insertBefore(noscript, document.body.firstChild);
-    }
-
-    // Google Analytics 4 + Google Ads (same gtag) - only if GTM is not used
-    if (!gtmId) {
-      const hasGoogleTag = gaId || gadsId;
-      if (hasGoogleTag) {
-        const primaryId = gaId || gadsId;
-        const gaScript = document.createElement('script');
-        gaScript.async = true;
-        gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${primaryId}`;
-        document.head.appendChild(gaScript);
-
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function gtag(...args: unknown[]) {
-          window.dataLayer.push(args);
-        };
-        window.gtag('js', new Date());
-        
-        // Configure GA4 if available
-        if (gaId) {
-          window.gtag('config', gaId, {
-            page_path: location.pathname,
-          });
-        }
-        
-        // Configure Google Ads if available
-        if (gadsId) {
-          window.gtag('config', gadsId);
-        }
-      }
-    }
-
-    // Meta Pixel (Facebook)
-    if (metaId) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const initFbq = () => {
-        const fbq = function(...args: unknown[]) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const fn = fbq as any;
-          if (fn.callMethod) {
-            fn.callMethod(...args);
-          } else {
-            fn.queue.push(args);
-          }
-        };
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const fn = fbq as any;
-        fn.push = fbq;
-        fn.loaded = true;
-        fn.version = '2.0';
-        fn.queue = [];
-        return fbq;
+      window.gtag = function gtag(...args: unknown[]) {
+        window.dataLayer.push(args);
       };
+      window.gtag('js', new Date());
       
-      if (!window._fbq) {
-        window.fbq = initFbq();
-        window._fbq = window.fbq;
+      // Configure GA4 if available
+      if (gaId) {
+        window.gtag('config', gaId, {
+          page_path: location.pathname,
+        });
       }
       
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://connect.facebook.net/en_US/fbevents.js';
-      document.head.appendChild(script);
+      // Configure Google Ads if available
+      if (gadsId) {
+        window.gtag('config', gadsId);
+      }
       
-      window.fbq('init', metaId);
-      window.fbq('track', 'PageView');
-    }
-
-    if (gaId || metaId || gadsId || gtmId) {
       setInitialized(true);
     }
-  }, [gaId, metaId, gadsId, gadsLabel, gtmId, initialized, location.pathname]);
+  }, [gaId, gadsId, gadsLabel, initialized, location.pathname]);
 
   // Track page views on route change
   useEffect(() => {
@@ -178,11 +95,7 @@ export const Analytics = () => {
         page_path: location.pathname,
       });
     }
-
-    if (metaId && window.fbq) {
-      window.fbq('track', 'PageView');
-    }
-  }, [location.pathname, gaId, metaId, initialized]);
+  }, [location.pathname, gaId, initialized]);
 
   return null;
 };
@@ -197,10 +110,6 @@ export const trackEvent = (eventName: string, params?: Record<string, unknown>) 
 export const trackConversion = (eventName: string, params?: Record<string, unknown>) => {
   if (GA_ID && window.gtag) {
     window.gtag('event', eventName, params);
-  }
-  
-  if (META_ID && window.fbq) {
-    window.fbq('track', eventName, params);
   }
 };
 
@@ -219,7 +128,7 @@ export const trackWhatsAppClick = (courseName?: string) => {
   // Track Google Ads conversion
   trackGoogleAdsConversion();
   
-  // Track GA4 + Meta conversions
+  // Track GA4 conversions
   trackConversion('Lead', {
     content_name: courseName || 'Contato WhatsApp',
     content_category: 'WhatsApp',
@@ -234,10 +143,4 @@ export const trackCourseView = (courseName: string, courseLevel: string) => {
     item_name: courseName,
     item_category: courseLevel,
   });
-  if (META_ID && window.fbq) {
-    window.fbq('track', 'ViewContent', {
-      content_name: courseName,
-      content_category: courseLevel,
-    });
-  }
 };
