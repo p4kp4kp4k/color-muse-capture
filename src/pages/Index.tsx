@@ -53,7 +53,20 @@ const COURSE_IMAGES: Record<string, string> = {
 };
 
 const Index = () => {
-  const { getWhatsAppLink } = useSiteConfigContext();
+  const { getWhatsAppLink, siteName } = useSiteConfigContext();
+  const brandName = (siteName || "EAD Cursos Nacional").trim();
+  const brandUpper = brandName.toUpperCase();
+
+  const splitBrand = (name: string) => {
+    const trimmed = (name || "").trim();
+    if (!trimmed) return { main: "EAD Cursos Nacional", accent: "" };
+    const idx = trimmed.lastIndexOf(" ");
+    if (idx <= 0) return { main: trimmed, accent: "" };
+    return { main: trimmed.slice(0, idx), accent: trimmed.slice(idx + 1) };
+  };
+
+  const { main: brandMain, accent: brandAccent } = splitBrand(brandName);
+
   const whatsappLink = getWhatsAppLink();
   const featuredCourses = COURSES.slice(0, 8);
   const { ref: benefitsRef, isVisible: benefitsVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -81,13 +94,13 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <SEOHead
         title="Diplomas e Certificados Reconhecidos pelo MEC"
-        description="EAD Cursos Nacional - Diplomas e certificados acadêmicos reconhecidos pelo MEC. Bacharelado, Tecnólogo, Técnico e Pós-Graduação para todo o Brasil. Atendimento 24h via WhatsApp."
+        description={`${brandName} - Diplomas e certificados acadêmicos reconhecidos pelo MEC. Bacharelado, Tecnólogo, Técnico e Pós-Graduação para todo o Brasil. Atendimento 24h via WhatsApp.`}
         keywords="diploma reconhecido MEC, certificado técnico, bacharelado EAD, tecnólogo, pós-graduação, graduação online, documentação acadêmica"
         canonicalPath="/"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "EducationalOrganization",
-          "name": "EAD Cursos Nacional",
+          "name": brandName,
           "description": "Diplomas e certificados acadêmicos reconhecidos pelo MEC",
           "url": "https://eadcursosnacional.com.br",
           "areaServed": { "@type": "Country", "name": "Brazil" }
@@ -126,7 +139,8 @@ const Index = () => {
                   <GraduationCap className="w-7 h-7 text-gold" />
                 </div>
                 <span className="text-2xl font-bold font-heading tracking-wide">
-                  EAD Cursos <span className="text-gold">Nacional</span>
+                  {brandMain}{brandAccent ? " " : null}
+                  {brandAccent ? <span className="text-gold">{brandAccent}</span> : null}
                 </span>
                 <CheckCircle className="w-5 h-5 text-gold" />
               </div>
@@ -148,7 +162,7 @@ const Index = () => {
 
               {/* Description */}
               <p className="text-lg md:text-xl text-primary-foreground/85 leading-relaxed mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                A equipe <strong className="text-white font-semibold">EAD CURSOS NACIONAL</strong> foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. Trabalhamos a mais de 10 anos em virtude de você, para conseguirmos o melhor e mais eficiente resultado no processo de seu diploma superior com maior segurança e transparência!
+                A equipe <strong className="text-white font-semibold">{brandUpper}</strong> foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. Trabalhamos a mais de 10 anos em virtude de você, para conseguirmos o melhor e mais eficiente resultado no processo de seu diploma superior com maior segurança e transparência!
               </p>
 
               {/* Buttons */}
@@ -318,7 +332,7 @@ const Index = () => {
             {/* Header Text */}
             <div className="text-center mb-8 text-primary-foreground max-w-3xl mx-auto">
               <h2 className="text-xl md:text-2xl font-bold mb-3 font-heading">
-                Escolha seu curso e fale com a <span className="font-extrabold">EAD CURSOS NACIONAL</span>
+                Escolha seu curso e fale com a <span className="font-extrabold">{brandUpper}</span>
               </h2>
               <p className="text-sm md:text-base text-primary-foreground/85 leading-relaxed">
                 Confira os valores, prazos e condições para o curso escolhido. Trabalhamos apenas com cursos reconhecidos pelo MEC.
@@ -492,7 +506,7 @@ const Index = () => {
           
           <div className="container mx-auto px-4 text-center relative z-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-8 font-heading">
-              Somos a Equipe Ead Cursos Nacional
+              Somos a Equipe {brandName}
             </h2>
             <p className="text-xl text-primary-foreground/90 max-w-3xl mx-auto mb-12 leading-relaxed">
               Nossa missão é ajudar você a conquistar seus objetivos profissionais

@@ -5,6 +5,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
 import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
+import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 import { GraduationCap, BookOpen, Monitor, Wrench, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -161,6 +162,10 @@ const CourseList = ({ courses, title, id, onCourseClick }: CourseListProps) => {
 };
 
 const CursosDisponiveis = () => {
+  const { siteName } = useSiteConfigContext();
+  const brandName = (siteName || "EAD Cursos Nacional").trim();
+  const brandUpper = brandName.toUpperCase();
+
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState("");
 
@@ -203,12 +208,12 @@ const CursosDisponiveis = () => {
         <section className="bg-gradient-hero text-primary-foreground py-12 md:py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <p className="text-xs uppercase tracking-widest text-primary-foreground/70 mb-2">EAD CURSOS NACIONAL</p>
+              <p className="text-xs uppercase tracking-widest text-primary-foreground/70 mb-2">{brandUpper}</p>
               <h1 className="text-2xl md:text-4xl font-bold mb-4 font-heading">
                 Cursos Disponíveis
               </h1>
               <p className="text-sm md:text-base text-primary-foreground/85 max-w-2xl mx-auto mb-6 leading-relaxed">
-                A equipe EAD CURSOS NACIONAL foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. 
+                A equipe {brandUpper} foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. 
                 Trabalhamos há mais de 10 anos para conseguirmos o melhor resultado no processo de seu diploma superior com maior segurança e transparência!
               </p>
               

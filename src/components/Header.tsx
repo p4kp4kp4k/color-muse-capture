@@ -9,7 +9,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { bannerText } = useSiteConfigContext();
+  const { bannerText, siteName } = useSiteConfigContext();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +24,16 @@ const Header = () => {
     { name: "Cursos", href: "/cursos" },
     { name: "Estados", href: "/estados" },
   ];
+
+  const splitBrand = (name: string) => {
+    const trimmed = (name || "").trim();
+    if (!trimmed) return { main: "EAD Cursos Nacional", accent: "" };
+    const idx = trimmed.lastIndexOf(" ");
+    if (idx <= 0) return { main: trimmed, accent: "" };
+    return { main: trimmed.slice(0, idx), accent: trimmed.slice(idx + 1) };
+  };
+
+  const { main: brandMain, accent: brandAccent } = splitBrand(siteName);
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -47,14 +57,16 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-18">
             {/* Logo with glow effect */}
-            <Link to="/" className="flex items-center gap-2 group">
+            <Link to="/" className="flex items-center gap-2 group" aria-label={siteName}>
               <div className="relative">
                 <span className="text-xl md:text-2xl font-bold text-primary font-heading transition-all duration-300 group-hover:text-primary/80">
-                  EAD Cursos
+                  {brandMain}
                 </span>
                 <div className="absolute -inset-1 bg-primary/20 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <span className="text-xl md:text-2xl font-bold text-foreground font-heading">Nacional</span>
+              {brandAccent ? (
+                <span className="text-xl md:text-2xl font-bold text-foreground font-heading">{brandAccent}</span>
+              ) : null}
             </Link>
 
             {/* Desktop Navigation with hover effects */}
