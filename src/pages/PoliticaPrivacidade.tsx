@@ -2,14 +2,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SEOHead from "@/components/SEOHead";
+import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 
 const PoliticaPrivacidade = () => {
+  const { siteName } = useSiteConfigContext();
+  const brandName = (siteName || "EAD Cursos Nacional").trim();
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
         title="Política de Privacidade"
         description="Conheça nossa Política de Privacidade. Saiba como coletamos, usamos e protegemos suas informações pessoais de acordo com a LGPD."
-        keywords="política de privacidade, LGPD, proteção de dados, privacidade EAD Cursos"
+        keywords={`política de privacidade, LGPD, proteção de dados, privacidade ${brandName}`}
         canonicalPath="/politica-privacidade"
       />
       <Header />
@@ -28,7 +31,7 @@ const PoliticaPrivacidade = () => {
             <section className="space-y-4">
               <h2 className="text-xl font-bold text-foreground">1. Introdução</h2>
               <p className="text-muted-foreground leading-relaxed">
-                A EAD Cursos Nacional está comprometida em proteger a privacidade dos usuários do nosso site. 
+                A {brandName} está comprometida em proteger a privacidade dos usuários do nosso site. 
                 Esta Política de Privacidade explica como coletamos, usamos, divulgamos e protegemos suas informações 
                 pessoais quando você visita nosso site ou utiliza nossos serviços.
               </p>

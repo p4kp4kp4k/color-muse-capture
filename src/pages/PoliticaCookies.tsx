@@ -2,14 +2,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SEOHead from "@/components/SEOHead";
+import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 
 const PoliticaCookies = () => {
+  const { siteName } = useSiteConfigContext();
+  const brandName = (siteName || "EAD Cursos Nacional").trim();
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
         title="Política de Cookies"
         description="Conheça nossa Política de Cookies. Saiba como utilizamos cookies para melhorar sua experiência no site."
-        keywords="política de cookies, cookies, navegação, experiência do usuário"
+        keywords={`política de cookies, cookies ${brandName}, navegação, experiência do usuário`}
         canonicalPath="/politica-cookies"
       />
       <Header />

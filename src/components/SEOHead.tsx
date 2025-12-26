@@ -27,6 +27,60 @@ const SEOHead = ({
   const fullUrl = `${baseUrl}${canonicalPath}`;
   const fullTitle = `${title} | ${brandName}`;
 
+  // Default Organization schema with dynamic siteName
+  const defaultOrganizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": brandName,
+    "alternateName": brandName,
+    "url": baseUrl,
+    "logo": `${baseUrl}/favicon.ico`,
+    "description": `${brandName} - Diplomas e certificados acadêmicos reconhecidos pelo MEC para todo o Brasil.`,
+    "areaServed": {
+      "@type": "Country",
+      "name": "Brazil"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": "Portuguese"
+    },
+    "sameAs": []
+  };
+
+  // Website schema for better SEO
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": brandName,
+    "url": baseUrl,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${baseUrl}/cursos?q={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  // BreadcrumbList schema
+  const breadcrumbSchema = canonicalPath && canonicalPath !== "/" ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": baseUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": title,
+        "item": fullUrl
+      }
+    ]
+  } : null;
+
   useEffect(() => {
     // Update document title
     document.title = fullTitle;
@@ -47,6 +101,8 @@ const SEOHead = ({
     updateMeta("description", description);
     if (keywords) updateMeta("keywords", keywords);
     updateMeta("robots", "index, follow");
+    updateMeta("author", brandName);
+    updateMeta("publisher", brandName);
 
     // Open Graph
     updateMeta("og:title", fullTitle, true);
@@ -62,6 +118,7 @@ const SEOHead = ({
     updateMeta("twitter:title", fullTitle);
     updateMeta("twitter:description", description);
     updateMeta("twitter:image", ogImage);
+    updateMeta("twitter:site", `@${brandName.replace(/\s+/g, '')}`);
 
     // Canonical URL
     let canonical = document.querySelector('link[rel="canonical"]');
@@ -72,25 +129,46 @@ const SEOHead = ({
     }
     canonical.setAttribute("href", fullUrl);
 
-    // Structured data
+    // Remove existing structured data scripts
+    document.querySelectorAll('script[data-seo-structured]').forEach(el => el.remove());
+
+    // Add Organization schema
+    const orgScript = document.createElement("script");
+    orgScript.type = "application/ld+json";
+    orgScript.setAttribute("data-seo-structured", "org");
+    orgScript.textContent = JSON.stringify(defaultOrganizationSchema);
+    document.head.appendChild(orgScript);
+
+    // Add Website schema
+    const webScript = document.createElement("script");
+    webScript.type = "application/ld+json";
+    webScript.setAttribute("data-seo-structured", "website");
+    webScript.textContent = JSON.stringify(websiteSchema);
+    document.head.appendChild(webScript);
+
+    // Add Breadcrumb schema if not homepage
+    if (breadcrumbSchema) {
+      const bcScript = document.createElement("script");
+      bcScript.type = "application/ld+json";
+      bcScript.setAttribute("data-seo-structured", "breadcrumb");
+      bcScript.textContent = JSON.stringify(breadcrumbSchema);
+      document.head.appendChild(bcScript);
+    }
+
+    // Add custom structured data if provided
     if (structuredData) {
-      const existingScript = document.querySelector('script[data-seo-structured]');
-      if (existingScript) {
-        existingScript.remove();
-      }
-      const script = document.createElement("script");
-      script.type = "application/ld+json";
-      script.setAttribute("data-seo-structured", "true");
-      script.textContent = JSON.stringify(structuredData);
-      document.head.appendChild(script);
+      const customScript = document.createElement("script");
+      customScript.type = "application/ld+json";
+      customScript.setAttribute("data-seo-structured", "custom");
+      customScript.textContent = JSON.stringify(structuredData);
+      document.head.appendChild(customScript);
     }
 
     return () => {
       // Cleanup structured data on unmount
-      const script = document.querySelector('script[data-seo-structured]');
-      if (script) script.remove();
+      document.querySelectorAll('script[data-seo-structured]').forEach(el => el.remove());
     };
-  }, [fullTitle, description, keywords, fullUrl, ogImage, ogType, structuredData]);
+  }, [fullTitle, description, keywords, fullUrl, ogImage, ogType, structuredData, brandName]);
 
   return null;
 };

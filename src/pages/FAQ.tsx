@@ -6,6 +6,7 @@ import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
 import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
+import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 import {
   Accordion,
   AccordionContent,
@@ -19,7 +20,7 @@ const FAQ_DATA = [
     answer: "Sim. Nossa equipe trabalha apenas com documentação reconhecida pelo MEC, de forma que os diplomas são emitidos dentro das próprias instituições de ensino credenciadas."
   },
   {
-    question: "A EAD Cursos Nacional consegue documentação de qualquer instituição?",
+    question: "Vocês conseguem documentação de qualquer instituição?",
     answer: "Sim. Continuamente estamos aumentando nossos esforços para oferecer mais opções de instituições reconhecidas pelo MEC, garantindo sempre a documentação completa e reconhecida."
   },
   {
@@ -65,7 +66,9 @@ const FAQ_DATA = [
 ];
 
 const FAQ = () => {
+  const { siteName } = useSiteConfigContext();
   const [dialogOpen, setDialogOpen] = useState(false);
+  const brandName = (siteName || "EAD Cursos Nacional").trim();
 
   const faqStructuredData = {
     "@context": "https://schema.org",
