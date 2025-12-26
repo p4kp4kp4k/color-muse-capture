@@ -29,6 +29,7 @@ import testimonialBanner from "@/assets/banners/testimonial.png";
 import graduateOutdoorBanner from "@/assets/banners/graduate-outdoor.png";
 import graduateClassroomBanner from "@/assets/banners/graduate-classroom.png";
 import classroomTeacherBanner from "@/assets/banners/classroom-teacher.png";
+import pixLogo from "@/assets/pix-logo.png";
 
 const benefitIcons = [
   <GraduationCap key="0" className="w-8 h-8" />,
@@ -201,7 +202,7 @@ const Index = () => {
               <span className="text-sm font-medium">Forma de Pagamento:</span>
               <div className="flex items-center gap-4 bg-background/50 rounded-xl px-6 py-3 shadow-sm">
                 <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg/120px-Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg.png" 
+                  src={pixLogo} 
                   alt="PIX" 
                   className="h-8" 
                 />
