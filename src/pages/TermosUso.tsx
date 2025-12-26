@@ -2,14 +2,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SEOHead from "@/components/SEOHead";
+import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 
 const TermosUso = () => {
+  const { siteName } = useSiteConfigContext();
+  const brandName = (siteName || "EAD Cursos Nacional").trim();
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
         title="Termos de Uso"
         description="Leia nossos Termos de Uso. Conheça as regras e condições para utilização do site e serviços da EAD Cursos Nacional."
-        keywords="termos de uso, condições de uso, regras do site, termos EAD Cursos"
+        keywords={`termos de uso, condições de uso, regras do site, termos ${brandName}`}
         canonicalPath="/termos-uso"
       />
       <Header />
@@ -28,7 +31,7 @@ const TermosUso = () => {
             <section className="space-y-4">
               <h2 className="text-xl font-bold text-foreground">1. Aceitação dos Termos</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Ao acessar e utilizar o site da EAD Cursos Nacional, você concorda em cumprir e estar 
+                Ao acessar e utilizar o site da {brandName}, você concorda em cumprir e estar 
                 vinculado a estes Termos de Uso. Se você não concordar com qualquer parte destes termos, 
                 não deve utilizar nosso site ou serviços.
               </p>
@@ -37,7 +40,7 @@ const TermosUso = () => {
             <section className="space-y-4">
               <h2 className="text-xl font-bold text-foreground">2. Descrição dos Serviços</h2>
               <p className="text-muted-foreground leading-relaxed">
-                A EAD Cursos Nacional oferece informações sobre cursos de educação à distância e 
+                A {brandName} oferece informações sobre cursos de educação à distância e 
                 documentação acadêmica reconhecida pelo MEC. Nossos serviços incluem orientação sobre 
                 cursos superiores, técnicos e de pós-graduação.
               </p>
@@ -62,7 +65,7 @@ const TermosUso = () => {
               <h2 className="text-xl font-bold text-foreground">4. Propriedade Intelectual</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Todo o conteúdo do site, incluindo textos, gráficos, logotipos, imagens e software, 
-                é propriedade da EAD Cursos Nacional ou de seus licenciadores e é protegido por leis 
+                é propriedade da {brandName} ou de seus licenciadores e é protegido por leis 
                 de direitos autorais e propriedade intelectual.
               </p>
             </section>
@@ -70,7 +73,7 @@ const TermosUso = () => {
             <section className="space-y-4">
               <h2 className="text-xl font-bold text-foreground">5. Limitação de Responsabilidade</h2>
               <p className="text-muted-foreground leading-relaxed">
-                A EAD Cursos Nacional não se responsabiliza por:
+                A {brandName} não se responsabiliza por:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
                 <li>Danos diretos, indiretos ou consequenciais decorrentes do uso do site</li>
