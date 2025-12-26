@@ -1,0 +1,12 @@
+# SPA fallback for Apache (Hostinger)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # If the requested file or directory exists, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Otherwise, route all requests to index.html (React Router)
+  RewriteRule ^ index.html [L]
+</IfModule>
