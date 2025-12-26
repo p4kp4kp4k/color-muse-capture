@@ -15,10 +15,12 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
-  const { signIn, signUp, user, isAdmin, roleChecked, loading } = useAuth();
+  const { signIn, signUp, signOut, user, isAdmin, roleChecked, loading } = useAuth();
   const { checkRateLimit, recordAttempt, resetAttempts } = useRateLimit({ maxAttempts: 5, windowMs: 60000 });
   const navigate = useNavigate();
   const { toast } = useToast();
+
+  const isUnauthorizedUser = !loading && roleChecked && !!user && !isAdmin;
 
   useEffect(() => {
     if (!loading && roleChecked && user && isAdmin) {
@@ -26,6 +28,16 @@ const AdminLogin = () => {
       navigate('/admin');
     }
   }, [user, isAdmin, roleChecked, loading, navigate, resetAttempts]);
+
+  useEffect(() => {
+    if (isUnauthorizedUser) {
+      toast({
+        title: "Acesso negado",
+        description: "Esta conta não tem permissão de administrador. Saia e entre com um email autorizado.",
+        variant: "destructive",
+      });
+    }
+  }, [isUnauthorizedUser, toast]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -131,66 +143,86 @@ const AdminLogin = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="seu@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10"
-                  required
-                  autoComplete="email"
-                />
+          {isUnauthorizedUser ? (
+            <div className="space-y-4">
+              <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-sm">
+                <p className="font-medium text-foreground">Conta sem permissão de administrador</p>
+                <p className="mt-1 text-muted-foreground">
+                  Você está logado, mas este email não tem acesso ao painel. Saia e entre com um email de admin.
+                </p>
               </div>
+
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                onClick={async () => {
+                  await signOut();
+                  setEmail('');
+                  setPassword('');
+                }}
+              >
+                Sair e trocar conta
+              </Button>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Senha</Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10"
-                  required
-                  minLength={6}
-                  autoComplete={isSignUp ? 'new-password' : 'current-password'}
-                />
+          ) : (
+            <>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="seu@email.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="pl-10"
+                      required
+                      autoComplete="email"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="password">Senha</Label>
+                  <div className="relative">
+                    <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      id="password"
+                      type="password"
+                      placeholder="••••••••"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="pl-10"
+                      required
+                      minLength={6}
+                      autoComplete={isSignUp ? 'new-password' : 'current-password'}
+                    />
+                  </div>
+                </div>
+
+                <div className="bg-muted/50 rounded-lg p-3 flex items-start gap-2 text-sm text-muted-foreground">
+                  <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <span>Área restrita. Apenas administradores autorizados podem acessar.</span>
+                </div>
+
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                  {isLoading ? (isSignUp ? 'Criando conta...' : 'Entrando...') : (isSignUp ? 'Criar Conta' : 'Entrar')}
+                </Button>
+              </form>
+
+              <div className="mt-4 text-center">
+                <button
+                  type="button"
+                  onClick={() => setIsSignUp(!isSignUp)}
+                  className="text-sm text-primary hover:underline"
+                >
+                  {isSignUp ? 'Já tem conta? Faça login' : 'Primeiro acesso? Criar conta'}
+                </button>
               </div>
-            </div>
-            
-            <div className="bg-muted/50 rounded-lg p-3 flex items-start gap-2 text-sm text-muted-foreground">
-              <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-              <span>
-                Área restrita. Apenas administradores autorizados podem acessar.
-              </span>
-            </div>
-
-            <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading 
-                ? (isSignUp ? 'Criando conta...' : 'Entrando...') 
-                : (isSignUp ? 'Criar Conta' : 'Entrar')}
-            </Button>
-          </form>
-
-          <div className="mt-4 text-center">
-            <button
-              type="button"
-              onClick={() => setIsSignUp(!isSignUp)}
-              className="text-sm text-primary hover:underline"
-            >
-              {isSignUp 
-                ? 'Já tem conta? Faça login' 
-                : 'Primeiro acesso? Criar conta'}
-            </button>
-          </div>
+            </>
+          )}
         </CardContent>
       </Card>
     </div>
