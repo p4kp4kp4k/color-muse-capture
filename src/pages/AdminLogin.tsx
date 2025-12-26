@@ -14,8 +14,7 @@ const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false);
-  const { signIn, signUp, signOut, user, isAdmin, roleChecked, loading } = useAuth();
+  const { signIn, signOut, user, isAdmin, roleChecked, loading } = useAuth();
   const { checkRateLimit, recordAttempt, resetAttempts } = useRateLimit({ maxAttempts: 5, windowMs: 60000 });
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -69,42 +68,21 @@ const AdminLogin = () => {
     recordAttempt();
 
     try {
-      if (isSignUp) {
-        const { error } = await signUp(email, password);
-        if (error) {
-          let errorMessage = error.message;
-          if (error.message.includes('already registered')) {
-            errorMessage = 'Este email já está cadastrado';
-          }
-          toast({
-            title: "Erro ao cadastrar",
-            description: errorMessage,
-            variant: "destructive",
-          });
-          return;
-        }
+      const { error } = await signIn(email, password);
+      if (error) {
         toast({
-          title: "Cadastro realizado!",
-          description: "Agora faça login para acessar o painel.",
+          title: "Erro ao entrar",
+          description: error.message === 'Invalid login credentials' 
+            ? 'Email ou senha incorretos' 
+            : error.message,
+          variant: "destructive",
         });
-        setIsSignUp(false);
-      } else {
-        const { error } = await signIn(email, password);
-        if (error) {
-          toast({
-            title: "Erro ao entrar",
-            description: error.message === 'Invalid login credentials' 
-              ? 'Email ou senha incorretos' 
-              : error.message,
-            variant: "destructive",
-          });
-          return;
-        }
-        toast({
-          title: "Login realizado!",
-          description: "Verificando permissões...",
-        });
+        return;
       }
+      toast({
+        title: "Login realizado!",
+        description: "Verificando permissões...",
+      });
     } catch (err) {
       toast({
         title: "Erro",
@@ -134,12 +112,10 @@ const AdminLogin = () => {
             </div>
           </div>
           <CardTitle className="text-2xl font-heading">
-            {isSignUp ? 'Criar Conta Admin' : 'Painel Administrativo'}
+            Painel Administrativo
           </CardTitle>
           <CardDescription>
-            {isSignUp 
-              ? 'Crie sua conta de administrador' 
-              : 'Entre com suas credenciais de administrador'}
+            Entre com suas credenciais de administrador
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -197,7 +173,7 @@ const AdminLogin = () => {
                       className="pl-10"
                       required
                       minLength={6}
-                      autoComplete={isSignUp ? 'new-password' : 'current-password'}
+                      autoComplete="current-password"
                     />
                   </div>
                 </div>
@@ -208,19 +184,9 @@ const AdminLogin = () => {
                 </div>
 
                 <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? (isSignUp ? 'Criando conta...' : 'Entrando...') : (isSignUp ? 'Criar Conta' : 'Entrar')}
+                  {isLoading ? 'Entrando...' : 'Entrar'}
                 </Button>
               </form>
-
-              <div className="mt-4 text-center">
-                <button
-                  type="button"
-                  onClick={() => setIsSignUp(!isSignUp)}
-                  className="text-sm text-primary hover:underline"
-                >
-                  {isSignUp ? 'Já tem conta? Faça login' : 'Primeiro acesso? Criar conta'}
-                </button>
-              </div>
             </>
           )}
         </CardContent>
