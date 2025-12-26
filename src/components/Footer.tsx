@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSiteConfigContext } from "@/contexts/SiteConfigContext";
 import { Phone, Clock, MessageCircle, Wallet, ArrowRight, Sparkles } from "lucide-react";
 import WhatsAppContactDialog from "@/components/WhatsAppContactDialog";
+import pixLogo from "@/assets/pix-logo.png";
 
 const Footer = () => {
   const { siteName } = useSiteConfigContext();
@@ -76,7 +77,7 @@ const Footer = () => {
               <div>
                 <span className="text-xs text-primary-foreground/60 block">Forma de pagamento</span>
                 <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg/80px-Logo%E2%80%94pix_powered_by_Banco_Central_%28Brazil%2C_2020%29.svg.png" 
+                  src={pixLogo} 
                   alt="PIX" 
                   className="h-5 mt-1"
                   loading="lazy"
