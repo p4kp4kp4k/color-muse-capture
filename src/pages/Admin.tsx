@@ -197,7 +197,9 @@ const Admin = () => {
     );
   };
 
-  if (authLoading || loading || !roleChecked) {
+  // Security: Show loading state until auth is fully verified
+  // This prevents rendering admin UI before authorization is confirmed
+  if (authLoading || !roleChecked) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
@@ -205,8 +207,18 @@ const Admin = () => {
     );
   }
 
-  if (!isAdmin) {
+  // Security: Block rendering completely if not authenticated or not admin
+  // RLS policies on the database provide additional server-side protection
+  if (!user || !isAdmin) {
     return null;
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
   }
 
   return (
