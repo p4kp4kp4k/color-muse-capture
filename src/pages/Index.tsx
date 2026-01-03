@@ -94,15 +94,15 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead
-        title="Diplomas e Certificados Reconhecidos pelo MEC"
-        description={`${brandName} - Diplomas e certificados acadêmicos reconhecidos pelo MEC. Bacharelado, Tecnólogo, Técnico e Pós-Graduação para todo o Brasil. Atendimento 24h via WhatsApp.`}
-        keywords="diploma reconhecido MEC, certificado técnico, bacharelado EAD, tecnólogo, pós-graduação, graduação online, documentação acadêmica"
+        title="Consultoria Educacional - Cursos EAD Reconhecidos pelo MEC"
+        description={`${brandName} - Consultoria educacional especializada em cursos EAD reconhecidos pelo MEC. Orientação para Bacharelado, Tecnólogo, Técnico e Pós-Graduação. Atendimento 24h via WhatsApp.`}
+        keywords="cursos EAD, consultoria educacional, curso online MEC, bacharelado EAD, tecnólogo online, pós-graduação EAD, educação a distância"
         canonicalPath="/"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "EducationalOrganization",
           "name": brandName,
-          "description": "Diplomas e certificados acadêmicos reconhecidos pelo MEC",
+          "description": "Consultoria educacional especializada em cursos EAD reconhecidos pelo MEC",
           "url": "https://eadcursosnacional.com.br",
           "areaServed": { "@type": "Country", "name": "Brazil" }
         }}
@@ -154,16 +154,16 @@ const Index = () => {
               {/* Main Heading */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 font-heading leading-[1.1] tracking-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
                 <TypingText 
-                  text="Sem tempo para estudar, precisa entrar rapidamente no mercado de trabalho?" 
+                  text="Quer estudar EAD e conquistar seu diploma?" 
                   speed={30}
                   delay={800}
                 />{" "}
-                <span className="text-gold">podemos te ajudar!!!!</span>
+                <span className="text-gold">Podemos te orientar!</span>
               </h1>
 
               {/* Description */}
               <p className="text-lg md:text-xl text-primary-foreground/85 leading-relaxed mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                A equipe <strong className="text-white font-semibold">{brandUpper}</strong> foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. Trabalhamos a mais de 10 anos em virtude de você, para conseguirmos o melhor e mais eficiente resultado no processo de seu diploma superior com maior segurança e transparência!
+                A equipe <strong className="text-white font-semibold">{brandUpper}</strong> é especializada em consultoria educacional para cursos EAD. Ajudamos você a encontrar o curso ideal em instituições reconhecidas pelo MEC para conquistar seu diploma de forma legítima.
               </p>
 
               {/* Buttons */}
@@ -227,9 +227,9 @@ const Index = () => {
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <GraduationCap className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 font-heading">Certificado Reconhecido no MEC</h3>
+                <h3 className="text-xl font-bold mb-3 font-heading">Cursos Reconhecidos pelo MEC</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Todos os diplomas são Reconhecidos pelo MEC e publicados no Diário Oficial, voltados para serem usados em qualquer situação legal, seja profissional!
+                  Orientamos você para cursos de instituições credenciadas pelo MEC, garantindo diplomas válidos em todo o território nacional.
                 </p>
               </div>
               
@@ -243,9 +243,9 @@ const Index = () => {
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <BookOpen className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 font-heading">Conheça os Cursos Disponíveis</h3>
+                <h3 className="text-xl font-bold mb-3 font-heading">Variedade de Cursos EAD</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Então saiba qual é a melhor opção para o seu currículo, escolha o melhor curso para você comprar seu diploma ou certificado de ensino técnico e pós-graduação!
+                  Conheça nossa seleção de cursos de graduação, pós-graduação e técnicos em diversas áreas do conhecimento para sua formação.
                 </p>
               </div>
               
@@ -259,9 +259,9 @@ const Index = () => {
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Shield className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 font-heading">Aqui, você não paga nada adiantado!</h3>
+                <h3 className="text-xl font-bold mb-3 font-heading">Consultoria Gratuita</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Garantimos a emissão e entrega segura do seu diploma ou certificado — 100% autêntico, reconhecido pelo MEC e publicado no Diário Oficial.
+                  Oferecemos orientação educacional sem compromisso. Converse conosco para encontrar o curso EAD ideal para seus objetivos.
                 </p>
               </div>
             </div>
@@ -276,17 +276,17 @@ const Index = () => {
                 <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-gold/20 rounded-3xl blur-2xl animate-pulse" />
                 <img 
                   src={graduateOutdoorBanner}
-                  alt="Diploma certificado pelo MEC"
+                  alt="Estudante de curso EAD"
                   className="relative rounded-3xl shadow-2xl w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
                   loading="lazy"
                 />
               </div>
               <div className="text-center md:text-left">
                 <h2 className="text-3xl md:text-5xl font-bold mb-6 font-heading">
-                  Mas... é <span className="text-primary">Seguro mesmo?</span>
+                  Por que escolher <span className="text-primary">cursos EAD?</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Com toda certeza é super seguro, pois aqui emitimos e registramos a documentação completa referente ao curso que for escolhido por você, bem como, o certificado de conclusão de curso, o diploma e o histórico completo com toda a grade curricular e carga horária necessária do curso, assim como os estágios e o trabalho de conclusão de curso também.
+                  A educação a distância oferece flexibilidade para estudar no seu ritmo, com a mesma qualidade e reconhecimento dos cursos presenciais. Todos os cursos que indicamos são de instituições credenciadas pelo MEC, garantindo diplomas válidos para concursos, processos seletivos e registros profissionais.
                 </p>
               </div>
             </div>
@@ -295,10 +295,10 @@ const Index = () => {
             <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
               <div className="text-center md:text-left order-2 md:order-1">
                 <h3 className="text-2xl md:text-4xl font-bold mb-6 font-heading">
-                  Realize seu <span className="text-primary">Sonho</span>
+                  Conquiste seu <span className="text-primary">Diploma</span>
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Nunca é tarde para conquistar o seu diploma. Milhares de pessoas já realizaram o sonho da formatura com nossa ajuda. Você também pode!
+                  Nunca é tarde para investir na sua formação. Milhares de brasileiros já conquistaram seus diplomas através de cursos EAD de qualidade. Deixe nossa equipe orientar você nessa jornada!
                 </p>
               </div>
               <div 
@@ -333,10 +333,10 @@ const Index = () => {
             {/* Header Text */}
             <div className="text-center mb-8 text-primary-foreground max-w-3xl mx-auto">
               <h2 className="text-xl md:text-2xl font-bold mb-3 font-heading">
-                Escolha seu curso e fale com a <span className="font-extrabold">{brandUpper}</span>
+                Conheça nossos cursos e fale com a <span className="font-extrabold">{brandUpper}</span>
               </h2>
               <p className="text-sm md:text-base text-primary-foreground/85 leading-relaxed">
-                Confira os valores, prazos e condições para o curso escolhido. Trabalhamos apenas com cursos reconhecidos pelo MEC.
+                Confira as opções de cursos EAD disponíveis. Trabalhamos apenas com instituições reconhecidas pelo MEC.
               </p>
             </div>
             
@@ -381,10 +381,10 @@ const Index = () => {
                     {/* Content */}
                     <div className="p-4 md:p-5">
                       <h3 className="text-sm md:text-base font-bold text-gray-900 mb-2 leading-tight group-hover:text-primary transition-colors duration-300">
-                        Adquira o Diploma de {course.name}
+                        Curso de {course.name}
                       </h3>
                       <p className="text-xs text-gray-500 mb-4 leading-relaxed hidden md:block">
-                        Diploma de nível superior bacharelado, licenciatura ou pós-graduação.
+                        Graduação, licenciatura ou pós-graduação EAD reconhecida pelo MEC.
                       </p>
                       <button
                         onClick={() => handleWhatsAppClick(course.name)}
@@ -423,37 +423,29 @@ const Index = () => {
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-3xl md:text-5xl font-bold mb-8 font-heading">
-                  É <span className="text-primary">Seguro</span>?
+                  É <span className="text-primary">Confiável</span>?
                 </h2>
                 <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                  Sim! Trabalhamos com total sigilo e segurança em todo o processo.
-                  Nossa equipe é formada por profissionais experientes e comprometidos
-                  com a sua satisfação.
+                  Sim! Somos uma consultoria educacional séria, especializada em orientar estudantes a encontrar os melhores cursos EAD em instituições reconhecidas pelo MEC.
                 </p>
                 <ul className="space-y-5">
                   <li className="flex items-start gap-4">
                     <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <CheckCircle className="text-primary" size={18} />
                     </div>
-                    <span className="text-lg">Documentação 100% verificável</span>
+                    <span className="text-lg">Instituições credenciadas pelo MEC</span>
                   </li>
                   <li className="flex items-start gap-4">
                     <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <CheckCircle className="text-primary" size={18} />
                     </div>
-                    <span className="text-lg">Sigilo total das suas informações</span>
+                    <span className="text-lg">Consultoria educacional especializada</span>
                   </li>
                   <li className="flex items-start gap-4">
                     <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <CheckCircle className="text-primary" size={18} />
                     </div>
-                    <span className="text-lg">Suporte completo durante todo o processo</span>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <CheckCircle className="text-primary" size={18} />
-                    </div>
-                    <span className="text-lg">Garantia de satisfação ou seu dinheiro de volta</span>
+                    <span className="text-lg">Suporte completo para sua jornada acadêmica</span>
                   </li>
                 </ul>
               </div>

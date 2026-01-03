@@ -206,8 +206,8 @@ const WhatsAppContactDialog = ({
 
     const nivelLabel = getNivelLabel(nivel);
     const message = interested
-      ? `Olá, meu nome é ${nome}. Tenho interesse em adquirir a documentação do curso: ${curso} (Nível: ${nivelLabel})`
-      : `Olá, meu nome é ${nome}. Não tenho interesse no momento, mas gostaria de receber mais informações sobre o curso: ${curso} (Nível: ${nivelLabel})`;
+      ? `Olá, meu nome é ${nome}. Tenho interesse em informações sobre o curso de ${curso} (Nível: ${nivelLabel})`
+      : `Olá, meu nome é ${nome}. Gostaria de receber mais informações sobre cursos EAD na área de ${curso} (Nível: ${nivelLabel})`;
 
     // Track conversion when user clicks "Tenho interesse"
     if (interested) {
@@ -225,20 +225,20 @@ const WhatsAppContactDialog = ({
   const infoCards = [
     {
       icon: FileText,
-      title: "Documentação",
+      title: "Cursos Disponíveis",
       content: (
         <ul className="text-xs text-muted-foreground space-y-1.5 ml-6">
           <li className="flex items-center gap-2">
             <Check className="h-3 w-3 text-foreground" />
-            Diploma
+            Graduação (Bacharelado e Licenciatura)
           </li>
           <li className="flex items-center gap-2">
             <Check className="h-3 w-3 text-foreground" />
-            Histórico Escolar
+            Tecnólogo e Técnico
           </li>
           <li className="flex items-center gap-2">
             <Check className="h-3 w-3 text-foreground" />
-            Certificado de Conclusão
+            Pós-Graduação (MBA, Mestrado, Doutorado)
           </li>
         </ul>
       ),
@@ -248,22 +248,22 @@ const WhatsAppContactDialog = ({
       title: "Garantias",
       content: (
         <p className="text-xs text-muted-foreground ml-6">
-          Válido para concursos públicos, processos seletivos e registros em conselhos profissionais.
+          Todos os cursos indicados são de instituições credenciadas pelo MEC.
         </p>
       ),
     },
     {
       icon: CreditCard,
-      title: "Pagamento",
+      title: "Consultoria",
       content: (
         <p className="text-xs text-muted-foreground ml-6">
-          Pix, transferência bancária ou boleto.
+          Orientação gratuita para encontrar o curso ideal para você.
         </p>
       ),
     },
     {
       icon: Building2,
-      title: "Instituições",
+      title: "Instituições Parceiras",
       content: (
         <p className="text-xs text-muted-foreground ml-6">
           Uninter, Estácio, Cruzeiro do Sul, Unopar, UniCesumar, Unip, Anhanguera, UFMG, Uniasselvi, Mackenzie, PUC, Anhembi, Uninove, Senai, Senac e outras.
@@ -282,10 +282,10 @@ const WhatsAppContactDialog = ({
           }`}
         >
           <DialogTitle className="text-lg sm:text-xl font-semibold text-foreground tracking-tight">
-            Documentação Completa
+            Consultoria Educacional
           </DialogTitle>
           <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-            Valores sob consulta conforme curso e instituição
+            Orientação sobre cursos EAD reconhecidos pelo MEC
           </p>
         </DialogHeader>
 

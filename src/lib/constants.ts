@@ -1,4 +1,4 @@
-export const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=447785369424&text=Ol%C3%A1+%2C+tenho+interesse+em+adquirir+uma+documenta%C3%A7%C3%A3o+de+diploma&type=phone_number&app_absent=0";
+export const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=447785369424&text=Ol%C3%A1%2C+gostaria+de+informa%C3%A7%C3%B5es+sobre+cursos+EAD&type=phone_number&app_absent=0";
 
 export const COURSES = [
   // Educação
@@ -91,24 +91,24 @@ export const BRAZILIAN_STATES = [
 
 export const FAQ_ITEMS = [
   {
-    question: "Os documentos vendidos pela EAD CURSOS NACIONAL são reconhecidos pelo MEC?",
-    answer: "Sim. Nossa equipe MEC Diplomas trabalha apenas com documentação reconhecida pelo MEC assim de tal forma os diplomas são emitidos dentro das próprias instituições de ensino."
+    question: "Os cursos indicados pela EAD CURSOS NACIONAL são reconhecidos pelo MEC?",
+    answer: "Sim. Trabalhamos apenas com instituições de ensino credenciadas e cursos reconhecidos pelo MEC. Orientamos você a encontrar o curso ideal para sua formação acadêmica."
   },
   {
-    question: "A EAD CURSOS NACIONAL consegue a documentação superior por qualquer instituição de ensino?",
-    answer: "Sim. Ao mesmo tempo continuamente estamos aumentando nossos esforços para que possamos oferecer mais opções de instituições que sejam reconhecidas pelo MEC de forma que consigamos realizar todas as etapas do processo para garantir sempre a documentação completa e reconhecida."
+    question: "A EAD CURSOS NACIONAL oferece consultoria para qualquer instituição de ensino?",
+    answer: "Sim. Continuamente estamos aumentando nossa rede de instituições parceiras reconhecidas pelo MEC para oferecer mais opções de cursos EAD de qualidade para você."
   },
   {
-    question: "Posso apresentar o documento no RH, concurso público ou matrícula em universidades?",
-    answer: "Sim. O documento pode ser utilizado em qualquer finalidade legal necessária com toda a certeza."
+    question: "Os cursos são válidos para concursos públicos e processos seletivos?",
+    answer: "Sim. Todos os cursos que indicamos são de instituições credenciadas pelo MEC, portanto os diplomas emitidos são válidos para qualquer finalidade legal."
   },
   {
-    question: "Mas como é feito o envio, posso retirar pessoalmente com a EAD CURSOS NACIONAL?",
-    answer: "Entre em contato conosco via WhatsApp para mais informações sobre opções de envio e retirada."
+    question: "Como funciona a consultoria educacional?",
+    answer: "Entre em contato conosco via WhatsApp para receber orientação personalizada sobre os melhores cursos EAD para o seu perfil e objetivos profissionais."
   },
   {
     question: "O site EAD CURSOS NACIONAL é seguro?",
-    answer: "Sim! Trabalhamos com total sigilo e segurança. Todos os documentos são emitidos seguindo os padrões exigidos pelo MEC."
+    answer: "Sim! Somos uma consultoria educacional séria que trabalha com total transparência. Indicamos apenas cursos de instituições credenciadas pelo MEC."
   },
 ];
 
@@ -116,59 +116,59 @@ export const TESTIMONIALS = [
   {
     name: "Maria Silva",
     location: "São Paulo, SP",
-    text: "Excelente atendimento! Consegui meu diploma de Pedagogia em tempo recorde. Super recomendo!",
+    text: "Excelente consultoria! Me ajudaram a encontrar o curso de Pedagogia EAD ideal para minha rotina. Super recomendo!",
     rating: 5
   },
   {
     name: "João Santos",
     location: "Rio de Janeiro, RJ",
-    text: "Profissionais muito atenciosos. Todo o processo foi transparente e recebi minha documentação certinha.",
+    text: "Profissionais muito atenciosos. A orientação foi clara e encontrei um curso reconhecido pelo MEC perfeito para mim.",
     rating: 5
   },
   {
     name: "Ana Oliveira",
     location: "Belo Horizonte, MG",
-    text: "Estava precisando do diploma para uma promoção no trabalho. A equipe foi super eficiente!",
+    text: "Precisava de orientação sobre cursos EAD para me qualificar no trabalho. A equipe foi super prestativa!",
     rating: 5
   },
   {
     name: "Carlos Mendes",
     location: "Salvador, BA",
-    text: "Atendimento nota 10! Tiraram todas as minhas dúvidas e entregaram antes do prazo.",
+    text: "Atendimento nota 10! Tiraram todas as minhas dúvidas sobre os cursos e instituições disponíveis.",
     rating: 5
   },
   {
     name: "Fernanda Costa",
     location: "Curitiba, PR",
-    text: "Recomendo demais! Processo rápido, seguro e com ótimo custo-benefício.",
+    text: "Recomendo demais! Consultoria educacional de qualidade com ótimo atendimento.",
     rating: 5
   },
 ];
 
 export const BENEFITS = [
   {
-    title: "Reconhecido pelo MEC",
-    description: "Documentação oficial com registro no Ministério da Educação",
+    title: "Cursos Reconhecidos pelo MEC",
+    description: "Indicamos apenas cursos de instituições credenciadas pelo MEC",
   },
   {
-    title: "+200 Cursos",
-    description: "Ampla variedade de graduações e pós-graduações disponíveis",
+    title: "+200 Cursos EAD",
+    description: "Ampla variedade de graduações e pós-graduações para você escolher",
   },
   {
-    title: "Pagamento via PIX",
-    description: "Pague com PIX e tenha desconto especial",
+    title: "Consultoria Gratuita",
+    description: "Orientação sem compromisso para encontrar o curso ideal",
   },
   {
-    title: "Entrega Rápida",
-    description: "Receba sua documentação em até 30 dias úteis",
+    title: "Flexibilidade EAD",
+    description: "Estude no seu ritmo com cursos 100% online",
   },
   {
     title: "Atendimento 24h",
     description: "Suporte via WhatsApp a qualquer momento",
   },
   {
-    title: "100% Seguro",
-    description: "Sigilo total e garantia de satisfação",
+    title: "Instituições Parceiras",
+    description: "Rede de universidades e faculdades credenciadas",
   },
 ];
 
