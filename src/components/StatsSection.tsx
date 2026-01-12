@@ -12,52 +12,37 @@ interface StatItemProps {
 }
 
 const StatItem = ({ icon, end, suffix = "", label, delay = 0 }: StatItemProps) => {
-  const { count, ref, isVisible } = useAnimatedCounter({ end, duration: 2500, delay });
+  const { count, ref, isVisible } = useAnimatedCounter({ end, duration: 2000, delay });
 
   return (
     <div 
       ref={ref}
-      className={`group text-center p-6 md:p-8 rounded-2xl transition-all duration-700 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+      className={`group text-center p-4 md:p-8 rounded-2xl transition-all duration-500 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
-      style={{ 
-        transitionDelay: `${delay}ms`,
-        transform: isVisible 
-          ? 'perspective(1000px) rotateX(0deg) translateZ(0)' 
-          : 'perspective(1000px) rotateX(15deg) translateZ(-50px)',
-        transformStyle: 'preserve-3d'
-      }}
+      style={{ transitionDelay: `${delay}ms` }}
     >
-      {/* Icon with 3D glow effect */}
-      <div className="relative w-16 h-16 md:w-20 md:h-20 mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-500">
-        {/* Animated glow rings */}
-        <div className="absolute inset-0 bg-gold/20 rounded-2xl blur-xl animate-pulse" />
-        <div className="absolute -inset-2 bg-gold/10 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-ping" style={{ animationDuration: '2s' }} />
+      {/* Icon - simplified for mobile */}
+      <div className="relative w-12 h-12 md:w-20 md:h-20 mx-auto mb-3 md:mb-6 md:group-hover:scale-110 md:transition-transform md:duration-500">
+        {/* Glow - desktop only */}
+        <div className="hidden md:block absolute inset-0 bg-gold/20 rounded-2xl blur-xl" />
         
-        {/* Icon container with 3D effect */}
-        <div className="relative w-full h-full bg-gradient-to-br from-gold/30 via-gold/20 to-gold/10 rounded-2xl flex items-center justify-center border border-gold/30 group-hover:border-gold/60 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(212,175,55,0.4)]"
-          style={{ 
-            transform: 'translateZ(20px)',
-            transformStyle: 'preserve-3d'
-          }}
-        >
+        {/* Icon container */}
+        <div className="relative w-full h-full bg-gradient-to-br from-gold/30 via-gold/20 to-gold/10 rounded-xl md:rounded-2xl flex items-center justify-center border border-gold/30 md:group-hover:border-gold/60 md:transition-all md:duration-500">
           {icon}
         </div>
       </div>
       
-      {/* Number with animated gradient */}
-      <div className="text-4xl md:text-5xl lg:text-6xl font-black mb-2 font-heading relative">
-        <span className="bg-gradient-to-r from-white via-gold to-white bg-[length:200%_100%] bg-clip-text text-transparent animate-[gradient-flow_3s_ease-in-out_infinite]">
+      {/* Number */}
+      <div className="text-2xl md:text-5xl lg:text-6xl font-black mb-1 md:mb-2 font-heading">
+        <span className="text-gold md:bg-gradient-to-r md:from-white md:via-gold md:to-white md:bg-clip-text md:text-transparent">
           {count.toLocaleString('pt-BR')}{suffix}
         </span>
-        {/* Glow effect behind number */}
-        <div className="absolute inset-0 bg-gold/20 blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
       </div>
       
-      {/* Label with underline animation */}
-      <p className="text-primary-foreground/70 font-medium text-sm md:text-base group-hover:text-primary-foreground transition-colors relative">
+      {/* Label */}
+      <p className="text-primary-foreground/70 font-medium text-xs md:text-base">
         {label}
-        <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gold group-hover:w-full group-hover:left-0 transition-all duration-500" />
       </p>
     </div>
   );
@@ -98,24 +83,15 @@ const StatsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-28 bg-gradient-hero relative overflow-hidden" style={animationStyle}>
-      {/* Particles Background */}
+    <section ref={sectionRef} className="py-12 md:py-28 bg-gradient-hero relative overflow-hidden" style={animationStyle}>
+      {/* Particles Background - hidden on mobile via component */}
       <ParticlesBackground />
       
-      {/* Animated decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gold/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl float-animation" style={{ animationDelay: '2s' }} />
+      {/* Decorative elements - simplified for mobile */}
+      <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gold/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent" />
-        
-        {/* Animated lines */}
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent animate-pulse" />
-          <div className="absolute top-2/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent animate-pulse" style={{ animationDelay: '1s' }} />
-        </div>
-        
-        {/* Cyber grid effect */}
-        <div className="absolute inset-0 cyber-grid opacity-20" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
