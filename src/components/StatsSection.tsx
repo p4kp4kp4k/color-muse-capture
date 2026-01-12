@@ -17,31 +17,28 @@ const StatItem = ({ icon, end, suffix = "", label, delay = 0 }: StatItemProps) =
   return (
     <div 
       ref={ref}
-      className={`group text-center p-4 md:p-8 rounded-2xl transition-all duration-500 ${
+      className={`group text-center p-3 md:p-6 transition-all duration-500 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      {/* Icon - simplified for mobile */}
-      <div className="relative w-12 h-12 md:w-20 md:h-20 mx-auto mb-3 md:mb-6 md:group-hover:scale-110 md:transition-transform md:duration-500">
-        {/* Glow - desktop only */}
-        <div className="hidden md:block absolute inset-0 bg-gold/20 rounded-2xl blur-xl" />
-        
+      {/* Icon */}
+      <div className="relative w-10 h-10 md:w-16 md:h-16 mx-auto mb-2 md:mb-4">
         {/* Icon container */}
-        <div className="relative w-full h-full bg-gradient-to-br from-gold/30 via-gold/20 to-gold/10 rounded-xl md:rounded-2xl flex items-center justify-center border border-gold/30 md:group-hover:border-gold/60 md:transition-all md:duration-500">
+        <div className="w-full h-full bg-gradient-to-br from-gold/30 via-gold/20 to-gold/10 rounded-lg md:rounded-xl flex items-center justify-center border border-gold/30">
           {icon}
         </div>
       </div>
       
-      {/* Number */}
-      <div className="text-2xl md:text-5xl lg:text-6xl font-black mb-1 md:mb-2 font-heading">
-        <span className="text-gold md:bg-gradient-to-r md:from-white md:via-gold md:to-white md:bg-clip-text md:text-transparent">
+      {/* Number - ensure it stays in one line */}
+      <div className="font-black font-heading whitespace-nowrap">
+        <span className="text-xl md:text-4xl lg:text-5xl text-gold">
           {count.toLocaleString('pt-BR')}{suffix}
         </span>
       </div>
       
       {/* Label */}
-      <p className="text-primary-foreground/70 font-medium text-xs md:text-base">
+      <p className="text-primary-foreground/70 font-medium text-[10px] md:text-sm mt-1 leading-tight">
         {label}
       </p>
     </div>
@@ -53,28 +50,28 @@ const StatsSection = () => {
 
   const stats = [
     {
-      icon: <Clock className="w-8 h-8 md:w-10 md:h-10 text-gold drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]" />,
+      icon: <Clock className="w-5 h-5 md:w-8 md:h-8 text-gold" />,
       end: 10,
       suffix: "+",
       label: "Anos de Experiência",
       delay: 0
     },
     {
-      icon: <Users className="w-8 h-8 md:w-10 md:h-10 text-gold drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]" />,
+      icon: <Users className="w-5 h-5 md:w-8 md:h-8 text-gold" />,
       end: 49085,
       suffix: "+",
       label: "Cursos Disponíveis",
       delay: 150
     },
     {
-      icon: <GraduationCap className="w-8 h-8 md:w-10 md:h-10 text-gold drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]" />,
+      icon: <GraduationCap className="w-5 h-5 md:w-8 md:h-8 text-gold" />,
       end: 10000,
       suffix: "+",
       label: "Alunos Formados",
       delay: 300
     },
     {
-      icon: <Award className="w-8 h-8 md:w-10 md:h-10 text-gold drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]" />,
+      icon: <Award className="w-5 h-5 md:w-8 md:h-8 text-gold" />,
       end: 50,
       suffix: "+",
       label: "Instituições Parceiras",
