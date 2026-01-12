@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GraduationCap } from "lucide-react";
 
 const UNIVERSITIES = [
@@ -24,14 +24,28 @@ const UNIVERSITIES = [
 
 const UniversitiesCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
+    // Use CSS animation on mobile for better performance
+    if (isMobile) {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (mediaQuery.matches) return;
+    }
+
     let animationId: number;
     let scrollPosition = 0;
-    const speed = 0.4;
+    const speed = isMobile ? 0.3 : 0.4; // Slower on mobile
 
     const scroll = () => {
       scrollPosition += speed;
@@ -45,7 +59,7 @@ const UniversitiesCarousel = () => {
     animationId = requestAnimationFrame(scroll);
 
     return () => cancelAnimationFrame(animationId);
-  }, []);
+  }, [isMobile]);
 
   const items = [...UNIVERSITIES, ...UNIVERSITIES];
 
@@ -79,17 +93,20 @@ const UniversitiesCarousel = () => {
             key={`${university.name}-${index}`}
             className="flex-shrink-0 group"
           >
-            <div className="relative h-20 md:h-24 px-6 md:px-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110">
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 bg-primary/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative h-16 md:h-24 px-4 md:px-8 flex items-center justify-center md:transition-all md:duration-500 md:group-hover:scale-110">
+              {/* Glow effect on hover - desktop only */}
+              <div className="hidden md:block absolute inset-0 bg-primary/10 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               {/* Card */}
-              <div className="relative bg-card rounded-xl p-4 md:p-5 shadow-sm border border-border/50 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 transition-all duration-300">
+              <div className="relative bg-card rounded-xl p-3 md:p-5 shadow-sm border border-border/50 md:group-hover:border-primary/30 md:group-hover:shadow-lg md:group-hover:shadow-primary/5 md:transition-all md:duration-300">
                 <img
                   src={university.logo}
                   alt={university.name}
-                  className="h-8 md:h-12 w-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                  width="48"
+                  height="48"
+                  className="h-6 md:h-12 w-auto object-contain filter grayscale md:group-hover:grayscale-0 md:transition-all md:duration-500"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

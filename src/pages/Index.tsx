@@ -111,25 +111,26 @@ const Index = () => {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-hero text-primary-foreground py-20 md:py-32 relative overflow-hidden">
-          {/* Background Image with Parallax */}
+        <section className="bg-gradient-hero text-primary-foreground py-12 md:py-32 relative overflow-hidden">
+          {/* Background Image with Parallax - hidden on mobile */}
           <div className="absolute inset-0">
             <img 
               src={celebrationBanner} 
-              alt="Celebração de formatura" 
-              className="w-full h-full object-cover opacity-15"
+              alt="" 
+              aria-hidden="true"
+              className="hidden md:block w-full h-full object-cover opacity-15"
               style={{ transform: `translateY(${parallaxOffset * 0.5}px)` }}
+              loading="eager"
             />
             <div className="absolute inset-0 bg-gradient-hero/90" />
           </div>
-          {/* Particles Animation */}
+          {/* Particles Animation - component handles mobile hiding */}
           <ParticlesBackground />
           
-          {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-10 w-80 h-80 bg-gold/15 rounded-full blur-3xl float-animation" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl float-animation" style={{ animationDelay: '2s' }} />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
+          {/* Animated background elements - desktop only */}
+          <div className="hidden md:block absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-10 left-10 w-80 h-80 bg-gold/15 rounded-full blur-3xl" />
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
           </div>
           
           <div className="container mx-auto px-4 relative z-10">
@@ -151,19 +152,22 @@ const Index = () => {
                 ))}
               </div>
 
-              {/* Main Heading */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 font-heading leading-[1.1] tracking-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <TypingText 
-                  text="Quer estudar EAD e conquistar seu diploma?" 
-                  speed={30}
-                  delay={800}
-                />{" "}
+              {/* Main Heading - simplified for mobile */}
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 md:mb-8 font-heading leading-[1.1] tracking-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                <span className="md:hidden">Quer estudar EAD e conquistar seu diploma?</span>
+                <span className="hidden md:inline">
+                  <TypingText 
+                    text="Quer estudar EAD e conquistar seu diploma?" 
+                    speed={30}
+                    delay={800}
+                  />
+                </span>{" "}
                 <span className="text-gold">Podemos te orientar!</span>
               </h1>
 
               {/* Description */}
-              <p className="text-lg md:text-xl text-primary-foreground/85 leading-relaxed mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                A equipe <strong className="text-white font-semibold">{brandUpper}</strong> é especializada em consultoria educacional para cursos EAD. Ajudamos você a encontrar o curso ideal em instituições reconhecidas pelo MEC para conquistar seu diploma de forma legítima.
+              <p className="text-base md:text-xl text-primary-foreground/85 leading-relaxed mb-8 md:mb-12 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                A equipe <strong className="text-white font-semibold">{brandUpper}</strong> é especializada em consultoria educacional para cursos EAD. Ajudamos você a encontrar o curso ideal em instituições reconhecidas pelo MEC.
               </p>
 
               {/* Buttons */}
@@ -213,10 +217,10 @@ const Index = () => {
         </section>
 
         {/* Benefits Section - New Design */}
-        <section className="py-16 bg-primary/10 relative overflow-hidden">
+        <section className="py-10 md:py-16 bg-primary/10 relative overflow-hidden">
           <ParticlesBackground variant="light" />
           <div className="container mx-auto px-4 relative z-10">
-            <div ref={benefitsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div ref={benefitsRef} className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-16">
               {/* Card 1 */}
               <div 
                 className={`bg-card border-2 border-primary/20 rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
@@ -273,12 +277,13 @@ const Index = () => {
                 className="relative"
                 style={image1Style}
               >
-                <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-gold/20 rounded-3xl blur-2xl animate-pulse" />
+                <div className="hidden md:block absolute -inset-4 bg-gradient-to-br from-primary/20 to-gold/20 rounded-3xl blur-2xl" />
                 <img 
                   src={graduateOutdoorBanner}
                   alt="Estudante de curso EAD"
-                  className="relative rounded-3xl shadow-2xl w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
+                  className="relative rounded-3xl shadow-2xl w-full object-cover md:transition-transform md:duration-300 md:hover:scale-[1.02]"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="text-center md:text-left">
@@ -306,12 +311,13 @@ const Index = () => {
                 className="relative order-1 md:order-2"
                 style={image2Style}
               >
-                <div className="absolute -inset-4 bg-gradient-to-br from-gold/20 to-primary/20 rounded-3xl blur-2xl animate-pulse" />
+                <div className="hidden md:block absolute -inset-4 bg-gradient-to-br from-gold/20 to-primary/20 rounded-3xl blur-2xl" />
                 <img 
                   src={testimonialBanner}
                   alt="Formanda realizando o sonho do diploma"
-                  className="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto object-cover transition-transform duration-300 hover:scale-[1.02]"
+                  className="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto object-cover md:transition-transform md:duration-300 md:hover:scale-[1.02]"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -319,13 +325,15 @@ const Index = () => {
         </section>
 
         {/* Featured Courses */}
-        <section className="py-12 md:py-16 bg-primary relative overflow-hidden">
-          {/* Background Banner */}
-          <div className="absolute inset-0">
+        <section className="py-10 md:py-16 bg-primary relative overflow-hidden">
+          {/* Background Banner - desktop only */}
+          <div className="hidden md:block absolute inset-0">
             <img 
               src={classroomTeacherBanner} 
-              alt="Cursos online EAD" 
+              alt="" 
+              aria-hidden="true"
               className="w-full h-full object-cover opacity-10"
+              loading="lazy"
             />
           </div>
           <ParticlesBackground />
