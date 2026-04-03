@@ -266,8 +266,8 @@ const CursosDisponiveis = () => {
         </section>
 
         {/* Course Lists */}
-        <CourseList courses={BACHARELADO_COURSES} title="Diplomas de Bacharelado" id="bacharelado" onCourseClick={handleCourseClick} />
-        <CourseList courses={TECNOLOGO_COURSES} title="Diplomas de Tecnólogo" id="tecnologo" onCourseClick={handleCourseClick} />
+        <CourseList courses={BACHARELADO_COURSES} title="Cursos de Bacharelado" id="bacharelado" onCourseClick={handleCourseClick} />
+        <CourseList courses={TECNOLOGO_COURSES} title="Cursos de Tecnólogo" id="tecnologo" onCourseClick={handleCourseClick} />
         <CourseList courses={TECNICO_COURSES} title="Certificado Técnico" id="tecnico" onCourseClick={handleCourseClick} />
 
         {/* CTA Section */}
