@@ -300,10 +300,10 @@ const Index = () => {
             <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
               <div className="text-center md:text-left order-2 md:order-1">
                 <h3 className="text-2xl md:text-4xl font-bold mb-6 font-heading">
-                  Conquiste seu <span className="text-primary">Diploma</span>
+                  Conquiste sua <span className="text-primary">Formação</span>
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Nunca é tarde para investir na sua formação. Milhares de brasileiros já conquistaram seus diplomas através de cursos EAD de qualidade. Deixe nossa equipe orientar você nessa jornada!
+                  Nunca é tarde para investir na sua formação. Milhares de brasileiros já conquistaram sua qualificação através de cursos EAD de qualidade. Deixe nossa equipe orientar você nessa jornada!
                 </p>
               </div>
               <div 
