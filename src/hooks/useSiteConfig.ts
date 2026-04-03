@@ -35,7 +35,7 @@ export const useSiteConfig = () => {
       setConfig({
         site_name: 'EAD Cursos Nacional',
         whatsapp_number: '5511999999999',
-        whatsapp_message: 'Olá! Gostaria de mais informações sobre os diplomas.',
+        whatsapp_message: 'Olá! Gostaria de mais informações sobre os cursos.',
         banner_text: 'Confira Antes, Pague Depois',
         primary_color: '221 83% 53%',
         gold_color: '45 93% 47%',
