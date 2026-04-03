@@ -291,7 +291,7 @@ const Index = () => {
                   Por que escolher <span className="text-primary">cursos EAD?</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  A educação a distância oferece flexibilidade para estudar no seu ritmo, com a mesma qualidade e reconhecimento dos cursos presenciais. Todos os cursos que indicamos são de instituições credenciadas pelo MEC, garantindo diplomas válidos para concursos, processos seletivos e registros profissionais.
+                  A educação a distância oferece flexibilidade para estudar no seu ritmo, com a mesma qualidade e reconhecimento dos cursos presenciais. Todos os cursos que indicamos são de instituições credenciadas pelo MEC, com certificação válida para concursos, processos seletivos e registros profissionais.
                 </p>
               </div>
             </div>
