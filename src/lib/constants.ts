@@ -100,7 +100,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: "Os cursos são válidos para concursos públicos e processos seletivos?",
-    answer: "Sim. Todos os cursos que indicamos são de instituições credenciadas pelo MEC, portanto os diplomas emitidos são válidos para qualquer finalidade legal."
+    answer: "Sim. Todos os cursos que indicamos são de instituições credenciadas pelo MEC, portanto as certificações emitidas são válidas para qualquer finalidade legal."
   },
   {
     question: "Como funciona a consultoria educacional?",
