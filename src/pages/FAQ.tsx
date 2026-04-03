@@ -52,8 +52,8 @@ const FAQ_DATA = [
     answer: "Sim. Após a confirmação do seu pedido, você receberá atualizações sobre o andamento através do WhatsApp. Nossa equipe está disponível para esclarecer qualquer dúvida."
   },
   {
-    question: "O diploma inclui histórico escolar?",
-    answer: "Sim. A documentação completa inclui diploma, histórico escolar com toda a grade curricular, carga horária, estágios e trabalho de conclusão de curso (quando aplicável)."
+    question: "A formação inclui histórico escolar?",
+    answer: "Sim. A documentação completa inclui certificação, histórico escolar com toda a grade curricular, carga horária, estágios e trabalho de conclusão de curso (quando aplicável)."
   },
   {
     question: "Como entro em contato com a equipe?",
