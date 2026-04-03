@@ -186,8 +186,8 @@ const CursosDisponiveis = () => {
     "description": "Lista de cursos de Bacharelado, Tecnólogo e Técnico reconhecidos pelo MEC",
     "numberOfItems": 300,
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Diplomas de Bacharelado" },
-      { "@type": "ListItem", "position": 2, "name": "Diplomas de Tecnólogo" },
+      { "@type": "ListItem", "position": 1, "name": "Cursos de Bacharelado" },
+      { "@type": "ListItem", "position": 2, "name": "Cursos de Tecnólogo" },
       { "@type": "ListItem", "position": 3, "name": "Certificados Técnicos" }
     ]
   };
