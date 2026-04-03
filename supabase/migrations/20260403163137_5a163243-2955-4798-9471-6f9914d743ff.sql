@@ -1,0 +1,1 @@
+UPDATE site_config SET value = 'Olá! Gostaria de mais informações sobre os cursos EAD.', updated_at = now() WHERE key = 'whatsapp_message';
