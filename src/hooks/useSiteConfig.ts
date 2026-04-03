@@ -51,7 +51,7 @@ export const useSiteConfig = () => {
 
   const getWhatsAppLink = useCallback(() => {
     const number = config.whatsapp_number || '5511999999999';
-    const message = encodeURIComponent(config.whatsapp_message || 'Olá! Gostaria de mais informações sobre os diplomas.');
+    const message = encodeURIComponent(config.whatsapp_message || 'Olá! Gostaria de mais informações sobre os cursos.');
     return `https://wa.me/${number}?text=${message}`;
   }, [config]);
 

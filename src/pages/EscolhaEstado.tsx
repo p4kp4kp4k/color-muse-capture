@@ -51,8 +51,8 @@ const EscolhaEstado = () => {
     <div className="min-h-screen flex flex-col">
       <SEOHead
         title="Escolha seu Estado - Atendimento em Todo Brasil"
-        description="Atendemos todos os 27 estados do Brasil. Selecione seu estado e fale com nossa equipe especializada para obter seu diploma reconhecido pelo MEC."
-        keywords="diploma por estado, atendimento nacional, documentação acadêmica Brasil, diploma São Paulo, diploma Rio de Janeiro, diploma Minas Gerais"
+        description="Atendemos todos os 27 estados do Brasil. Selecione seu estado e fale com nossa equipe especializada sobre cursos reconhecidos pelo MEC."
+        keywords="cursos por estado, atendimento nacional, formação acadêmica Brasil, cursos São Paulo, cursos Rio de Janeiro, cursos Minas Gerais"
         canonicalPath="/estados"
       />
       <Header />
