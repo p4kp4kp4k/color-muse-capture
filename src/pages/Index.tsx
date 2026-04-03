@@ -233,7 +233,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-3 font-heading">Cursos Reconhecidos pelo MEC</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Orientamos você para cursos de instituições credenciadas pelo MEC, garantindo diplomas válidos em todo o território nacional.
+                  Orientamos você para cursos de instituições credenciadas pelo MEC, garantindo certificações válidas em todo o território nacional.
                 </p>
               </div>
               
