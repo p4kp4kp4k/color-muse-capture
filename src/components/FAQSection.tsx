@@ -30,8 +30,8 @@ const faqs = [
     answer: "Não. Aqui você não paga nada adiantado. Garantimos o acompanhamento seguro de toda sua formação — 100% reconhecida pelo MEC."
   },
   {
-    question: "O diploma inclui histórico escolar?",
-    answer: "Sim. A documentação completa inclui diploma, histórico escolar com toda a grade curricular, carga horária, estágios e trabalho de conclusão de curso (quando aplicável)."
+    question: "A formação inclui histórico escolar?",
+    answer: "Sim. A documentação completa inclui certificação, histórico escolar com toda a grade curricular, carga horária, estágios e trabalho de conclusão de curso (quando aplicável)."
   }
 ];
 

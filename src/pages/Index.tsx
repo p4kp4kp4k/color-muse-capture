@@ -314,7 +314,7 @@ const Index = () => {
                 <div className="hidden md:block absolute -inset-4 bg-gradient-to-br from-gold/20 to-primary/20 rounded-3xl blur-2xl" />
                 <img 
                   src={testimonialBanner}
-                  alt="Formanda realizando o sonho do diploma"
+                  alt="Formanda realizando o sonho da formação"
                   className="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto object-cover md:transition-transform md:duration-300 md:hover:scale-[1.02]"
                   loading="lazy"
                   decoding="async"

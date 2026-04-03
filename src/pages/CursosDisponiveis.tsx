@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 // Cursos de Bacharelado
 const BACHARELADO_COURSES = [
-  "Diploma de Administração", "Diploma de Administração Pública", "Diploma de Agronomia", "Diploma de Análise de Sistemas",
+  "Curso de Administração", "Curso de Administração Pública", "Curso de Agronomia", "Curso de Análise de Sistemas",
   "Diploma de Arquitetura e Urbanismo", "Diploma de Arquivologia", "Diploma de Artes", "Diploma de Artes Cênicas",
   "Diploma de Artes Plásticas", "Diploma de Biologia", "Diploma de Biomedicina", "Diploma de Bioquímica",
   "Diploma de Canto", "Diploma de Ciência da Computação", "Diploma de Ciências Contábeis", "Diploma de Ciências Sociais",
