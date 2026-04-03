@@ -11,7 +11,7 @@ import { HelpCircle } from "lucide-react";
 const faqs = [
   {
     question: "Os documentos são reconhecidos pelo MEC?",
-    answer: "Sim. Nossa equipe trabalha apenas com documentação reconhecida pelo MEC, de forma que os diplomas são emitidos dentro das próprias instituições de ensino credenciadas."
+    answer: "Sim. Nossa equipe trabalha apenas com instituições credenciadas pelo MEC, garantindo que toda a documentação acadêmica seja emitida conforme os padrões exigidos."
   },
   {
     question: "A EAD Cursos Nacional consegue documentação de qualquer instituição?",
