@@ -260,7 +260,7 @@ const CursosDisponiveis = () => {
           <div className="container mx-auto px-4 text-center max-w-3xl">
             <p className="text-sm text-muted-foreground">
               Confira todos os Cursos <span className="text-primary font-medium">Reconhecidos pelo MEC</span> ofertados pela nossa equipe. 
-              Mais de <strong>300 opções</strong> de diplomas e certificados para você escolher.
+              Mais de <strong>300 opções</strong> de cursos e certificações para você escolher.
             </p>
           </div>
         </section>
