@@ -196,8 +196,8 @@ const CursosDisponiveis = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
         title="Cursos Disponíveis - Mais de 300 Opções"
-        description="Confira mais de 300 cursos disponíveis: Bacharelado, Tecnólogo e Técnico. Diplomas e certificados reconhecidos pelo MEC. Atendimento 24h via WhatsApp."
-        keywords="cursos bacharelado, cursos tecnólogo, cursos técnicos, diploma MEC, certificado profissional, graduação EAD"
+        description="Confira mais de 300 cursos disponíveis: Bacharelado, Tecnólogo e Técnico. Cursos e certificados reconhecidos pelo MEC. Atendimento 24h via WhatsApp."
+        keywords="cursos bacharelado, cursos tecnólogo, cursos técnicos, certificação MEC, certificado profissional, graduação EAD"
         canonicalPath="/cursos"
         structuredData={faqStructuredData}
       />
