@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     question: "Preciso pagar adiantado?",
-    answer: "Não. Aqui você não paga nada adiantado. Garantimos a emissão e entrega segura do seu diploma ou certificado — 100% autêntico, reconhecido pelo MEC e publicado no Diário Oficial."
+    answer: "Não. Aqui você não paga nada adiantado. Garantimos o acompanhamento seguro de toda sua formação — 100% reconhecida pelo MEC."
   },
   {
     question: "O diploma inclui histórico escolar?",
