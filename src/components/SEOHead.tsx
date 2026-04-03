@@ -35,7 +35,7 @@ const SEOHead = ({
     "alternateName": brandName,
     "url": baseUrl,
     "logo": `${baseUrl}/favicon.ico`,
-    "description": `${brandName} - Diplomas e certificados acadêmicos reconhecidos pelo MEC para todo o Brasil.`,
+    "description": `${brandName} - Consultoria educacional para cursos reconhecidos pelo MEC em todo o Brasil.`,
     "areaServed": {
       "@type": "Country",
       "name": "Brazil"

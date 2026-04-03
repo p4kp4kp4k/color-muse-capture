@@ -11,67 +11,67 @@ import { Link } from "react-router-dom";
 
 // Cursos de Bacharelado
 const BACHARELADO_COURSES = [
-  "Diploma de Administração", "Diploma de Administração Pública", "Diploma de Agronomia", "Diploma de Análise de Sistemas",
-  "Diploma de Arquitetura e Urbanismo", "Diploma de Arquivologia", "Diploma de Artes", "Diploma de Artes Cênicas",
-  "Diploma de Artes Plásticas", "Diploma de Biologia", "Diploma de Biomedicina", "Diploma de Bioquímica",
-  "Diploma de Canto", "Diploma de Ciência da Computação", "Diploma de Ciências Contábeis", "Diploma de Ciências Sociais",
-  "Diploma de Ciências Agrícolas", "Diploma de Ciências da Natureza", "Diploma de Ciências Exatas", "Diploma de Comunicação e Marketing",
-  "Diploma de Comunicação Social", "Diploma de Desenho Industrial", "Diploma de Desenho e Plástica", "Diploma de Design",
-  "Diploma de Design de Ambientes", "Diploma de Design de Games", "Diploma de Design de Interiores", "Diploma de Design de Produto",
-  "Diploma de Design Digital", "Diploma de Design Gráfico", "Diploma de Direito", "Diploma de Educação do Campo",
-  "Diploma de Educação Especial", "Diploma de Educação Física", "Diploma de Enfermagem", "Diploma de Engenharia Acústica",
-  "Diploma de Engenharia Aeroespacial", "Diploma de Engenharia Aeronáutica", "Diploma de Engenharia Agrícola", "Diploma de Engenharia Agroindustrial",
-  "Diploma de Engenharia Agronômica", "Diploma de Engenharia Ambiental", "Diploma de Engenharia Automotiva", "Diploma de Engenharia Biomédica",
-  "Diploma de Engenharia Bioenergética", "Diploma de Engenharia Bioquímica", "Diploma de Engenharia Civil", "Diploma de Engenharia da Computação",
-  "Diploma de Engenharia da Mobilidade", "Diploma de Engenharia de Agrimensura", "Diploma de Engenharia de Agronegócios", "Diploma de Engenharia de Alimentos",
-  "Diploma de Engenharia de Aquicultura", "Diploma de Engenharia de Bioprocessos", "Diploma de Engenharia de Biossistemas", "Diploma de Engenharia de Biotecnologia",
-  "Diploma de Engenharia de Energia", "Diploma de Engenharia de Informação", "Diploma de Engenharia de Instrumentação", "Diploma de Engenharia de Manufatura",
-  "Diploma de Engenharia de Materiais", "Diploma de Engenharia de Minas", "Diploma de Engenharia de Pesca", "Diploma de Engenharia de Petróleo",
-  "Diploma de Engenharia de Produção", "Diploma de Engenharia de Recursos Hídricos", "Diploma de Engenharia de Saúde e Segurança", "Diploma de Engenharia de Sistemas",
-  "Diploma de Engenharia de Software", "Diploma de Engenharia de Telecomunicações", "Diploma de Engenharia de Transporte", "Diploma de Engenharia Elétrica",
-  "Diploma de Engenharia Eletrônica", "Diploma de Engenharia em Sistemas Digitais", "Diploma de Engenharia Ferroviária e Metroviária", "Diploma de Engenharia Física",
-  "Diploma de Engenharia Florestal", "Diploma de Engenharia Geológica", "Diploma de Engenharia Hídrica", "Diploma de Engenharia Industrial",
-  "Diploma de Engenharia Mecânica", "Diploma de Engenharia Mecatrônica", "Diploma de Engenharia Metalúrgica", "Diploma de Engenharia Naval",
-  "Diploma de Engenharia Química", "Diploma de Engenharia Têxtil", "Diploma de Estatística", "Diploma de Farmácia",
-  "Diploma de Filosofia", "Diploma de Física", "Diploma de Fisioterapia", "Diploma de Fonoaudiologia",
-  "Diploma de Geografia", "Diploma de Gestão Ambiental", "Diploma de Gestão da Informação", "Diploma de Gestão de Políticas Públicas",
-  "Diploma de Gestão de Serviços de Saúde", "Diploma de Gestão do Agronegócio", "Diploma de Gestão Pública", "Diploma de História",
-  "Diploma de Informática", "Diploma de Jornalismo", "Diploma de Letras", "Diploma de Marketing",
-  "Diploma de Matemática", "Diploma de Mecânica Industrial", "Diploma de Medicina", "Diploma de Medicina Veterinária",
-  "Diploma de Música", "Diploma de Nutrição", "Diploma de Odontologia", "Diploma de Psicologia",
-  "Diploma de Publicidade e Propaganda", "Diploma de Química", "Diploma de Segunda Licenciatura", "Diploma de Serviço Social",
-  "Diploma de Sistemas de Informação", "Diploma de Teatro",
+  "Curso de Administração", "Curso de Administração Pública", "Curso de Agronomia", "Curso de Análise de Sistemas",
+  "Curso de Arquitetura e Urbanismo", "Curso de Arquivologia", "Curso de Artes", "Curso de Artes Cênicas",
+  "Curso de Artes Plásticas", "Curso de Biologia", "Curso de Biomedicina", "Curso de Bioquímica",
+  "Curso de Canto", "Curso de Ciência da Computação", "Curso de Ciências Contábeis", "Curso de Ciências Sociais",
+  "Curso de Ciências Agrícolas", "Curso de Ciências da Natureza", "Curso de Ciências Exatas", "Curso de Comunicação e Marketing",
+  "Curso de Comunicação Social", "Curso de Desenho Industrial", "Curso de Desenho e Plástica", "Curso de Design",
+  "Curso de Design de Ambientes", "Curso de Design de Games", "Curso de Design de Interiores", "Curso de Design de Produto",
+  "Curso de Design Digital", "Curso de Design Gráfico", "Curso de Direito", "Curso de Educação do Campo",
+  "Curso de Educação Especial", "Curso de Educação Física", "Curso de Enfermagem", "Curso de Engenharia Acústica",
+  "Curso de Engenharia Aeroespacial", "Curso de Engenharia Aeronáutica", "Curso de Engenharia Agrícola", "Curso de Engenharia Agroindustrial",
+  "Curso de Engenharia Agronômica", "Curso de Engenharia Ambiental", "Curso de Engenharia Automotiva", "Curso de Engenharia Biomédica",
+  "Curso de Engenharia Bioenergética", "Curso de Engenharia Bioquímica", "Curso de Engenharia Civil", "Curso de Engenharia da Computação",
+  "Curso de Engenharia da Mobilidade", "Curso de Engenharia de Agrimensura", "Curso de Engenharia de Agronegócios", "Curso de Engenharia de Alimentos",
+  "Curso de Engenharia de Aquicultura", "Curso de Engenharia de Bioprocessos", "Curso de Engenharia de Biossistemas", "Curso de Engenharia de Biotecnologia",
+  "Curso de Engenharia de Energia", "Curso de Engenharia de Informação", "Curso de Engenharia de Instrumentação", "Curso de Engenharia de Manufatura",
+  "Curso de Engenharia de Materiais", "Curso de Engenharia de Minas", "Curso de Engenharia de Pesca", "Curso de Engenharia de Petróleo",
+  "Curso de Engenharia de Produção", "Curso de Engenharia de Recursos Hídricos", "Curso de Engenharia de Saúde e Segurança", "Curso de Engenharia de Sistemas",
+  "Curso de Engenharia de Software", "Curso de Engenharia de Telecomunicações", "Curso de Engenharia de Transporte", "Curso de Engenharia Elétrica",
+  "Curso de Engenharia Eletrônica", "Curso de Engenharia em Sistemas Digitais", "Curso de Engenharia Ferroviária e Metroviária", "Curso de Engenharia Física",
+  "Curso de Engenharia Florestal", "Curso de Engenharia Geológica", "Curso de Engenharia Hídrica", "Curso de Engenharia Industrial",
+  "Curso de Engenharia Mecânica", "Curso de Engenharia Mecatrônica", "Curso de Engenharia Metalúrgica", "Curso de Engenharia Naval",
+  "Curso de Engenharia Química", "Curso de Engenharia Têxtil", "Curso de Estatística", "Curso de Farmácia",
+  "Curso de Filosofia", "Curso de Física", "Curso de Fisioterapia", "Curso de Fonoaudiologia",
+  "Curso de Geografia", "Curso de Gestão Ambiental", "Curso de Gestão da Informação", "Curso de Gestão de Políticas Públicas",
+  "Curso de Gestão de Serviços de Saúde", "Curso de Gestão do Agronegócio", "Curso de Gestão Pública", "Curso de História",
+  "Curso de Informática", "Curso de Jornalismo", "Curso de Letras", "Curso de Marketing",
+  "Curso de Matemática", "Curso de Mecânica Industrial", "Curso de Medicina", "Curso de Medicina Veterinária",
+  "Curso de Música", "Curso de Nutrição", "Curso de Odontologia", "Curso de Psicologia",
+  "Curso de Publicidade e Propaganda", "Curso de Química", "Curso de Segunda Licenciatura", "Curso de Serviço Social",
+  "Curso de Sistemas de Informação", "Curso de Teatro",
 ];
 
 // Cursos de Tecnólogo
 const TECNOLOGO_COURSES = [
-  "Diploma de Acupuntura", "Diploma de Agrimensura", "Diploma de Agrocomputação", "Diploma de Agroecologia",
-  "Diploma de Agroindústria", "Diploma de Agronegócio", "Diploma de Agropecuária", "Diploma de Alimentos",
-  "Diploma de Análise de Dados", "Diploma de Análise e Desenvolvimento", "Diploma de Apicultura e Meliponicultura", "Diploma de Aquicultura",
-  "Diploma de Arqueologia", "Diploma de Arquitetura de Dados", "Diploma de Artes do Espetáculo", "Diploma de Artes e Mídias Digitais",
-  "Diploma de Assessoria Executiva Digital", "Diploma de Atividades de Inteligência e Gestão", "Diploma de Automação de Escritórios", "Diploma de Automação e Manufatura Digital",
-  "Diploma de Automação Industrial", "Diploma de Banco de Dados", "Diploma de Big Data e Inteligência Analítica", "Diploma de Big Data no Agronegócio",
-  "Diploma de Biocombustíveis", "Diploma de Bioenergia", "Diploma de Bioinformática", "Diploma de Biotecnologia",
-  "Diploma de Blockchain e Criptografia Digital", "Diploma de Cibersegurança", "Diploma de Ciência de Dados", "Diploma de Cinema e Audiovisual",
-  "Diploma de Coach Digital", "Diploma de Coaching e Mentoring", "Diploma de Coding", "Diploma de Comércio Exterior",
-  "Diploma de Computação em Nuvem", "Diploma de Comunicação Assistiva", "Diploma de Comunicação Digital", "Diploma de Comunicação em Computação",
-  "Diploma de Comunicação Institucional", "Diploma de Conservação e Restauro", "Diploma de Construção Civil", "Diploma de Construção de Edifícios",
-  "Diploma de Construção Naval", "Diploma de Controle Ambiental", "Diploma de Controle de Obras", "Diploma de Cosmetologia e Estética",
-  "Diploma de Cozinha Contemporânea", "Diploma de Data Science", "Diploma de Defesa Cibernética", "Diploma de Defesa Médica Hospitalar",
-  "Diploma de Desenho de Animação", "Diploma de Desenvolvimento Back-End", "Diploma de Desenvolvimento de Aplicativos", "Diploma de Desenvolvimento de Produtos",
-  "Diploma de Desenvolvimento de Sistemas", "Diploma de Desenvolvimento e Gestão", "Diploma de Desenvolvimento Mobile", "Diploma de Desenvolvimento para Internet",
-  "Diploma de Desenvolvimento para Web", "Diploma de Design", "Diploma de Design Comercial", "Diploma de Design de Animação",
-  "Diploma de Design de Aplicações", "Diploma de Design de Experiência e de Serviços", "Diploma de Design de Games", "Diploma de Design de Interiores",
-  "Diploma de Design de Moda", "Diploma de Design de Produto", "Diploma de Design Editorial", "Diploma de Design Educacional",
-  "Diploma de Design Gráfico", "Diploma de Devops", "Diploma de Digital Influencer", "Diploma de Digital Security",
-  "Diploma de E-Commerce", "Diploma de Educador Social", "Diploma de Eletrônica Automotiva", "Diploma de Eletrônica Industrial",
-  "Diploma de Eletrotécnica Industrial", "Diploma de Empreendedorismo", "Diploma de Energias Renováveis", "Diploma de Escrita Criativa",
-  "Diploma de Estética e Cosmética", "Diploma de Estilismo", "Diploma de Fabricação Mecânica", "Diploma de Fitoterapia",
-  "Diploma de Gastronomia", "Diploma de Geoprocessamento", "Diploma de Gestão Ambiental", "Diploma de Gestão Comercial",
-  "Diploma de Gestão da Produção Industrial", "Diploma de Gestão da Qualidade", "Diploma de Gestão da Tecnologia", "Diploma de Gestão de Negócios",
-  "Diploma de Gestão de Pessoas", "Diploma de Gestão de Recursos Humanos", "Diploma de Gestão de Saúde Pública", "Diploma de Gestão Financeira",
-  "Diploma de Gestão Pública", "Diploma de Hotelaria", "Diploma de Informática", "Diploma de Marketing",
-  "Diploma de Mecânica", "Diploma de Mecatrônica Industrial",
+  "Curso de Acupuntura", "Curso de Agrimensura", "Curso de Agrocomputação", "Curso de Agroecologia",
+  "Curso de Agroindústria", "Curso de Agronegócio", "Curso de Agropecuária", "Curso de Alimentos",
+  "Curso de Análise de Dados", "Curso de Análise e Desenvolvimento", "Curso de Apicultura e Meliponicultura", "Curso de Aquicultura",
+  "Curso de Arqueologia", "Curso de Arquitetura de Dados", "Curso de Artes do Espetáculo", "Curso de Artes e Mídias Digitais",
+  "Curso de Assessoria Executiva Digital", "Curso de Atividades de Inteligência e Gestão", "Curso de Automação de Escritórios", "Curso de Automação e Manufatura Digital",
+  "Curso de Automação Industrial", "Curso de Banco de Dados", "Curso de Big Data e Inteligência Analítica", "Curso de Big Data no Agronegócio",
+  "Curso de Biocombustíveis", "Curso de Bioenergia", "Curso de Bioinformática", "Curso de Biotecnologia",
+  "Curso de Blockchain e Criptografia Digital", "Curso de Cibersegurança", "Curso de Ciência de Dados", "Curso de Cinema e Audiovisual",
+  "Curso de Coach Digital", "Curso de Coaching e Mentoring", "Curso de Coding", "Curso de Comércio Exterior",
+  "Curso de Computação em Nuvem", "Curso de Comunicação Assistiva", "Curso de Comunicação Digital", "Curso de Comunicação em Computação",
+  "Curso de Comunicação Institucional", "Curso de Conservação e Restauro", "Curso de Construção Civil", "Curso de Construção de Edifícios",
+  "Curso de Construção Naval", "Curso de Controle Ambiental", "Curso de Controle de Obras", "Curso de Cosmetologia e Estética",
+  "Curso de Cozinha Contemporânea", "Curso de Data Science", "Curso de Defesa Cibernética", "Curso de Defesa Médica Hospitalar",
+  "Curso de Desenho de Animação", "Curso de Desenvolvimento Back-End", "Curso de Desenvolvimento de Aplicativos", "Curso de Desenvolvimento de Produtos",
+  "Curso de Desenvolvimento de Sistemas", "Curso de Desenvolvimento e Gestão", "Curso de Desenvolvimento Mobile", "Curso de Desenvolvimento para Internet",
+  "Curso de Desenvolvimento para Web", "Curso de Design", "Curso de Design Comercial", "Curso de Design de Animação",
+  "Curso de Design de Aplicações", "Curso de Design de Experiência e de Serviços", "Curso de Design de Games", "Curso de Design de Interiores",
+  "Curso de Design de Moda", "Curso de Design de Produto", "Curso de Design Editorial", "Curso de Design Educacional",
+  "Curso de Design Gráfico", "Curso de Devops", "Curso de Digital Influencer", "Curso de Digital Security",
+  "Curso de E-Commerce", "Curso de Educador Social", "Curso de Eletrônica Automotiva", "Curso de Eletrônica Industrial",
+  "Curso de Eletrotécnica Industrial", "Curso de Empreendedorismo", "Curso de Energias Renováveis", "Curso de Escrita Criativa",
+  "Curso de Estética e Cosmética", "Curso de Estilismo", "Curso de Fabricação Mecânica", "Curso de Fitoterapia",
+  "Curso de Gastronomia", "Curso de Geoprocessamento", "Curso de Gestão Ambiental", "Curso de Gestão Comercial",
+  "Curso de Gestão da Produção Industrial", "Curso de Gestão da Qualidade", "Curso de Gestão da Tecnologia", "Curso de Gestão de Negócios",
+  "Curso de Gestão de Pessoas", "Curso de Gestão de Recursos Humanos", "Curso de Gestão de Saúde Pública", "Curso de Gestão Financeira",
+  "Curso de Gestão Pública", "Curso de Hotelaria", "Curso de Informática", "Curso de Marketing",
+  "Curso de Mecânica", "Curso de Mecatrônica Industrial",
 ];
 
 // Certificados Técnicos
@@ -186,8 +186,8 @@ const CursosDisponiveis = () => {
     "description": "Lista de cursos de Bacharelado, Tecnólogo e Técnico reconhecidos pelo MEC",
     "numberOfItems": 300,
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Diplomas de Bacharelado" },
-      { "@type": "ListItem", "position": 2, "name": "Diplomas de Tecnólogo" },
+      { "@type": "ListItem", "position": 1, "name": "Cursos de Bacharelado" },
+      { "@type": "ListItem", "position": 2, "name": "Cursos de Tecnólogo" },
       { "@type": "ListItem", "position": 3, "name": "Certificados Técnicos" }
     ]
   };
@@ -196,8 +196,8 @@ const CursosDisponiveis = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
         title="Cursos Disponíveis - Mais de 300 Opções"
-        description="Confira mais de 300 cursos disponíveis: Bacharelado, Tecnólogo e Técnico. Diplomas e certificados reconhecidos pelo MEC. Atendimento 24h via WhatsApp."
-        keywords="cursos bacharelado, cursos tecnólogo, cursos técnicos, diploma MEC, certificado profissional, graduação EAD"
+        description="Confira mais de 300 cursos disponíveis: Bacharelado, Tecnólogo e Técnico. Cursos e certificados reconhecidos pelo MEC. Atendimento 24h via WhatsApp."
+        keywords="cursos bacharelado, cursos tecnólogo, cursos técnicos, certificação MEC, certificado profissional, graduação EAD"
         canonicalPath="/cursos"
         structuredData={faqStructuredData}
       />
@@ -213,8 +213,8 @@ const CursosDisponiveis = () => {
                 Cursos Disponíveis
               </h1>
               <p className="text-sm md:text-base text-primary-foreground/85 max-w-2xl mx-auto mb-6 leading-relaxed">
-                A equipe {brandUpper} foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. 
-                Trabalhamos há mais de 10 anos para conseguirmos o melhor resultado no processo de seu diploma superior com maior segurança e transparência!
+                A equipe {brandUpper} foi criada para realizar o seu sonho de conquistar sua formação superior. 
+                Trabalhamos há mais de 10 anos para garantir o melhor resultado no seu processo de formação com maior segurança e transparência!
               </p>
               
               <div className="flex flex-wrap justify-center gap-3">
@@ -260,21 +260,21 @@ const CursosDisponiveis = () => {
           <div className="container mx-auto px-4 text-center max-w-3xl">
             <p className="text-sm text-muted-foreground">
               Confira todos os Cursos <span className="text-primary font-medium">Reconhecidos pelo MEC</span> ofertados pela nossa equipe. 
-              Mais de <strong>300 opções</strong> de diplomas e certificados para você escolher.
+              Mais de <strong>300 opções</strong> de cursos e certificações para você escolher.
             </p>
           </div>
         </section>
 
         {/* Course Lists */}
-        <CourseList courses={BACHARELADO_COURSES} title="Diplomas de Bacharelado" id="bacharelado" onCourseClick={handleCourseClick} />
-        <CourseList courses={TECNOLOGO_COURSES} title="Diplomas de Tecnólogo" id="tecnologo" onCourseClick={handleCourseClick} />
+        <CourseList courses={BACHARELADO_COURSES} title="Cursos de Bacharelado" id="bacharelado" onCourseClick={handleCourseClick} />
+        <CourseList courses={TECNOLOGO_COURSES} title="Cursos de Tecnólogo" id="tecnologo" onCourseClick={handleCourseClick} />
         <CourseList courses={TECNICO_COURSES} title="Certificado Técnico" id="tecnico" onCourseClick={handleCourseClick} />
 
         {/* CTA Section */}
         <section className="py-12 bg-gradient-hero text-primary-foreground">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-xl md:text-2xl font-bold mb-6 font-heading">
-              TENHA SEU DIPLOMA HOJE MESMO!
+              CONQUISTE SUA FORMAÇÃO HOJE MESMO!
             </h2>
             <Button
               onClick={handleContactClick}

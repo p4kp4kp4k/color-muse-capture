@@ -17,7 +17,7 @@ import {
 const FAQ_DATA = [
   {
     question: "Os documentos são reconhecidos pelo MEC?",
-    answer: "Sim. Nossa equipe trabalha apenas com documentação reconhecida pelo MEC, de forma que os diplomas são emitidos dentro das próprias instituições de ensino credenciadas."
+    answer: "Sim. Nossa equipe trabalha apenas com instituições credenciadas pelo MEC, garantindo que toda a documentação acadêmica seja emitida conforme os padrões exigidos."
   },
   {
     question: "Vocês conseguem documentação de qualquer instituição?",
@@ -37,7 +37,7 @@ const FAQ_DATA = [
   },
   {
     question: "Preciso pagar adiantado?",
-    answer: "Não. Aqui você não paga nada adiantado. Garantimos a emissão e entrega segura do seu diploma ou certificado — 100% autêntico, reconhecido pelo MEC e publicado no Diário Oficial."
+    answer: "Não. Aqui você não paga nada adiantado. Garantimos o acompanhamento seguro de toda sua formação — 100% reconhecida pelo MEC."
   },
   {
     question: "Quais formas de pagamento são aceitas?",
@@ -52,8 +52,8 @@ const FAQ_DATA = [
     answer: "Sim. Após a confirmação do seu pedido, você receberá atualizações sobre o andamento através do WhatsApp. Nossa equipe está disponível para esclarecer qualquer dúvida."
   },
   {
-    question: "O diploma inclui histórico escolar?",
-    answer: "Sim. A documentação completa inclui diploma, histórico escolar com toda a grade curricular, carga horária, estágios e trabalho de conclusão de curso (quando aplicável)."
+    question: "A formação inclui histórico escolar?",
+    answer: "Sim. A documentação completa inclui certificação, histórico escolar com toda a grade curricular, carga horária, estágios e trabalho de conclusão de curso (quando aplicável)."
   },
   {
     question: "Como entro em contato com a equipe?",
@@ -87,8 +87,8 @@ const FAQ = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
         title="Perguntas Frequentes - Tire suas Dúvidas"
-        description="Tire todas as suas dúvidas sobre diplomas e certificados reconhecidos pelo MEC. Saiba sobre segurança, formas de pagamento, prazos e mais."
-        keywords="FAQ diploma, dúvidas certificado MEC, perguntas frequentes documentação acadêmica, como funciona diploma EAD"
+        description="Tire todas as suas dúvidas sobre cursos e certificações reconhecidos pelo MEC. Saiba sobre segurança, formas de pagamento, prazos e mais."
+        keywords="FAQ cursos EAD, dúvidas certificado MEC, perguntas frequentes formação acadêmica, como funciona curso EAD"
         canonicalPath="/faq"
         structuredData={faqStructuredData}
       />

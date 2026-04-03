@@ -154,10 +154,10 @@ const Index = () => {
 
               {/* Main Heading - simplified for mobile */}
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 md:mb-8 font-heading leading-[1.1] tracking-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <span className="md:hidden">Quer estudar EAD e conquistar seu diploma?</span>
+                <span className="md:hidden">Quer estudar EAD e conquistar sua formação?</span>
                 <span className="hidden md:inline">
                   <TypingText 
-                    text="Quer estudar EAD e conquistar seu diploma?" 
+                    text="Quer estudar EAD e conquistar sua formação?"
                     speed={30}
                     delay={800}
                   />
@@ -233,7 +233,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-3 font-heading">Cursos Reconhecidos pelo MEC</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Orientamos você para cursos de instituições credenciadas pelo MEC, garantindo diplomas válidos em todo o território nacional.
+                  Orientamos você para cursos de instituições credenciadas pelo MEC, garantindo certificações válidas em todo o território nacional.
                 </p>
               </div>
               
@@ -291,7 +291,7 @@ const Index = () => {
                   Por que escolher <span className="text-primary">cursos EAD?</span>
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  A educação a distância oferece flexibilidade para estudar no seu ritmo, com a mesma qualidade e reconhecimento dos cursos presenciais. Todos os cursos que indicamos são de instituições credenciadas pelo MEC, garantindo diplomas válidos para concursos, processos seletivos e registros profissionais.
+                  A educação a distância oferece flexibilidade para estudar no seu ritmo, com a mesma qualidade e reconhecimento dos cursos presenciais. Todos os cursos que indicamos são de instituições credenciadas pelo MEC, com certificação válida para concursos, processos seletivos e registros profissionais.
                 </p>
               </div>
             </div>
@@ -300,10 +300,10 @@ const Index = () => {
             <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
               <div className="text-center md:text-left order-2 md:order-1">
                 <h3 className="text-2xl md:text-4xl font-bold mb-6 font-heading">
-                  Conquiste seu <span className="text-primary">Diploma</span>
+                  Conquiste sua <span className="text-primary">Formação</span>
                 </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Nunca é tarde para investir na sua formação. Milhares de brasileiros já conquistaram seus diplomas através de cursos EAD de qualidade. Deixe nossa equipe orientar você nessa jornada!
+                  Nunca é tarde para investir na sua formação. Milhares de brasileiros já conquistaram sua qualificação através de cursos EAD de qualidade. Deixe nossa equipe orientar você nessa jornada!
                 </p>
               </div>
               <div 
@@ -314,7 +314,7 @@ const Index = () => {
                 <div className="hidden md:block absolute -inset-4 bg-gradient-to-br from-gold/20 to-primary/20 rounded-3xl blur-2xl" />
                 <img 
                   src={testimonialBanner}
-                  alt="Formanda realizando o sonho do diploma"
+                  alt="Formanda realizando o sonho da formação"
                   className="relative rounded-3xl shadow-2xl w-full max-w-md mx-auto object-cover md:transition-transform md:duration-300 md:hover:scale-[1.02]"
                   loading="lazy"
                   decoding="async"

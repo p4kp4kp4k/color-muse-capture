@@ -11,7 +11,7 @@ import { HelpCircle } from "lucide-react";
 const faqs = [
   {
     question: "Os documentos são reconhecidos pelo MEC?",
-    answer: "Sim. Nossa equipe trabalha apenas com documentação reconhecida pelo MEC, de forma que os diplomas são emitidos dentro das próprias instituições de ensino credenciadas."
+    answer: "Sim. Nossa equipe trabalha apenas com instituições credenciadas pelo MEC, garantindo que toda a documentação acadêmica seja emitida conforme os padrões exigidos."
   },
   {
     question: "A EAD Cursos Nacional consegue documentação de qualquer instituição?",
@@ -27,11 +27,11 @@ const faqs = [
   },
   {
     question: "Preciso pagar adiantado?",
-    answer: "Não. Aqui você não paga nada adiantado. Garantimos a emissão e entrega segura do seu diploma ou certificado — 100% autêntico, reconhecido pelo MEC e publicado no Diário Oficial."
+    answer: "Não. Aqui você não paga nada adiantado. Garantimos o acompanhamento seguro de toda sua formação — 100% reconhecida pelo MEC."
   },
   {
-    question: "O diploma inclui histórico escolar?",
-    answer: "Sim. A documentação completa inclui diploma, histórico escolar com toda a grade curricular, carga horária, estágios e trabalho de conclusão de curso (quando aplicável)."
+    question: "A formação inclui histórico escolar?",
+    answer: "Sim. A documentação completa inclui certificação, histórico escolar com toda a grade curricular, carga horária, estágios e trabalho de conclusão de curso (quando aplicável)."
   }
 ];
 
