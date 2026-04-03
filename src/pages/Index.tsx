@@ -154,10 +154,10 @@ const Index = () => {
 
               {/* Main Heading - simplified for mobile */}
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 md:mb-8 font-heading leading-[1.1] tracking-tight animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <span className="md:hidden">Quer estudar EAD e conquistar seu diploma?</span>
+                <span className="md:hidden">Quer estudar EAD e conquistar sua formação?</span>
                 <span className="hidden md:inline">
                   <TypingText 
-                    text="Quer estudar EAD e conquistar seu diploma?" 
+                    text="Quer estudar EAD e conquistar sua formação?"
                     speed={30}
                     delay={800}
                   />
