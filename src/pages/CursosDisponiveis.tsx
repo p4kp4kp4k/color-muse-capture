@@ -213,8 +213,8 @@ const CursosDisponiveis = () => {
                 Cursos Disponíveis
               </h1>
               <p className="text-sm md:text-base text-primary-foreground/85 max-w-2xl mx-auto mb-6 leading-relaxed">
-                A equipe {brandUpper} foi criada para realizar o seu sonho de ter o seu diploma de conclusão superior. 
-                Trabalhamos há mais de 10 anos para conseguirmos o melhor resultado no processo de seu diploma superior com maior segurança e transparência!
+                A equipe {brandUpper} foi criada para realizar o seu sonho de conquistar sua formação superior. 
+                Trabalhamos há mais de 10 anos para garantir o melhor resultado no seu processo de formação com maior segurança e transparência!
               </p>
               
               <div className="flex flex-wrap justify-center gap-3">
