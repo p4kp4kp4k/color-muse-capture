@@ -274,7 +274,7 @@ const CursosDisponiveis = () => {
         <section className="py-12 bg-gradient-hero text-primary-foreground">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-xl md:text-2xl font-bold mb-6 font-heading">
-              TENHA SEU DIPLOMA HOJE MESMO!
+              CONQUISTE SUA FORMAÇÃO HOJE MESMO!
             </h2>
             <Button
               onClick={handleContactClick}

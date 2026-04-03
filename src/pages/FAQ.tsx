@@ -87,8 +87,8 @@ const FAQ = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
         title="Perguntas Frequentes - Tire suas Dúvidas"
-        description="Tire todas as suas dúvidas sobre diplomas e certificados reconhecidos pelo MEC. Saiba sobre segurança, formas de pagamento, prazos e mais."
-        keywords="FAQ diploma, dúvidas certificado MEC, perguntas frequentes documentação acadêmica, como funciona diploma EAD"
+        description="Tire todas as suas dúvidas sobre cursos e certificações reconhecidos pelo MEC. Saiba sobre segurança, formas de pagamento, prazos e mais."
+        keywords="FAQ cursos EAD, dúvidas certificado MEC, perguntas frequentes formação acadêmica, como funciona curso EAD"
         canonicalPath="/faq"
         structuredData={faqStructuredData}
       />
