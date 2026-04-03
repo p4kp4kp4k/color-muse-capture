@@ -17,7 +17,7 @@ import {
 const FAQ_DATA = [
   {
     question: "Os documentos são reconhecidos pelo MEC?",
-    answer: "Sim. Nossa equipe trabalha apenas com documentação reconhecida pelo MEC, de forma que os diplomas são emitidos dentro das próprias instituições de ensino credenciadas."
+    answer: "Sim. Nossa equipe trabalha apenas com instituições credenciadas pelo MEC, garantindo que toda a documentação acadêmica seja emitida conforme os padrões exigidos."
   },
   {
     question: "Vocês conseguem documentação de qualquer instituição?",
